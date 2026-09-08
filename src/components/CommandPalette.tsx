@@ -182,7 +182,7 @@ export function CommandPalette({
           </button>
         </div>
 
-        <div className="palette-results">
+        <div className="palette-results" data-lenis-prevent>
           {results.length === 0 ? (
             <div className="palette-empty">
               <span>No telemetry matches found for "{query}".</span>

@@ -14,6 +14,8 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 import { CommandPalette } from "./components/CommandPalette";
 import { ContactModal } from "./components/ContactModal";
 import { ResearchModal } from "./components/ResearchModal";
@@ -36,26 +38,46 @@ import {
 function useReveal() {
   const location = useLocation();
   useEffect(() => {
-    const items = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    if (!("IntersectionObserver" in window)) {
-      items.forEach((el) => el.classList.add("is-visible"));
-      return;
-    }
+    let observer: IntersectionObserver | null = null;
+    const timer = setTimeout(() => {
+      const items = document.querySelectorAll<HTMLElement>("[data-reveal]");
+      if (!("IntersectionObserver" in window)) {
+        items.forEach((el) => el.classList.add("is-visible"));
+        return;
+      }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 },
-    );
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer?.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.08,
+          rootMargin: "0px 0px -40px 0px",
+        },
+      );
 
-    items.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
+      items.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 30 && rect.bottom > 0) {
+          item.classList.add("is-visible");
+        } else {
+          item.classList.remove("is-visible");
+          observer?.observe(item);
+        }
+      });
+    }, 40);
+
+    return () => {
+      clearTimeout(timer);
+      if (observer) {
+        observer.disconnect();
+      }
+    };
   }, [location.pathname]);
 }
 
@@ -66,6 +88,7 @@ interface LayoutProps {
 }
 
 function Layout({ children, onOpenSearch, activeSection }: LayoutProps) {
+  useReveal();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -82,12 +105,20 @@ function Layout({ children, onOpenSearch, activeSection }: LayoutProps) {
     document.title = routeTitles[location.pathname] || "LUNE — African Aerospace Industry";
     setMobileOpen(false);
     window.scrollTo({ top: 0, behavior: "instant" });
+    if ((window as any).__lenis) {
+      (window as any).__lenis.scrollTo(0, { immediate: true });
+    }
   }, [location.pathname]);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      if ((window as any).__lenis) {
+        (window as any).__lenis.scrollTo(el, { offset: -30 });
+      } else {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+      setMobileOpen(false);
     }
   };
 
@@ -234,7 +265,7 @@ interface HomeProps {
 function Hero() {
   return (
     <section className="hero section-pad" id="hero">
-      <div className="hero-media-wrap" data-reveal>
+      <div className="hero-media-wrap" data-reveal="media">
         <img
           className="hero-media"
           src={images.hero}
@@ -252,22 +283,26 @@ function Hero() {
         />
       </div>
 
-      <div className="hero-copy" data-reveal>
-        <p className="eyebrow">LUNE / NIGERIA / DEEP TECHNOLOGY</p>
-        <h1>
+      <div className="hero-copy">
+        <p className="eyebrow" data-reveal data-reveal-delay="1">
+          LUNE / NIGERIA / DEEP TECHNOLOGY
+        </p>
+        <h1 data-reveal data-reveal-delay="2">
           BUILDING
           <br />
           AFRICA'S
           <br />
           <em>AEROSPACE INDUSTRY.</em>
         </h1>
-        <p className="hero-description">
+        <p className="hero-description" data-reveal data-reveal-delay="3">
           A Nigerian-founded deep-technology company building progressively
           toward an integrated African space and aerospace industrial capability.
         </p>
-        <Link className="text-link" to="/mission">
-          EXPLORE THE VISION <ArrowRight size={14} />
-        </Link>
+        <div data-reveal data-reveal-delay="4">
+          <Link className="text-link" to="/mission">
+            EXPLORE THE VISION <ArrowRight size={14} />
+          </Link>
+        </div>
       </div>
 
       <StatusStrip />
@@ -299,11 +334,12 @@ function SystemsSection({
       </div>
 
       <div className="system-grid">
-        {systems.map((system) => (
+        {systems.map((system, idx) => (
           <article
             className="system-entry"
             key={system.number}
             data-reveal
+            data-reveal-delay={String((idx % 4) + 1)}
             onClick={() => onSelectSystem(system)}
             title={`Inspect ${system.title} dossier`}
           >
@@ -334,7 +370,7 @@ function FeaturedSystem({
   return (
     <section className="featured section-pad" id="featured">
       <SectionLabel number="03" label="ENTRY POINT" detail="CUBESATS" />
-      <div className="featured-frame" data-reveal>
+      <div className="featured-frame" data-reveal="media">
         <img
           src={images.platform}
           alt="CubeSat spacecraft representing LUNE's practical entry point into space hardware"
@@ -344,7 +380,7 @@ function FeaturedSystem({
         {/* Interactive Spacecraft Hotspots telemetry */}
         <SpacecraftHotspots />
 
-        <div className="featured-title">
+        <div className="featured-title" data-reveal data-reveal-delay="1">
           <span className="micro-label">CUBESAT → SMALL SATELLITE → SPACECRAFT</span>
           <h2>
             START
@@ -352,7 +388,7 @@ function FeaturedSystem({
             WITH SPACE SYSTEMS
           </h2>
         </div>
-        <div className="featured-specs">
+        <div className="featured-specs" data-reveal data-reveal-delay="2">
           <div>
             <span className="micro-label">STATUS</span>
             <strong>EARLY PRACTICAL PLATFORM</strong>
@@ -398,11 +434,13 @@ function ResearchSection({
         </div>
       </div>
 
-      <div className="research-index" data-reveal>
-        {researchItems.map((item) => (
+      <div className="research-index">
+        {researchItems.map((item, idx) => (
           <article
             className="research-row"
             key={item.number}
+            data-reveal
+            data-reveal-delay={String((idx % 4) + 1)}
             onClick={() => onSelectResearch(item)}
             title={`View research briefing: ${item.title}`}
           >
@@ -426,19 +464,19 @@ function Ecosystem() {
       <div className="eco-aside">
         <SectionLabel number="05" label="ECOSYSTEM" detail="NIGERIA / AFRICA" />
       </div>
-      <div className="eco-content" data-reveal>
-        <p className="display-title">
+      <div className="eco-content">
+        <p className="display-title" data-reveal>
           KNOWLEDGE INTO
           <br />
           INDUSTRY.
         </p>
         <div className="eco-grid">
-          <p className="body-copy">
+          <p className="body-copy" data-reveal data-reveal-delay="1">
             LUNE connects education, research, engineering, manufacturing and
             commercialization into a continuous pipeline for increasingly
             capable African space systems.
           </p>
-          <div className="eco-mark">
+          <div className="eco-mark" data-reveal data-reveal-delay="2">
             <span className="micro-label">ECOSYSTEM INITIATIVE</span>
             <strong>PAUSN</strong>
             <span>Pan-African University Space Network</span>
@@ -481,11 +519,13 @@ function Journal({
       <div className="journal-head">
         <SectionLabel number="07" label="ROADMAP" detail="THE DEVELOPMENT PATH" />
       </div>
-      <div className="journal-grid" data-reveal>
-        {journalItems.slice(0, 3).map((item) => (
+      <div className="journal-grid">
+        {journalItems.slice(0, 3).map((item, idx) => (
           <article
             className="journal-item"
             key={item.title}
+            data-reveal
+            data-reveal-delay={String(idx + 1)}
             onClick={() => onSelectStage(item)}
             title="Inspect roadmap deliverables"
           >
@@ -566,7 +606,6 @@ function Home({
   onSelectStage,
   onOpenContact,
 }: HomeProps) {
-  useReveal();
   return (
     <>
       <Hero />
@@ -599,8 +638,6 @@ function InteriorPage({
   onOpenContact: () => void;
   children?: React.ReactNode;
 }) {
-  useReveal();
-
   return (
     <>
       <section className="interior-hero section-pad">
@@ -609,7 +646,7 @@ function InteriorPage({
           <h1>{title}</h1>
           <p>{description}</p>
         </div>
-        <div className="interior-image" data-reveal>
+        <div className="interior-image" data-reveal="media">
           <img src={image} alt={label} />
           <div className="hero-vignette" />
         </div>
@@ -760,6 +797,7 @@ function ContactPage({ onOpenContact }: { onOpenContact: () => void }) {
         <div
           className="contact-detail-box"
           data-reveal
+          data-reveal-delay="1"
           onClick={onOpenContact}
           style={{ cursor: "pointer" }}
         >
@@ -768,7 +806,7 @@ function ContactPage({ onOpenContact }: { onOpenContact: () => void }) {
             Open Transmission Terminal →
           </span>
         </div>
-        <div className="contact-detail-box" data-reveal>
+        <div className="contact-detail-box" data-reveal data-reveal-delay="2">
           <span className="micro-label">LOCATION</span>
           <span>ABUJA / NIGERIA</span>
         </div>
@@ -784,6 +822,25 @@ function App() {
   const [activeStage, setActiveStage] = useState<JournalItem | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("01");
+
+  // Global Lenis smooth momentum scroll instance
+  useEffect(() => {
+    const lenis = new Lenis({
+      autoRaf: true,
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      smoothWheel: true,
+      touchMultiplier: 1.5,
+    });
+
+    (window as any).__lenis = lenis;
+
+    return () => {
+      lenis.destroy();
+      delete (window as any).__lenis;
+    };
+  }, []);
 
   // Global Cmd+K / Ctrl+K listener
   useEffect(() => {

@@ -47,6 +47,7 @@ export function ResearchModal({
     >
       <div
         className="research-modal-window"
+        data-lenis-prevent
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-top-bar">

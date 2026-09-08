@@ -46,6 +46,7 @@ export function SystemDrawer({
     >
       <div
         className="drawer-panel"
+        data-lenis-prevent
         onClick={(e) => e.stopPropagation()}
       >
         <div className="drawer-header">

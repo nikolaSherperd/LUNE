@@ -65,6 +65,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     >
       <div
         className="contact-modal-window"
+        data-lenis-prevent
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-top-bar">

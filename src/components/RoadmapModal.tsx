@@ -46,6 +46,7 @@ export function RoadmapModal({ initialStage, onClose }: RoadmapModalProps) {
     >
       <div
         className="roadmap-modal-window"
+        data-lenis-prevent
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-top-bar">

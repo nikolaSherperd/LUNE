@@ -3,8 +3,8 @@ import launchRocket from "../Images/58b129e81e16c5ccff592de06b93656e.jpg";
 import padRockets from "../Images/71e3fbd44c9688627366e223310b9c66.jpg";
 import largeRocket from "../Images/98ae5c7f60e7d937a960430b82d0f83f.jpg";
 import darkRocket from "../Images/ab5bdf14b63eba46547f5ff99c5fce11.jpg";
-import luneWordmark from "../Images/file_00000000e35c71f4b529230b685b189d.png";
-import luneEmblem from "../Images/file_00000000e43c71f4a1b152dd8dfdae31.png";
+import luneWordmark from "../Images/1500x500.jpeg";
+import luneEmblem from "../Images/gkZcl8oI_400x400.jpg";
 
 export interface NavItem {
   label: string;
