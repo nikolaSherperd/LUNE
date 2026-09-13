@@ -6,9 +6,18 @@ import darkRocket from "../Images/ab5bdf14b63eba46547f5ff99c5fce11.jpg";
 import luneWordmark from "../Images/1500x500.jpeg";
 import luneEmblem from "../Images/gkZcl8oI_400x400.jpg";
 
+export interface NavChildItem {
+  label: string;
+  path: string;
+  description: string;
+  code: string;
+}
+
 export interface NavItem {
   label: string;
   path: string;
+  badge?: string;
+  children?: NavChildItem[];
 }
 
 export interface SystemDetail {
@@ -64,11 +73,130 @@ export interface SpacecraftHotspot {
 }
 
 export const navigationItems: NavItem[] = [
-  { label: "Vision", path: "/mission" },
-  { label: "Capabilities", path: "/systems" },
-  { label: "Research", path: "/research" },
-  { label: "Ecosystem", path: "/about" },
-  { label: "Contact", path: "/contact" },
+  {
+    label: "Platforms",
+    path: "/systems",
+    children: [
+      {
+        label: "SmallSat & CubeSat Buses",
+        path: "/systems#platforms",
+        description: "3U, 6U, 12U & 150kg modular flight architectures",
+        code: "01.1",
+      },
+      {
+        label: "Flight Avionics & Edge AI",
+        path: "/systems#avionics",
+        description: "Cortex-M7 OBC and real-time neural inference",
+        code: "01.2",
+      },
+      {
+        label: "Hosted Payload Services",
+        path: "/systems#hosted",
+        description: "Rapid orbital qualification for commercial sensors",
+        code: "01.3",
+      },
+      {
+        label: "Technical Specifications",
+        path: "/systems#specs",
+        description: "Comprehensive platform comparison matrix",
+        code: "01.4",
+      },
+    ],
+  },
+  {
+    label: "Infrastructure",
+    path: "/infrastructure",
+    children: [
+      {
+        label: "Abuja Facility Overview",
+        path: "/infrastructure#overview",
+        description: "Sovereign assembly, integration & test campus",
+        code: "02.1",
+      },
+      {
+        label: "ISO Class 7 Cleanroom",
+        path: "/infrastructure#cleanroom",
+        description: "Controlled integration bay for satellite buses",
+        code: "02.2",
+      },
+      {
+        label: "TVAC & Shaker Labs",
+        path: "/infrastructure#environmental",
+        description: "High-vacuum thermal cycling & 20 kN vibration testing",
+        code: "02.3",
+      },
+      {
+        label: "Additive Metallurgy Lab",
+        path: "/infrastructure#metallurgy",
+        description: "Selective laser melting of high-temp superalloys",
+        code: "02.4",
+      },
+    ],
+  },
+  {
+    label: "Missions",
+    path: "/missions",
+    children: [
+      {
+        label: "Orbital Flight Manifest",
+        path: "/missions#manifest",
+        description: "Launch schedule, payload manifests & target orbits",
+        code: "03.1",
+      },
+      {
+        label: "Ground Telemetry & TT&C",
+        path: "/missions#tracking",
+        description: "Direct-to-ground high-bandwidth communications",
+        code: "03.2",
+      },
+      {
+        label: "Industrial Roadmap",
+        path: "/missions#roadmap",
+        description: "Capability compounds from CubeSats to orbit",
+        code: "03.3",
+      },
+    ],
+  },
+  {
+    label: "Research",
+    path: "/research",
+    children: [
+      {
+        label: "Research Briefings",
+        path: "/research#briefs",
+        description: "Active TRL development programs & whitepapers",
+        code: "04.1",
+      },
+      {
+        label: "Propulsion Evolution",
+        path: "/research#propulsion",
+        description: "Cryogenic rocketry to aerospike exploration",
+        code: "04.2",
+      },
+    ],
+  },
+  {
+    label: "Ecosystem",
+    path: "/about",
+    children: [
+      {
+        label: "Industrial Thesis",
+        path: "/about#thesis",
+        description: "Technological sovereignty built progressively",
+        code: "05.1",
+      },
+      {
+        label: "PAUSN University Network",
+        path: "/about#pausn",
+        description: "Pan-African University Space Network consortium",
+        code: "05.2",
+      },
+    ],
+  },
+  {
+    label: "Contact",
+    path: "/contact",
+  },
 ];
 
 export const images = {
@@ -448,5 +576,425 @@ export const journalItems: JournalItem[] = [
       "Vertical propulsive landing and recovery of first-stage booster",
       "High-cadence modular orbital infrastructure assembly",
     ],
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/* Proof & Authoritative Metrics Strip                                        */
+/* -------------------------------------------------------------------------- */
+export interface MetricItem {
+  id: string;
+  number: string;
+  value: string;
+  unit: string;
+  label: string;
+  detail: string;
+}
+
+export const metricsData: MetricItem[] = [
+  {
+    id: "bus-envelope",
+    number: "01",
+    value: "3U – 150",
+    unit: "KG",
+    label: "PLATFORM ARCHITECTURE",
+    detail: "Modular CubeSat & SmallSat buses configured for high-cadence LEO operations",
+  },
+  {
+    id: "downlink",
+    number: "02",
+    value: "50",
+    unit: "MBPS",
+    label: "DOWNLINK BANDWIDTH",
+    detail: "High-throughput X-Band telemetry paired with S-Band TT&C direct-to-ground link",
+  },
+  {
+    id: "cleanroom",
+    number: "03",
+    value: "ISO 7",
+    unit: "CLASS",
+    label: "CLEANROOM INTEGRATION",
+    detail: "Controlled environment assembly & 10⁻⁶ Torr TVAC thermal cycling facility",
+  },
+  {
+    id: "pausn-nodes",
+    number: "04",
+    value: "08",
+    unit: "NODES",
+    label: "PAN-AFRICAN ACADEMIC REACH",
+    detail: "University research consortium nodes actively feeding engineering talent & payloads",
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/* Customer Personas & Operational Sectors                                    */
+/* -------------------------------------------------------------------------- */
+export interface SectorItem {
+  id: string;
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  deliverables: string[];
+  engagementPath: string;
+}
+
+export const operationalSectors: SectorItem[] = [
+  {
+    id: "commercial",
+    number: "01",
+    title: "COMMERCIAL CONSTELLATIONS",
+    subtitle: "Turnkey LEO Satellite Platforms & Operations",
+    description:
+      "Rapidly deployable small satellites engineered for telecom operators, IoT network providers, and regional logistics tracking across Africa and emerging markets.",
+    deliverables: [
+      "Standardized 6U/12U CubeSat and 150kg SmallSat buses",
+      "Managed Launch & Rideshare Brokerage Integration",
+      "Full Ground Station Telemetry & Mission Operations (MaaS)",
+    ],
+    engagementPath: "Request Platform Specifications",
+  },
+  {
+    id: "civil",
+    number: "02",
+    title: "CIVIL & EARTH OBSERVATION",
+    subtitle: "Resource, Climate & Maritime Monitoring",
+    description:
+      "High-cadence multispectral and hyperspectral optical sensing platforms providing critical real-time data for agricultural yield forecasting, flood mapping, and coastal security.",
+    deliverables: [
+      "Sub-meter Ground Sampling Distance (GSD) optical payloads",
+      "Onboard AI Cloud-Filtering & Edge Image Segmentation",
+      "Sovereign data sovereignty with domestic encryption keys",
+    ],
+    engagementPath: "Inquire on Sensing Capacities",
+  },
+  {
+    id: "defense",
+    number: "03",
+    title: "SOVEREIGN DEFENSE & SECURITY",
+    subtitle: "Hardened Avionics & Cryptographic Systems",
+    description:
+      "Ruggedized, radiation-tolerant aerospace silicon engineered for national security communications, spectrum surveillance, and tamper-proof command uplinks.",
+    deliverables: [
+      "Post-quantum cryptographic root-of-trust hardware modules",
+      "Wideband software-defined radio (SDR) surveillance payloads",
+      "Deterministic, single-event-upset immune ARM flight avionics",
+    ],
+    engagementPath: "Request Secure Briefing",
+  },
+  {
+    id: "academic",
+    number: "04",
+    title: "ACADEMIC & PAUSN SCIENCE",
+    subtitle: "Pan-African University Space Consortium",
+    description:
+      "Direct pathway for universities and research institutions to fly scientific instruments, train the next generation of African aerospace engineers, and publish peer-reviewed space physics research.",
+    deliverables: [
+      "Standardized 1U/2U student scientific payload bays",
+      "Hardware-in-the-loop (HIL) simulation testbeds in universities",
+      "Open-access atmospheric & ionospheric telemetry datasets",
+    ],
+    engagementPath: "Join PAUSN Consortium",
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/* Commercial Offerings & Solutions (The LUNE Foundry)                        */
+/* -------------------------------------------------------------------------- */
+export interface OfferingItem {
+  id: string;
+  code: string;
+  title: string;
+  tagline: string;
+  description: string;
+  capabilities: string[];
+}
+
+export const foundryOfferings: OfferingItem[] = [
+  {
+    id: "bus-platforms",
+    code: "F-01",
+    title: "MODULAR SPACECRAFT PLATFORMS",
+    tagline: "High-Reliability SmallSat Buses for LEO",
+    description:
+      "Flight-ready CubeSat (3U/6U/12U) and 150kg SmallSat platforms configured with radiation-tolerant flight computers, 3-axis reaction wheels, GaAs solar wings, and high-efficiency power distribution.",
+    capabilities: [
+      "Pre-integrated and bench-qualified bus subsystems",
+      "Flexible payload bay volume and mass allocation",
+      "Integrated cold-gas / electric micro-propulsion options",
+    ],
+  },
+  {
+    id: "hosted-payloads",
+    code: "F-02",
+    title: "HOSTED PAYLOAD INTEGRATION",
+    tagline: "Rapid Flight Heritage for Sensors & Electronics",
+    description:
+      "A fast, cost-effective way to validate customer optical sensors, RF transceivers, or scientific instruments on orbit without building an entire satellite from scratch.",
+    capabilities: [
+      "Standardized electrical (SpaceWire, CAN, UART) & mechanical mounts",
+      "Thermal vacuum bakeout and mechanical vibration screening",
+      "Scheduled rideshare integration and deployment verification",
+    ],
+  },
+  {
+    id: "environmental-testing",
+    code: "F-03",
+    title: "ENVIRONMENTAL TEST & CLEANROOM",
+    tagline: "Sovereign Qualification Infrastructure in Abuja",
+    description:
+      "Full aerospace qualification services under one roof: ISO Class 7 cleanroom assembly bays, high-vacuum thermal cycling, and electrodynamic vibration tables.",
+    capabilities: [
+      "Thermal Vacuum (TVAC): -75°C to +135°C @ 10⁻⁶ Torr",
+      "20 kN sine and random vibration shaker table testing",
+      "Cleanroom outgassing bakeout and optical metrology inspection",
+    ],
+  },
+  {
+    id: "orbital-data",
+    code: "F-04",
+    title: "MANAGED GROUND & ORBITAL DATA",
+    tagline: "End-to-End Mission Telemetry & Operations",
+    description:
+      "Turnkey space operations: autonomous ground station tracking, secure command uplinks, telemetry downlink archiving, and cloud-delivered mission analytics.",
+    capabilities: [
+      "Automated S-Band TT&C and X-Band high-speed payload ground terminals",
+      "Real-time orbital dynamics and conjunction assessment",
+      "Web telemetry console with secure customer API keys",
+    ],
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/* Orbital Missions Manifest & Flight Heritage                                */
+/* -------------------------------------------------------------------------- */
+export interface MissionManifestItem {
+  id: string;
+  designation: string;
+  name: string;
+  status: "In Integration" | "Scheduled" | "Active R&D" | "Completed";
+  statusType: "active" | "scheduled" | "dev" | "complete";
+  targetOrbit: string;
+  formFactor: string;
+  payloadType: string;
+  launchWindow: string;
+  summary: string;
+  keySpecs: { label: string; value: string }[];
+}
+
+export const missionsManifest: MissionManifestItem[] = [
+  {
+    id: "lune-1",
+    designation: "LN-01",
+    name: "LUNE-1 TECH DEMONSTRATOR",
+    status: "In Integration",
+    statusType: "active",
+    targetOrbit: "500 km Sun-Synchronous (SSO)",
+    formFactor: "3U CubeSat (4.2 kg)",
+    payloadType: "Multispectral Micro-Camera + Dual NPU Edge Inference",
+    launchWindow: "Q4 2026",
+    summary:
+      "Pathfinder flight validating LUNE's indigenous flight computer, ADCS reaction wheel pointing, and real-time cloud-screening neural inference over West Africa.",
+    keySpecs: [
+      { label: "Orbit", value: "500 km SSO / 97.4° Inclination" },
+      { label: "Pointing Precision", value: "< 0.05° 3-Axis Stabilized" },
+      { label: "Downlink", value: "X-Band 50 Mbps / S-Band TT&C" },
+      { label: "Integration Base", value: "Abuja Cleanroom Bay 1" },
+    ],
+  },
+  {
+    id: "pausn-pathfinder",
+    designation: "LN-02",
+    name: "PAUSN-1 ACADEMIC PATHFINDER",
+    status: "Scheduled",
+    statusType: "scheduled",
+    targetOrbit: "525 km SSO",
+    formFactor: "6U CubeSat (11.5 kg)",
+    payloadType: "Ionospheric Plasma Probe + University LoRa Mesh Node",
+    launchWindow: "Q2 2027",
+    summary:
+      "Collaborative Pan-African University Space Network mission hosting scientific instruments developed across partner African aerospace faculties.",
+    keySpecs: [
+      { label: "Orbit", value: "525 km SSO" },
+      { label: "Consortium Nodes", value: "Nigeria, Ghana, Kenya, South Africa" },
+      { label: "Downlink", value: "UHF / S-Band Multi-Ground Station" },
+      { label: "Instrument Mass", value: "2.4 kg Dedicated Payload" },
+    ],
+  },
+  {
+    id: "sovereign-eo1",
+    designation: "LN-03",
+    name: "SOVEREIGN EO-1 REGIONAL SENSING",
+    status: "Active R&D",
+    statusType: "dev",
+    targetOrbit: "550 km Dawn-Dusk SSO",
+    formFactor: "150 kg SmallSat Class",
+    payloadType: "Sub-meter Electro-Optical Camera & SAR Sensor",
+    launchWindow: "2028",
+    summary:
+      "First full-scale sovereign African Earth observation spacecraft delivering high-revisit imagery for food security, infrastructure planning, and natural resource stewardship.",
+    keySpecs: [
+      { label: "Resolution", value: "0.75m GSD Visible / Multi-Spectral" },
+      { label: "Power Generation", value: "250W Deployable Articulated Arrays" },
+      { label: "Propulsion", value: "Modular Electric Hall Thruster" },
+      { label: "Design Life", value: "5 Years Mission Operations" },
+    ],
+  },
+  {
+    id: "tactical-crypto",
+    designation: "LN-04",
+    name: "AERO-SECURE SECCOM DISPATCH",
+    status: "Active R&D",
+    statusType: "dev",
+    targetOrbit: "600 km Circular Polar",
+    formFactor: "12U CubeSat (22 kg)",
+    payloadType: "Post-Quantum Cryptographic Routing & Tactical Comms",
+    launchWindow: "2028 – 2029",
+    summary:
+      "Hardened orbital secure relay demonstrating inter-station cryptographic authentication, resilient against jamming and spoofing for sovereign defense links.",
+    keySpecs: [
+      { label: "Security Level", value: "Post-Quantum HSM Lattice Cryptography" },
+      { label: "RF Agility", value: "Wideband SDR 70 MHz – 6 GHz" },
+      { label: "Autonomy", value: "FDIR Radiation Mitigation System" },
+      { label: "Target Orbit", value: "600 km Polar" },
+    ],
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/* Physical Infrastructure & Testing Facilities                               */
+/* -------------------------------------------------------------------------- */
+export interface FacilityItem {
+  id: string;
+  code: string;
+  name: string;
+  classification: string;
+  specs: string[];
+  description: string;
+}
+
+export const facilitySpecs: FacilityItem[] = [
+  {
+    id: "cleanroom",
+    code: "FAC-01",
+    name: "ISO Class 7 Spacecraft Integration Bay",
+    classification: "PARTICULATE CONTROLLED ENV // FED-STD-209E CLASS 10,000",
+    description:
+      "Dedicated cleanroom integration facility in Abuja featuring laminar airflow benches, positive-pressure airlocks, ESD flooring, and calibrated optical assembly stations.",
+    specs: [
+      "Particle Count: < 352,000 particles/m³ @ ≥ 0.5 µm",
+      "Temperature: 20°C ± 1.5°C | Relative Humidity: 45% ± 5%",
+      "Continuous HEPA filtration with automated airborne particle counters",
+      "Dual airlock gowning chamber with ionized air shower",
+    ],
+  },
+  {
+    id: "tvac",
+    code: "FAC-02",
+    name: "Thermal Vacuum (TVAC) Chamber",
+    classification: "ORBITAL ENVIRONMENT SIMULATION // HIGH-VACUUM TEST RIG",
+    description:
+      "Precision thermal cycling chamber simulating deep space extreme vacuum and solar radiative thermal loads on fully integrated satellite systems.",
+    specs: [
+      "Base Vacuum Level: 1.0 × 10⁻⁶ Torr via cryogenic turbomolecular pump",
+      "Thermal Temperature Range: -75°C to +135°C",
+      "Thermal Shroud: High-emissivity copper cold-wall with LN2 cooling",
+      "Feedthrough Ports: Multi-channel thermocouple, RF, and SpaceWire data",
+    ],
+  },
+  {
+    id: "vibration",
+    code: "FAC-03",
+    name: "Electrodynamic Shaker Table System",
+    classification: "LAUNCH LOADS & ACOUSTIC QUALIFICATION // 20 kN RIG",
+    description:
+      "Multi-axis electrodynamic shaker reproducing the intense acoustic and mechanical vibration profiles experienced during rocket ascent and stage separation.",
+    specs: [
+      "Peak Sine Force: 20 kN | Random RMS Force: 18 kN",
+      "Frequency Spectrum: 5 Hz to 2,500 Hz",
+      "Maximum Acceleration: 100g Peak",
+      "Slip Table: 600 mm × 600 mm hydrostatic guided table for horizontal axis",
+    ],
+  },
+  {
+    id: "additive",
+    code: "FAC-04",
+    name: "Additive Metallurgy & Metrology Lab",
+    classification: "DIRECT METAL LASER SINTERING // AEROSPACE SUPERALLOYS",
+    description:
+      "High-precision laser powder bed fusion 3D printing engineered for complex regeneratively cooled rocket nozzles, satellite structural brackets, and lightweight fairing fittings.",
+    specs: [
+      "Certified Materials: Inconel 718, Ti-6Al-4V Grade 5, AlSi10Mg",
+      "Dual 500W Ytterbium Fiber Lasers with 30 µm layer resolution",
+      "In-chamber oxygen monitoring (< 100 ppm) with Argon atmosphere purge",
+      "Coordinate Measuring Machine (CMM) ± 1.5 µm dimensional metrology",
+    ],
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/* Platform Specifications Matrix                                             */
+/* -------------------------------------------------------------------------- */
+export interface PlatformSpecRow {
+  parameter: string;
+  cubesat3U: string;
+  cubesat6U12U: string;
+  smallsat150kg: string;
+}
+
+export const platformSpecTable: PlatformSpecRow[] = [
+  {
+    parameter: "Total Mass Envelope",
+    cubesat3U: "Up to 4.5 kg",
+    cubesat6U12U: "10 kg to 24 kg",
+    smallsat150kg: "80 kg to 150 kg",
+  },
+  {
+    parameter: "Payload Mass Capacity",
+    cubesat3U: "Up to 1.8 kg",
+    cubesat6U12U: "5 kg to 12 kg",
+    smallsat150kg: "40 kg to 75 kg",
+  },
+  {
+    parameter: "Payload Volume",
+    cubesat3U: "1.5U available",
+    cubesat6U12U: "3U to 6U available",
+    smallsat150kg: "Custom payload fairing envelope",
+  },
+  {
+    parameter: "Orbit Capability",
+    cubesat3U: "450 – 550 km LEO / SSO",
+    cubesat6U12U: "450 – 650 km LEO / SSO",
+    smallsat150kg: "500 – 900 km LEO / MEO capable",
+  },
+  {
+    parameter: "Power Generation (BOL)",
+    cubesat3U: "25W – 45W Deployable",
+    cubesat6U12U: "65W – 120W Articulated",
+    smallsat150kg: "250W – 450W Multi-Wing",
+  },
+  {
+    parameter: "Pointing Accuracy (ADCS)",
+    cubesat3U: "< 0.5° 3-Axis Stabilized",
+    cubesat6U12U: "< 0.05° with Star Tracker",
+    smallsat150kg: "< 0.01° High-Stability Line of Sight",
+  },
+  {
+    parameter: "Telemetry & Comms",
+    cubesat3U: "UHF / S-Band (2 Mbps)",
+    cubesat6U12U: "S-Band TT&C + X-Band (50 Mbps)",
+    smallsat150kg: "X-Band (150 Mbps) + Optical Downlink Ready",
+  },
+  {
+    parameter: "Design Operational Life",
+    cubesat3U: "1 to 2 Years",
+    cubesat6U12U: "3 to 5 Years",
+    smallsat150kg: "5 to 7 Years",
+  },
+  {
+    parameter: "Lead Time to Delivery",
+    cubesat3U: "6 Months",
+    cubesat6U12U: "9 Months",
+    smallsat150kg: "14 – 18 Months",
   },
 ];
