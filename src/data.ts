@@ -74,128 +74,70 @@ export interface SpacecraftHotspot {
 
 export const navigationItems: NavItem[] = [
   {
-    label: "Platforms",
+    label: "Mission Foundry",
     path: "/systems",
     children: [
       {
-        label: "SmallSat & CubeSat Buses",
+        label: "Mission Design & Simulation",
         path: "/systems#platforms",
-        description: "3U, 6U, 12U & 150kg modular flight architectures",
+        description: "Constellation geometry, orbital mechanics & sensor modeling",
         code: "01.1",
       },
       {
-        label: "Flight Avionics & Edge AI",
-        path: "/systems#avionics",
-        description: "Cortex-M7 OBC and real-time neural inference",
+        label: "Spacecraft Platforms",
+        path: "/systems#platforms",
+        description: "3U, 6U, 12U & 150kg modular flight architectures",
         code: "01.2",
       },
       {
-        label: "Hosted Payload Services",
+        label: "Payloads & Data Products",
         path: "/systems#hosted",
-        description: "Rapid orbital qualification for commercial sensors",
+        description: "Optical, RF, and multispectral sensor integration",
         code: "01.3",
       },
       {
-        label: "Technical Specifications",
-        path: "/systems#specs",
-        description: "Comprehensive platform comparison matrix",
+        label: "Orbital AI",
+        path: "/systems#avionics",
+        description: "Cortex-M7 OBC and real-time neural inference",
         code: "01.4",
       },
-    ],
-  },
-  {
-    label: "Infrastructure",
-    path: "/infrastructure",
-    children: [
       {
-        label: "Abuja Facility Overview",
-        path: "/infrastructure#overview",
-        description: "Sovereign assembly, integration & test campus",
-        code: "02.1",
+        label: "Constellation Production",
+        path: "/infrastructure",
+        description: "Cleanroom assembly, TVAC and 20 kN shaker testing",
+        code: "01.5",
       },
       {
-        label: "ISO Class 7 Cleanroom",
-        path: "/infrastructure#cleanroom",
-        description: "Controlled integration bay for satellite buses",
-        code: "02.2",
-      },
-      {
-        label: "TVAC & Shaker Labs",
-        path: "/infrastructure#environmental",
-        description: "High-vacuum thermal cycling & 20 kN vibration testing",
-        code: "02.3",
-      },
-      {
-        label: "Additive Metallurgy Lab",
-        path: "/infrastructure#metallurgy",
-        description: "Selective laser melting of high-temp superalloys",
-        code: "02.4",
+        label: "Managed Orbital Services",
+        path: "/missions#tracking",
+        description: "Direct-to-ground TT&C and mission telemetry",
+        code: "01.6",
       },
     ],
   },
   {
     label: "Missions",
     path: "/missions",
-    children: [
-      {
-        label: "Orbital Flight Manifest",
-        path: "/missions#manifest",
-        description: "Launch schedule, payload manifests & target orbits",
-        code: "03.1",
-      },
-      {
-        label: "Ground Telemetry & TT&C",
-        path: "/missions#tracking",
-        description: "Direct-to-ground high-bandwidth communications",
-        code: "03.2",
-      },
-      {
-        label: "Industrial Roadmap",
-        path: "/missions#roadmap",
-        description: "Capability compounds from CubeSats to orbit",
-        code: "03.3",
-      },
-    ],
   },
   {
-    label: "Research",
-    path: "/research",
+    label: "About",
+    path: "/about",
+  },
+  {
+    label: "Careers",
+    path: "/about#careers",
     children: [
       {
-        label: "Research Briefings",
-        path: "/research#briefs",
-        description: "Active TRL development programs & whitepapers",
+        label: "Open Positions",
+        path: "/about#positions",
+        description: "Aerospace engineering, avionics & flight software",
         code: "04.1",
       },
-      {
-        label: "Propulsion Evolution",
-        path: "/research#propulsion",
-        description: "Cryogenic rocketry to aerospike exploration",
-        code: "04.2",
-      },
     ],
   },
   {
-    label: "Ecosystem",
-    path: "/about",
-    children: [
-      {
-        label: "Industrial Thesis",
-        path: "/about#thesis",
-        description: "Technological sovereignty built progressively",
-        code: "05.1",
-      },
-      {
-        label: "PAUSN University Network",
-        path: "/about#pausn",
-        description: "Pan-African University Space Network consortium",
-        code: "05.2",
-      },
-    ],
-  },
-  {
-    label: "Contact",
-    path: "/contact",
+    label: "News",
+    path: "/missions#news",
   },
 ];
 
@@ -205,6 +147,8 @@ export const images = {
   platform: largeRocket,
   manufacturing: launchRocket,
   darkRocket,
+  cleanroom: launchRocket,
+  facility: padRockets,
 };
 
 export const brandAssets = {
@@ -998,3 +942,175 @@ export const platformSpecTable: PlatformSpecRow[] = [
     smallsat150kg: "14 – 18 Months",
   },
 ];
+
+/* -------------------------------------------------------------------------- */
+/* Social Proof / Trusted Partners & Agencies                                 */
+/* -------------------------------------------------------------------------- */
+export interface PartnerItem {
+  id: string;
+  name: string;
+  acronym: string;
+  category: string;
+}
+
+export const trustedPartners: PartnerItem[] = [
+  { id: "nasrda", name: "National Space Research and Development Agency", acronym: "NASRDA", category: "Civil Space" },
+  { id: "afsa", name: "African Space Agency", acronym: "AfSA", category: "Pan-African Agency" },
+  { id: "dsa", name: "Defence Space Administration", acronym: "DSA", category: "National Security" },
+  { id: "pausn", name: "Pan-African University Space Network", acronym: "PAUSN", category: "Academic Consortium" },
+  { id: "nigcomsat", name: "Nigerian Communications Satellite Ltd", acronym: "NIGCOMSAT", category: "Commercial Telecom" },
+  { id: "eofa", name: "Earth Observation Alliance", acronym: "EOA", category: "Civil Remote Sensing" },
+  { id: "comm-leo", name: "Commercial Constellation Operators", acronym: "LEO-SAT", category: "Commercial Operator" },
+  { id: "hydro-sat", name: "Hydrological Sensing Network", acronym: "HYDRO-SAT", category: "Resource Management" },
+  { id: "tactical-net", name: "Tactical Defense Communications", acronym: "DEF-NET", category: "National Security" },
+];
+
+/* -------------------------------------------------------------------------- */
+/* Six Foundry Pillars                                                        */
+/* -------------------------------------------------------------------------- */
+export interface FoundryPillar {
+  id?: string;
+  number: string;
+  title: string;
+  description: string;
+}
+
+export const foundryPillars: FoundryPillar[] = [
+  {
+    id: "pillar-01",
+    number: "01",
+    title: "Mission Design & Simulation",
+    description: "AI-powered orbital trajectory simulation, constellation geometry, and coverage optimization.",
+  },
+  {
+    id: "pillar-02",
+    number: "02",
+    title: "Spacecraft Platforms",
+    description: "Modular, cutting-edge CubeSat (3U/6U/12U) and 150kg SmallSat flight architectures.",
+  },
+  {
+    id: "pillar-03",
+    number: "03",
+    title: "Payloads & Edge Compute",
+    description: "Unique mission enablers including Radio Frequency, multispectral Earth observation, and onboard compute.",
+  },
+  {
+    id: "pillar-04",
+    number: "04",
+    title: "Constellation Production",
+    description: "Turnkey, sovereign satellite manufacturing, cleanroom integration, deployment, and flight operations.",
+  },
+  {
+    id: "pillar-05",
+    number: "05",
+    title: "Managed Orbital Services",
+    description: "High-bandwidth low-latency global telemetry downlink, Over-the-Air flight dynamics updates, and ground stations.",
+  },
+  {
+    id: "pillar-06",
+    number: "06",
+    title: "LuneOS Integration Layer",
+    description: "LuneOS — software integration layer that makes hardware, payloads, and ground networks work seamlessly together.",
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/* What the Foundry is Built On (6 Products)                                 */
+/* -------------------------------------------------------------------------- */
+export interface FoundryProduct {
+  id: string;
+  title: string;
+  subtitle: string;
+  description?: string;
+  image: string;
+  link: string;
+}
+
+export const foundryProducts: FoundryProduct[] = [
+  {
+    id: "mission-design",
+    title: "Mission Design & Simulation",
+    subtitle: "Constellation geometry, orbital mechanics & payload coverage modeling.",
+    image: padRockets,
+    link: "/systems#platforms",
+  },
+  {
+    id: "spacecraft-platforms",
+    title: "Spacecraft Platforms",
+    subtitle: "Modular CubeSat and 150kg SmallSat flight-qualified architectures.",
+    image: largeRocket,
+    link: "/systems",
+  },
+  {
+    id: "payloads-data",
+    title: "Payloads and Data Products",
+    subtitle: "Electro-optical, RF spectrum sensing, and telemetry pipelines.",
+    image: darkRocket,
+    link: "/systems#hosted",
+  },
+  {
+    id: "orbital-ai",
+    title: "Orbital AI",
+    subtitle: "Onboard neural inference, autonomous cloud filtering & edge processing.",
+    image: launchRocket,
+    link: "/systems#avionics",
+  },
+  {
+    id: "constellation-production",
+    title: "Constellation Production",
+    subtitle: "Turnkey cleanroom assembly, TVAC vacuum thermal cycling & vibration testing.",
+    image: launchRocket,
+    link: "/infrastructure",
+  },
+  {
+    id: "managed-services",
+    title: "Managed Orbital Services",
+    subtitle: "Ground network tracking, direct-to-ground downlink & flight operations.",
+    image: heroRocket,
+    link: "/missions#tracking",
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/* News & Insights (Latest Missions Delivering Impact)                        */
+/* -------------------------------------------------------------------------- */
+export interface NewsArticle {
+  id: string;
+  category: string;
+  date: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  link: string;
+}
+
+export const newsArticles: NewsArticle[] = [
+  {
+    id: "zinc-propulsion",
+    category: "Press Releases",
+    date: "September 10, 2026",
+    title: "LUNE Aerospace Achieves Milestone: Electric Hall-Effect Thruster Successfully Validated in Vacuum Rig",
+    excerpt: "LUNE advances its sovereign propulsion roadmap with successful high-vacuum continuous test fire in the Abuja propulsion test chamber.",
+    image: heroRocket,
+    link: "/research",
+  },
+  {
+    id: "series-capital",
+    category: "Press Releases",
+    date: "August 20, 2026",
+    title: "LUNE Aerospace Closes Strategic Financing to Scale High-Mix Satellite Manufacturing Campus",
+    excerpt: "Expansion funds additional ISO Class 7 cleanroom capacity, high-power TVAC chambers, and multi-axis CNC tooling in Abuja.",
+    image: launchRocket,
+    link: "/infrastructure",
+  },
+  {
+    id: "pausn-deploys",
+    category: "Mission Update",
+    date: "July 7, 2026",
+    title: "LUNE Deploys First Three Operational Pathfinders for Pan-African University Space Network",
+    excerpt: "Consortium nodes across Nigeria, Ghana, Kenya, and South Africa achieve first telemetry lock and direct downlink passes.",
+    image: largeRocket,
+    link: "/missions",
+  },
+];
+

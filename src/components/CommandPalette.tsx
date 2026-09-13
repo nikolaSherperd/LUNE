@@ -59,19 +59,51 @@ export function CommandPalette({
   const results = useMemo(() => {
     const q = query.toLowerCase().trim();
 
-    const navMatches = navigationItems
-      .filter((n) => !q || n.label.toLowerCase().includes(q))
-      .map((n) => ({
-        type: "navigation" as const,
-        id: `nav-${n.path}`,
-        title: n.label,
-        subtitle: `Route: ${n.path}`,
-        icon: Compass,
-        action: () => {
-          navigate(n.path);
-          onClose();
-        },
-      }));
+    const navMatches: Array<{
+      type: "navigation";
+      id: string;
+      title: string;
+      subtitle: string;
+      icon: any;
+      action: () => void;
+    }> = [];
+
+    navigationItems.forEach((n) => {
+      if (!q || n.label.toLowerCase().includes(q)) {
+        navMatches.push({
+          type: "navigation" as const,
+          id: `nav-${n.path}`,
+          title: n.label,
+          subtitle: `Route: ${n.path}`,
+          icon: Compass,
+          action: () => {
+            navigate(n.path);
+            onClose();
+          },
+        });
+      }
+      if (n.children) {
+        n.children.forEach((child) => {
+          if (
+            !q ||
+            child.label.toLowerCase().includes(q) ||
+            child.description.toLowerCase().includes(q)
+          ) {
+            navMatches.push({
+              type: "navigation" as const,
+              id: `nav-${child.path}-${child.code}`,
+              title: `${child.code} ${child.label}`,
+              subtitle: child.description,
+              icon: Compass,
+              action: () => {
+                navigate(child.path);
+                onClose();
+              },
+            });
+          }
+        });
+      }
+    });
 
     const systemMatches = systems
       .filter(

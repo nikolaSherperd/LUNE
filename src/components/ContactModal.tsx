@@ -15,10 +15,11 @@ interface ContactModalProps {
 }
 
 const INQUIRY_TYPES = [
+  "Commercial SmallSat Bus RFQ",
+  "Hosted Payload Integration",
+  "Cleanroom & Environmental Testing Booking",
   "PAUSN Academic Collaboration",
-  "Institutional / Space Agency Program",
-  "Commercial Satellite Subsystems",
-  "Precision Additive Manufacturing",
+  "Government / Defense Program",
   "Engineering Careers & Fellowships",
 ];
 
