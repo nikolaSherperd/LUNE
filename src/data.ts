@@ -5,6 +5,7 @@ import largeRocket from "../Images/98ae5c7f60e7d937a960430b82d0f83f.jpg";
 import darkRocket from "../Images/ab5bdf14b63eba46547f5ff99c5fce11.jpg";
 import luneWordmark from "../Images/1500x500.jpeg";
 import luneEmblem from "../Images/gkZcl8oI_400x400.jpg";
+import siteBackground from "../Images/site-background.png";
 
 export interface NavChildItem {
   label: string;
@@ -149,11 +150,13 @@ export const images = {
   darkRocket,
   cleanroom: launchRocket,
   facility: padRockets,
+  background: siteBackground,
 };
 
 export const brandAssets = {
   wordmark: luneWordmark,
   emblem: luneEmblem,
+  background: siteBackground,
 };
 
 export const systems: SystemItem[] = [

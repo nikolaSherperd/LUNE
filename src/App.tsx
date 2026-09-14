@@ -382,6 +382,12 @@ function Layout({
 
   return (
     <div className="site-shell">
+      {/* Website Background Layer */}
+      <div className="site-bg" aria-hidden="true">
+        <div className="site-bg-image" />
+        <div className="site-bg-overlay" />
+      </div>
+
       <aside className="side-rail" aria-label="Primary">
         <Link className="rail-mark" to="/" aria-label="Lune home">
           <img
