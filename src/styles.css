@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Barlow", "D-DIN", "DIN Alternate", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --mono: var(--font-mono);
+  font-family: var(--font-sans);
   color: #f2f2ed;
   background: #090a0c;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   --bg: transparent;
   --bg-deep: rgba(9, 10, 12, 0.92);
   --surface: rgba(14, 16, 21, 0.65);
@@ -124,6 +128,154 @@ img {
 ::selection {
   color: #08090b;
   background: var(--accent);
+}
+
+/* ==========================================================================
+   SPACEX-INSPIRED UNIFIED TYPOGRAPHIC SYSTEM
+   ========================================================================== */
+
+/* 1. Global Headings (Big Text: Bold, Uppercase, DIN Geometric Sans) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.05;
+}
+
+h1 em, h2 em, h3 em, h4 em,
+.display-title em, .split-headline em, .hero-copy h1 em,
+.interior-copy h1 em, .about-statement h2 em, .contact h2 em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+/* 2. Primary Display Headings */
+.display-title,
+.interior-copy h1,
+.about-statement h2,
+.contact h2,
+.prefooter-h2,
+.featured-title h2,
+.drawer-media-title h2,
+.research-title-block h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(30px, 4.4vw, 60px);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.split-headline,
+.outcomes-box .shc-h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(24px, 3.2vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* 3. Card Titles & Sub-Headings */
+.pillar-card h4,
+.prod-card-title,
+.news-title,
+.sector-title,
+.offering-title,
+.facility-name,
+.manifest-name,
+.journal-item h3,
+.cycle-title,
+.system-meta h3,
+.research-row .row-title h3,
+.stage-detail-header h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.3vw, 19px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* 4. Small Text Hierarchy: Precise Aerospace Telemetry & Monospace */
+.eyebrow,
+.section-label,
+.micro-label,
+.label-top,
+.label-detail,
+.pillar-num,
+.cycle-step-num,
+.cycle-sub,
+.image-index,
+.manifest-desig,
+.manifest-spec-label,
+.manifest-badge,
+.facility-code,
+.offering-code,
+.sector-number,
+.sector-subtitle,
+.domain-pill,
+.tech-tag,
+.badge,
+.status-badge,
+.nav-link,
+.mobile-link span,
+.spacex-footer-links a,
+.spacex-footer-links button,
+.spacex-footer-copy,
+.vh-txt,
+.vh-callout-label,
+.logos-label,
+.btn-cta,
+.btn-outline,
+.arrow-link,
+.text-link,
+.prod-card-link,
+.sector-cta,
+.facility-link,
+.spec-matrix th,
+.status-cell .micro-label,
+.news-tag,
+.news-date,
+.cycle-badge,
+.intent-btn,
+.filter-btn,
+.rail-code,
+.rail-bottom,
+.nav-search-kbd {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* 5. Consistent Body Text */
+p,
+.body-copy,
+.hero-description,
+.pillar-card p,
+.prod-card-desc,
+.news-excerpt,
+.sector-desc,
+.offering-desc,
+.manifest-summary,
+.journal-summary,
+.about-statement p,
+.symbiosis-caption,
+.cycle-card p,
+.system-entry p,
+.interior-copy p {
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  line-height: 1.68;
+  color: #a4a8b4;
 }
 
 .site-shell {
