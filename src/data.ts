@@ -163,24 +163,25 @@ export const systems: SystemItem[] = [
   {
     id: "space-systems",
     number: "01",
-    title: "SPACE SYSTEMS",
+    title: "MODULAR SPACECRAFT PLATFORMS",
     description:
-      "CubeSats, small satellites, subsystems, flight computers, communications and mission operations.",
+      "Moving beyond conventional CubeSats to standardized spacecraft platforms that can be configured, upgraded, and produced at scale.",
     image: images.platform,
     detail: {
-      tagline: "LEO Modular Satellites & Tactical Bus Architectures",
+      tagline: "Common Technological Foundation for Modular Spacecraft",
       readinessLevel: "TRL 6 / FLIGHT HERITAGE READY",
       extendedDescription:
-        "Standardized, modular small-satellite platforms engineered for responsive manufacturing, resilient orbital operations, and rapid payload integration. Designed to establish sovereign African telemetry, communications, and remote sensing infrastructure.",
+        "Instead of building every satellite as a completely unique machine, LUNE creates a common technological foundation — a spacecraft platform made from standardized systems that can be assembled, tested, upgraded, and reused. Moving beyond the limitations of conventional CubeSats toward modular spacecraft produced at industrial scale.",
       keySpecs: [
-        { label: "Form Factors", value: "3U, 6U, 12U CubeSat and 150kg SmallSat Class" },
+        { label: "Form Factors", value: "3U, 6U, 12U CubeSat and 150kg Modular Bus" },
+        { label: "Architecture", value: "Standardized Reconfigurable Subsystems" },
         { label: "Operational Orbit", value: "450 km – 650 km Sun-Synchronous (SSO)" },
         { label: "Pointing Precision", value: "< 0.05° 3-Axis via Star Tracker & Reaction Wheels" },
         { label: "Telemetry & Comms", value: "S-Band Telecommand / X-Band 50 Mbps Payload Downlink" },
-        { label: "Power Output", value: "Deployable GaAs Arrays up to 75W BOL" },
-        { label: "Design Life", value: "3 to 5 Years in LEO Environment" },
+        { label: "Production Model", value: "Batch Qualified & Scaled Manufacturing" },
       ],
       subsystems: [
+        "Standardized Flight Bus Interface & Reusable Subsystem Benches",
         "Radiation-tolerant Dual-Core ARM Cortex-M7 On-Board Computer (OBC)",
         "3-Axis Reaction Wheels with Integrated Magnetic Torquer Rods",
         "Multi-channel Electrical Power System (EPS) with LiFePO4 Battery Pack",
@@ -415,113 +416,112 @@ export const journalItems: JournalItem[] = [
     id: "stage-01",
     stageNumber: "01",
     category: "STAGE 01",
-    title: "Learn: engineering, software, electronics and systems discipline",
-    date: "FOUNDATION",
+    title: "Education: Pan-African University Space Network & Talent Engine",
+    date: "EDUCATION",
     status: "Operational",
-    timeline: "2024 – 2025",
+    timeline: "FOUNDATION",
     deliverables: [
-      "Core engineering team assembly across avionics, RF and structures",
-      "Establishment of the Pan-African University Space Network (PAUSN)",
-      "High-reliability embedded software architecture and telemetry standards",
+      "Connect African universities, researchers, and institutions through PAUSN",
+      "LUNE/PAUSN Space Academy for spacecraft systems, avionics & RF engineering",
+      "Build domestic aerospace talent so Africa never has to import a workforce",
     ],
   },
   {
     id: "stage-02",
     stageNumber: "02",
     category: "STAGE 02",
-    title: "Build and operate spacecraft before integrating the wider industrial stack",
-    date: "SPACE SYSTEMS",
-    status: "Active R&D",
-    image: images.darkRocket,
-    timeline: "2025 – 2027",
+    title: "Research: From Textbooks to University Labs & Real Prototypes",
+    date: "RESEARCH",
+    status: "Operational",
+    timeline: "TALENT → RESEARCH",
     deliverables: [
-      "LUNE-1 3U CubeSat demonstration flight for African Earth observation",
-      "Autonomous mission operations center and ground receiver network",
-      "Standardized 6U/12U satellite bus platform commercially available",
+      "University laboratories where experimentation turns ideas into flight prototypes",
+      "Multi-node simulation testbeds for autonomous flight and RF communications",
+      "Student & researcher subsystem development for real operational missions",
     ],
   },
   {
     id: "stage-03",
     stageNumber: "03",
     category: "STAGE 03",
-    title: "Domestic Additive Metallurgy & Precision Cleanroom Integration",
-    date: "MANUFACTURING",
+    title: "Engineering: Standardized Architecture for Modular Spacecraft",
+    date: "ENGINEERING",
     status: "Active R&D",
-    timeline: "2026 – 2028",
+    timeline: "COMMON FOUNDATION",
     deliverables: [
-      "ISO Class 7 cleanroom and vacuum thermal cycling facility operational",
-      "Direct metal laser sintering of aerospace structural titanium and Inconel",
-      "Full environmental qualification (vibration, thermal, EMC) conducted in-house",
+      "Create a common technological foundation moving beyond conventional CubeSats",
+      "Standardized systems that can be assembled, tested, upgraded, and reused",
+      "Modular bus architectures configured for high-reliability mission scale",
     ],
   },
   {
     id: "stage-04",
     stageNumber: "04",
     category: "STAGE 04",
-    title: "Integrated AI-Enabled Avionics & Edge Inference Flight Heritage",
-    date: "INTELLIGENCE",
-    status: "Planned",
-    timeline: "2027 – 2029",
+    title: "Manufacturing: Cleanrooms, Additive Metallurgy & Qualification",
+    date: "MANUFACTURING",
+    status: "Active R&D",
+    timeline: "ABUJA CAMPUS",
     deliverables: [
-      "Orbital NPU payload performing real-time multi-spectral image inference",
-      "Cryptographic hardware root-of-trust satellite constellations",
-      "Inter-satellite optical cross-link demonstration test",
+      "ISO Class 7 cleanroom integration campus and TVAC thermal cycling in Abuja",
+      "Direct metal laser sintering 3D printing of high-temperature aerospace superalloys",
+      "20 kN electrodynamic vibration testing and domestic qualification standard",
     ],
   },
   {
     id: "stage-05",
     stageNumber: "05",
     category: "STAGE 05",
-    title: "Chemical Rocket Engine Static Firing & Test Stand Infrastructure",
-    date: "PROPULSION",
-    status: "Planned",
-    timeline: "2028 – 2030",
+    title: "Spacecraft: Modular Platform Production at Industrial Scale",
+    date: "SPACECRAFT",
+    status: "Active R&D",
+    timeline: "PRODUCTION AT SCALE",
     deliverables: [
-      "Dedicated sovereign static rocket test facility in Nigeria",
-      "Full-duration 60-second hot fire of 35 kN LOX/Kerosene engine",
-      "Regeneratively cooled additive combustion chambers qualified",
+      "Produce modular spacecraft efficiently at scale rather than unique machines",
+      "Deploy commercial, civil Earth observation, and academic constellations",
+      "Autonomous mission operations and Pan-African ground tracking stations",
     ],
   },
   {
     id: "stage-06",
     stageNumber: "06",
     category: "STAGE 06",
-    title: "Suborbital Test Vehicles & Micro-Launcher Flight Validation",
-    date: "LAUNCH ARCHITECTURE",
+    title: "Propulsion: Chemical Rocketry & Advanced Propulsion R&D",
+    date: "PROPULSION",
     status: "Planned",
-    timeline: "2030 – 2032",
+    timeline: "CAPABILITY FIRST",
     deliverables: [
-      "Sounding rocket campaign reaching Kármán line (100 km+ altitude)",
-      "Autonomous guidance, navigation and control (GNC) closed-loop flight",
-      "Stage separation and telemetry recovery systems proven",
+      "Sovereign static rocket engine test facilities and pressure-fed testbeds",
+      "Regeneratively cooled LOX/Kerosene chemical rocket engine hot-fire qualification",
+      "Exploratory computational modeling and metallurgy for aerospike nozzles",
     ],
   },
   {
     id: "stage-07",
     stageNumber: "07",
     category: "STAGE 07",
-    title: "Orbital Insertion & Dedicated Sovereign Launch Capability",
-    date: "ORBITAL CAPABILITY",
+    title: "Launch Systems: Dedicated Sovereign Orbital Insertion",
+    date: "LAUNCH SYSTEMS",
     status: "Planned",
-    timeline: "2032 – 2035",
+    timeline: "SOVEREIGN LAUNCH",
     deliverables: [
-      "Two-stage small launch vehicle delivering 150 kg payload to SSO",
-      "First fully indigenous African orbital launch operation",
-      "Commercial rideshare service deployment for regional customers",
+      "Small launch vehicle engineered for dedicated African payload delivery to SSO",
+      "First fully indigenous African orbital launch operation and flight heritage",
+      "Regional rideshare sovereignty and domestic space access capability",
     ],
   },
   {
     id: "stage-08",
     stageNumber: "08",
     category: "STAGE 08",
-    title: "Aerospike Research, First-Stage Reuse & Scaled Space Logistics",
-    date: "LONG HORIZON",
+    title: "Self-Sustaining Industry: African Space-Industrial Civilization",
+    date: "ENDURING ECOSYSTEM",
     status: "Planned",
-    timeline: "2035+",
+    timeline: "CONTINUOUS CYCLE",
     deliverables: [
-      "Altitude-compensating aerospike flight demonstrator engine",
-      "Vertical propulsive landing and recovery of first-stage booster",
-      "High-cadence modular orbital infrastructure assembly",
+      "Complete sovereign capability to design, manufacture, test, operate, and launch",
+      "Self-reinforcing loop: Education → Talent → Research → Technology → Machines → Industry",
+      "Progressively reaching toward advanced systems on Earth, in orbit, and beyond",
     ],
   },
 ];
@@ -988,8 +988,8 @@ export const foundryPillars: FoundryPillar[] = [
   {
     id: "pillar-02",
     number: "02",
-    title: "Spacecraft Platforms",
-    description: "Modular, cutting-edge CubeSat (3U/6U/12U) and 150kg SmallSat flight architectures.",
+    title: "Modular Spacecraft Platforms",
+    description: "Moving beyond conventional CubeSats to modular spacecraft built from a common, standardized, upgradable foundation.",
   },
   {
     id: "pillar-03",
@@ -1000,8 +1000,8 @@ export const foundryPillars: FoundryPillar[] = [
   {
     id: "pillar-04",
     number: "04",
-    title: "Constellation Production",
-    description: "Turnkey, sovereign satellite manufacturing, cleanroom integration, deployment, and flight operations.",
+    title: "Industrial Manufacturing",
+    description: "Standardized assembly, ISO cleanroom qualification, and batch production replacing one-off artisanal spacecraft builds.",
   },
   {
     id: "pillar-05",
@@ -1116,4 +1116,60 @@ export const newsArticles: NewsArticle[] = [
     link: "/missions",
   },
 ];
+
+/* -------------------------------------------------------------------------- */
+/* The Continuous Cycle (Ecosystem & Industrial Symbiosis)                    */
+/* -------------------------------------------------------------------------- */
+export interface CycleStep {
+  step: string;
+  title: string;
+  sub: string;
+  detail: string;
+}
+
+export const continuousCycle: CycleStep[] = [
+  {
+    step: "01",
+    title: "Education Produces Talent",
+    sub: "PAUSN & TALENT ENGINE",
+    detail:
+      "Through the LUNE/PAUSN Space Academy, African students and researchers engage in hands-on hardware engineering instead of textbook-only study, cultivating native aerospace capability.",
+  },
+  {
+    step: "02",
+    title: "Talent Produces Research",
+    sub: "APPLIED SCIENCE",
+    detail:
+      "Engineers and scientists tackle foundational challenges: orbital mechanics, thermal modeling, radiation-tolerant avionics, and low-cost structural composites.",
+  },
+  {
+    step: "03",
+    title: "Research Produces Technology",
+    sub: "FLIGHT ARCHITECTURES",
+    detail:
+      "Breakthroughs transition into modular flight computers, power distribution units, attitude determination and control systems (ADCS), and communication payloads.",
+  },
+  {
+    step: "04",
+    title: "Technology Produces Machines",
+    sub: "MODULAR SPACECRAFT",
+    detail:
+      "Standardized subsystems are assembled, tested, and integrated into modular satellites and launch systems engineered for configuration flexibility, reusability, and rapid production.",
+  },
+  {
+    step: "05",
+    title: "Machines Create Industry",
+    sub: "ECONOMIC FOUNDATION",
+    detail:
+      "Operational spacecraft unlock sovereign telecommunications, Earth observation, climate resilience data, and an expanding domestic aerospace supply chain.",
+  },
+  {
+    step: "06",
+    title: "Industry Creates Opportunities",
+    sub: "SUSTAINED EVOLUTION",
+    detail:
+      "A flourishing aerospace ecosystem creates high-value careers, reinvests capital into research labs, and pulls forward the next generation of African aerospace pioneers.",
+  },
+];
+
 

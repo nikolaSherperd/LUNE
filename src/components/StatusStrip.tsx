@@ -22,9 +22,9 @@ export function StatusStrip({ onOpenSystem }: StatusStripProps) {
   }, []);
 
   const data = [
-    { label: "PROGRAM", value: "LUNE", detail: "DEEP-TECH INFRASTRUCTURE" },
-    { label: "START", value: "01", detail: "SPACE SYSTEMS (LEO CUBESAT)" },
-    { label: "PROGRESSION", value: "02", detail: "MANUFACTURE → OPERATE" },
+    { label: "FOUNDATION", value: "LUNE", detail: "AFRICAN SPACE ECONOMY" },
+    { label: "HUMAN ENGINE", value: "PAUSN", detail: "ACADEMIC & TALENT NETWORK" },
+    { label: "OBJECTIVE", value: "CAPABILITY", detail: "SATELLITE IS THE BEGINNING" },
     {
       label: "MISSION CLOCK",
       value: utcTime || "00:00:00 UTC",

@@ -38,6 +38,7 @@ import {
   SectorItem,
   SystemItem,
   brandAssets,
+  continuousCycle,
   facilitySpecs,
   foundryOfferings,
   foundryPillars,
@@ -651,25 +652,23 @@ function Hero({ onOpenContact }: { onOpenContact: () => void }) {
         <SectionLabel
           number="01"
           label="NORTH STAR"
-          detail="AFRICAN AEROSPACE INDUSTRY"
+          detail="AFRICAN SPACE ECONOMY"
         />
       </div>
 
       <div className="hero-copy">
         <p className="eyebrow" data-reveal data-reveal-delay="1">
-          LUNE / NIGERIA / DEEP TECHNOLOGY
+          LUNE / PAN-AFRICAN AEROSPACE & SPACE-SYSTEMS
         </p>
         <h1 data-reveal data-reveal-delay="2">
-          BUILDING
+          THE INDUSTRIAL
           <br />
-          AFRICA'S
+          FOUNDATION FOR AN
           <br />
-          <em>AEROSPACE INDUSTRY.</em>
+          <em>AFRICAN SPACE ECONOMY.</em>
         </h1>
         <p className="hero-description" data-reveal data-reveal-delay="3">
-          A Nigerian-founded deep-technology aerospace company building
-          progressively toward an integrated African space and small-satellite
-          industrial capability.
+          The satellite is the beginning. The rocket is a milestone. The real objective is capability. LUNE is building toward something much larger than satellites or rockets — laying the foundations of an African space-industrial civilization.
         </p>
         <div
           data-reveal
@@ -682,12 +681,12 @@ function Hero({ onOpenContact }: { onOpenContact: () => void }) {
           }}
         >
           <Link className="btn-cta btn-magnetic" to="/systems">
-            <span>Explore Mission Foundry</span>
+            <span>Modular Spacecraft Platforms</span>
             <ArrowRight size={14} />
           </Link>
-          <button className="btn-outline btn-magnetic" onClick={onOpenContact}>
-            <span>Contact Us</span>
-          </button>
+          <Link className="btn-outline btn-magnetic" to="/about">
+            <span>The PAUSN Ecosystem</span>
+          </Link>
         </div>
       </div>
 
@@ -796,27 +795,28 @@ function CapabilityOutcomesSection({
       <SectionLabel
         number="02"
         label="CAPABILITY"
-        detail="OUTCOMES-FOCUSED CONSTELLATIONS"
+        detail="MODULAR PLATFORMS & SCALE"
       />
 
       <div className="text-reveal" data-reveal>
         <p>
           <span className="rw">We</span>{" "}
-          <span className="rw">do</span>{" "}
-          <span className="rw">more</span>{" "}
-          <span className="rw">than</span>{" "}
-          <span className="rw">build</span>{" "}
-          <span className="rw">satellites</span>{" "}
+          <span className="rw">are</span>{" "}
+          <span className="rw">moving</span>{" "}
+          <span className="rw">beyond</span>{" "}
+          <span className="rw">conventional</span>{" "}
+          <span className="rw">CubeSats</span>{" "}
           <span className="rw">–</span>{" "}
           <span className="muted">
-            <span className="rw">we</span>{" "}
-            <span className="rw">forge</span>{" "}
-            <span className="rw">high-performance</span>{" "}
-            <span className="rw">constellations</span>{" "}
-            <span className="rw">solving</span>{" "}
-            <span className="rw">specific</span>{" "}
-            <span className="rw">customer</span>{" "}
-            <span className="rw">needs.</span>
+            <span className="rw">toward</span>{" "}
+            <span className="rw">modular</span>{" "}
+            <span className="rw">spacecraft</span>{" "}
+            <span className="rw">configured,</span>{" "}
+            <span className="rw">upgraded,</span>{" "}
+            <span className="rw">and</span>{" "}
+            <span className="rw">produced</span>{" "}
+            <span className="rw">at</span>{" "}
+            <span className="rw">scale.</span>
           </span>
         </p>
       </div>
@@ -826,29 +826,29 @@ function CapabilityOutcomesSection({
       <div className="outcomes-box bottom-to-top" data-reveal>
         <div className="outcomes-left">
           <span className="eyebrow" style={{ color: "var(--accent)" }}>
-            INTEGRATED SYSTEM
+            THE SYMBIOTIC ECOSYSTEM
           </span>
           <h2 className="shc-h2">
-            LUNE delivers
+            LUNE builds
             <br />
-            outcomes,
+            the machines.
             <br />
-            not widgets
+            PAUSN builds
+            <br />
+            the people.
           </h2>
         </div>
 
         <div className="outcomes-right">
           <p className="outcomes-text">
             <strong>
-              It’s not enough to build a bus, or launch a sensor, or move bits
-              around. <em>Impact requires action.</em>
+              Instead of building every satellite as a completely unique machine, LUNE creates a common technological foundation — standardized systems that can be assembled, tested, upgraded, and reused.
             </strong>
           </p>
           <div className="line-h" style={{ margin: "16px 0" }} />
           <p className="outcomes-text">
             <strong>
-              We design, deploy, and operate <em>customer-optimized constellations</em>{" "}
-              that power sovereign action and industrial capability.
+              Building spacecraft requires more than a factory. Through the <em>Pan-African University Space Network (PAUSN)</em> and the Space Academy, we connect African students, engineers, and researchers with real hardware missions — because Africa must not import an aerospace workforce, but build one.
             </strong>
           </p>
 
@@ -860,12 +860,12 @@ function CapabilityOutcomesSection({
               flexWrap: "wrap",
             }}
           >
-            <button className="btn-cta btn-magnetic" onClick={onOpenContact}>
-              <span>Contact Us</span>
+            <Link className="btn-cta btn-magnetic" to="/systems">
+              <span>Modular Platforms</span>
               <ArrowRight size={13} />
-            </button>
-            <Link className="btn-outline btn-magnetic" to="/systems">
-              <span>Explore Mission Foundry</span>
+            </Link>
+            <Link className="btn-outline btn-magnetic" to="/about">
+              <span>The PAUSN Network</span>
             </Link>
           </div>
         </div>
@@ -890,17 +890,15 @@ function FoundrySplitSection() {
       <div className="split-body bottom-to-top" data-reveal data-reveal-delay="2">
         <SectionLabel
           number="03"
-          label="THE MISSION FOUNDRY"
-          detail="INTEGRATED PLATFORM"
+          label="A COMMON TECHNOLOGICAL FOUNDATION"
+          detail="MODULAR SPACECRAFT ARCHITECTURE"
         />
         <h2 className="split-headline">
-          LUNE forges constellations from proven building blocks, sovereign
-          infrastructure, and aerospace expertise to solve Africa’s hardest
-          challenges.
+          Instead of building every satellite as a completely unique machine, LUNE creates a common technological foundation — standardized systems that can be assembled, tested, upgraded, and produced at scale.
         </h2>
         <div>
           <Link className="arrow-link" to="/systems">
-            <span>About the Foundry</span>
+            <span>Explore Spacecraft Platforms</span>
             <ArrowRight size={14} />
           </Link>
         </div>
@@ -1529,25 +1527,73 @@ function Ecosystem() {
   return (
     <section className="ecosystem section-pad" id="ecosystem">
       <div className="eco-aside">
-        <SectionLabel number="05" label="ECOSYSTEM" detail="NIGERIA / AFRICA" />
+        <SectionLabel
+          number="05"
+          label="HUMAN & INDUSTRIAL SYMBIOSIS"
+          detail="PAUSN // LUNE"
+        />
       </div>
       <div className="eco-content">
         <p className="display-title" data-reveal>
-          KNOWLEDGE INTO
+          THE CONTINUOUS
           <br />
-          INDUSTRY.
+          CYCLE.
         </p>
         <div className="eco-grid">
           <p className="body-copy" data-reveal data-reveal-delay="1">
-            LUNE connects education, research, engineering, manufacturing and
-            commercialization into a continuous pipeline for increasingly
-            capable African space systems.
+            Building spacecraft requires more than a factory. It requires
+            engineers who understand spacecraft systems, researchers who can
+            solve new problems, and institutions that cultivate native
+            aerospace talent.
           </p>
           <div className="eco-mark" data-reveal data-reveal-delay="2">
-            <span className="micro-label">ECOSYSTEM INITIATIVE</span>
+            <span className="micro-label">HUMAN ENGINE & ACADEMY</span>
             <strong>PAUSN</strong>
             <span>Pan-African University Space Network</span>
           </div>
+        </div>
+
+        {/* 6-Step Continuous Cycle Grid */}
+        <div className="cycle-chain-wrap" data-reveal style={{ marginTop: "48px" }}>
+          <div className="cycle-grid-cards">
+            {continuousCycle.map((item, idx) => (
+              <div
+                key={item.step}
+                className="cycle-card bottom-to-top"
+                data-reveal
+                data-reveal-delay={String((idx % 3) + 1)}
+              >
+                <div className="cycle-card-header">
+                  <span className="cycle-step-num">{item.step} // CYCLE</span>
+                  <span className="cycle-sub">{item.sub}</span>
+                </div>
+                <h4 className="cycle-title">{item.title}</h4>
+                <p className="cycle-desc">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Symbiosis Banner */}
+        <div
+          className="cycle-conclusion-banner bottom-to-top"
+          data-reveal
+          style={{ marginTop: "32px" }}
+        >
+          <div className="cycle-symbiosis-statement">
+            <span className="symbiosis-line">
+              <strong className="accent-word">LUNE</strong> builds the machines.
+            </span>
+            <span className="symbiosis-line">
+              <strong>PAUSN</strong> helps build the people who will build the machines.
+            </span>
+          </div>
+          <p className="symbiosis-caption">
+            Connecting African students, engineers, and researchers to real space
+            hardware through the LUNE/PAUSN Space Academy — hands-on engineering
+            instead of textbook-only study — so the continent builds native
+            aerospace capability rather than perpetually importing it.
+          </p>
         </div>
       </div>
     </section>
@@ -1559,21 +1605,28 @@ function AboutSection() {
     <section className="about section-pad" id="about">
       <SectionLabel
         number="05B"
-        label="DEVELOPMENT PHILOSOPHY"
-        detail="CAPABILITY BEFORE COMPLEXITY"
+        label="THE ULTIMATE OBJECTIVE"
+        detail="AFRICAN SPACE ECONOMY"
       />
       <div className="about-statement" data-reveal>
         <h2>
-          DO NOT BUILD
+          THE SATELLITE IS THE BEGINNING.
           <br />
-          THE ENTIRE STACK
+          THE ROCKET IS A MILESTONE.
           <br />
-          <em>AT ONCE.</em>
+          <em>THE REAL OBJECTIVE IS CAPABILITY.</em>
         </h2>
         <p>
-          Learn. Build. Operate. Integrate. Then develop propulsion, launch
-          and reusable systems as the industrial base, safety discipline and
-          mission economics justify them.
+          The long-term roadmap is not simply: satellites → rockets. It is:
+          <br />
+          <strong>
+            education → research → engineering → manufacturing → spacecraft →
+            propulsion → launch systems → a self-sustaining African space industry.
+          </strong>
+          <br />
+          <br />
+          Together, LUNE and PAUSN are laying the foundations of an African
+          space-industrial civilization.
         </p>
       </div>
     </section>
@@ -1747,14 +1800,14 @@ function SystemsPage({
         label="PLATFORMS & SYSTEMS"
         title={
           <>
-            FROM CUBESATS
+            A COMMON
             <br />
-            TO INTEGRATED
+            TECHNOLOGICAL
             <br />
-            <em>INFRASTRUCTURE.</em>
+            <em>FOUNDATION.</em>
           </>
         }
-        description="Modular, flight-ready CubeSat (3U, 6U, 12U) and 150kg SmallSat platforms engineered for sovereign communications, Earth observation, and responsive manufacturing."
+        description="Moving beyond conventional CubeSats toward modular spacecraft that can be configured for diverse missions, upgraded, manufactured efficiently, and produced at scale from standardized systems."
         image={images.platform}
       />
 
@@ -2051,8 +2104,9 @@ function MissionsPage({
             CAPABILITY.
           </h2>
           <p className="body-copy">
-            The sequential stages through which LUNE expands from CubeSat
-            operations to dedicated sovereign launch capability.
+            The roadmap is not simply: satellites → rockets. It is: education →
+            research → engineering → manufacturing → spacecraft → propulsion →
+            launch systems → a self-sustaining African space industry.
           </p>
         </div>
 
@@ -2122,29 +2176,75 @@ function AboutPage({ onOpenContact }: { onOpenContact: () => void }) {
     <>
       <InteriorPageHero
         number="05"
-        label="ECOSYSTEM & THESIS"
+        label="THE INDUSTRIAL FOUNDATION"
         title={
           <>
-            EDUCATION.
+            AN AFRICAN
             <br />
-            <em>RESEARCH.</em>
+            SPACE
             <br />
-            INDUSTRY.
+            <em>ECONOMY.</em>
           </>
         }
-        description="PAUSN and LUNE connect African universities, researchers, and talent into an industrial pathway for engineered flight hardware and sovereign space operations."
+        description="LUNE is an African aerospace and space-systems company building toward something much larger than satellites or rockets: the industrial and human foundation for an African space civilization."
         image={images.systems}
       />
 
-      <section className="prose-section section-pad" id="thesis">
-        <SectionLabel number="05A" label="INDUSTRIAL THESIS" />
+      <section className="prose-section section-pad" id="manifesto">
+        <SectionLabel
+          number="05A"
+          label="THE LUNE MANIFESTO"
+          detail="CORE PURPOSE"
+        />
         <div className="prose-grid" data-reveal>
-          <h2>TECHNOLOGICAL SOVEREIGNTY, BUILT PROGRESSIVELY.</h2>
+          <h2>THE JOURNEY BEGINS WITH SPACECRAFT.</h2>
           <p>
-            Build locally wherever practical and use international partnerships
-            where they accelerate development. The objective is not isolation:
-            it is progressively increasing sovereign African capability across
-            engineering, manufacturing and operations.
+            LUNE intends to develop increasingly capable small satellites,
+            moving beyond the limitations of conventional CubeSats toward modular
+            spacecraft that can be configured for different missions, upgraded,
+            manufactured more efficiently, and eventually produced at scale.
+            <br />
+            <br />
+            Instead of building every satellite as a completely unique machine,
+            LUNE’s vision is to create a{" "}
+            <strong>common technological foundation</strong> — a spacecraft
+            platform made from standardized systems that can be assembled,
+            tested, upgraded, and reused.
+          </p>
+        </div>
+      </section>
+
+      <section
+        className="prose-section section-pad"
+        id="pausn-thesis"
+        style={{ paddingTop: "60px" }}
+      >
+        <SectionLabel
+          number="05B"
+          label="THE HUMAN ENGINE"
+          detail="PAUSN & ACADEMY"
+        />
+        <div className="prose-grid" data-reveal>
+          <h2>BUILDING PEOPLE TO BUILD THE MACHINES.</h2>
+          <p>
+            Building spacecraft requires more than a factory. It requires
+            engineers who understand spacecraft systems, researchers who can
+            solve new problems, and institutions that can train the next
+            generation of aerospace talent.
+            <br />
+            <br />
+            This is where{" "}
+            <strong>PAUSN (Pan-African University Space Network)</strong> comes
+            in. PAUSN is the human and academic network that surrounds LUNE’s
+            industrial ambition. Connecting African students, engineers, and
+            researchers via the <strong>LUNE/PAUSN Space Academy</strong>, PAUSN
+            helps build the aerospace workforce Africa needs so the continent
+            does not have to perpetually import aerospace expertise.
+            <br />
+            <br />
+            Instead of learning space engineering only from textbooks, students
+            and researchers work on actual satellite systems, payloads, and
+            aerospace hardware.
           </p>
         </div>
       </section>
