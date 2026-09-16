@@ -34,10 +34,11 @@ export function CommandPalette({
   onSelectStage,
 }: CommandPaletteProps) {
   const [query, setQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState<"ALL" | "NAV" | "SYSTEM" | "RESEARCH" | "ROADMAP">("ALL");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const navigate = useNavigate();
 
-  // Handle ESC and Cmd+K
+  // Handle ESC
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
@@ -48,10 +49,11 @@ export function CommandPalette({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Reset query when opening
+  // Reset query and filter when opening
   useEffect(() => {
     if (isOpen) {
       setQuery("");
+      setCategoryFilter("ALL");
       setSelectedIndex(0);
     }
   }, [isOpen]);
@@ -61,6 +63,7 @@ export function CommandPalette({
 
     const navMatches: Array<{
       type: "navigation";
+      category: "NAV";
       id: string;
       title: string;
       subtitle: string;
@@ -72,6 +75,7 @@ export function CommandPalette({
       if (!q || n.label.toLowerCase().includes(q)) {
         navMatches.push({
           type: "navigation" as const,
+          category: "NAV" as const,
           id: `nav-${n.path}`,
           title: n.label,
           subtitle: `Route: ${n.path}`,
@@ -91,6 +95,7 @@ export function CommandPalette({
           ) {
             navMatches.push({
               type: "navigation" as const,
+              category: "NAV" as const,
               id: `nav-${child.path}-${child.code}`,
               title: `${child.code} ${child.label}`,
               subtitle: child.description,
@@ -115,6 +120,7 @@ export function CommandPalette({
       )
       .map((s) => ({
         type: "system" as const,
+        category: "SYSTEM" as const,
         id: `sys-${s.id}`,
         title: `${s.number} ${s.title}`,
         subtitle: s.detail.tagline,
@@ -135,6 +141,7 @@ export function CommandPalette({
       )
       .map((r) => ({
         type: "research" as const,
+        category: "RESEARCH" as const,
         id: `res-${r.id}`,
         title: `${r.number} ${r.title}`,
         subtitle: `${r.meta} • ${r.leadDomain}`,
@@ -154,6 +161,7 @@ export function CommandPalette({
       )
       .map((st) => ({
         type: "stage" as const,
+        category: "ROADMAP" as const,
         id: `stage-${st.id}`,
         title: `${st.category}: ${st.title}`,
         subtitle: `${st.timeline} • Status: ${st.status}`,
@@ -164,8 +172,12 @@ export function CommandPalette({
         },
       }));
 
-    return [...navMatches, ...systemMatches, ...researchMatches, ...stageMatches];
-  }, [query, navigate, onClose, onSelectSystem, onSelectResearch, onSelectStage]);
+    let all = [...navMatches, ...systemMatches, ...researchMatches, ...stageMatches];
+    if (categoryFilter !== "ALL") {
+      all = all.filter((item) => item.category === categoryFilter);
+    }
+    return all;
+  }, [query, categoryFilter, navigate, onClose, onSelectSystem, onSelectResearch, onSelectStage]);
 
   // Arrow key navigation
   useEffect(() => {
@@ -187,6 +199,14 @@ export function CommandPalette({
     window.addEventListener("keydown", handleNavigation);
     return () => window.removeEventListener("keydown", handleNavigation);
   }, [isOpen, results, selectedIndex]);
+
+  // Scroll active item into view
+  useEffect(() => {
+    const activeEl = document.querySelector(".palette-item.is-selected");
+    if (activeEl) {
+      activeEl.scrollIntoView({ block: "nearest" });
+    }
+  }, [selectedIndex]);
 
   if (!isOpen) return null;
 
@@ -214,10 +234,36 @@ export function CommandPalette({
           </button>
         </div>
 
+        {/* Quick Filter Chips */}
+        <div className="palette-filter-chips">
+          {[
+            { id: "ALL", label: "ALL" },
+            { id: "SYSTEM", label: "PLATFORMS" },
+            { id: "RESEARCH", label: "R&D BRIEFS" },
+            { id: "ROADMAP", label: "ROADMAP" },
+            { id: "NAV", label: "NAVIGATION" },
+          ].map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              className={`palette-filter-chip ${categoryFilter === cat.id ? "active" : ""}`}
+              onClick={() => {
+                setCategoryFilter(cat.id as any);
+                setSelectedIndex(0);
+              }}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
         <div className="palette-results" data-lenis-prevent>
           {results.length === 0 ? (
             <div className="palette-empty">
               <span>No telemetry matches found for "{query}".</span>
+              <p style={{ marginTop: "6px", fontSize: "11px", color: "var(--muted)" }}>
+                Try searching for "CubeSat", "Propulsion", "TVAC", or "Flight".
+              </p>
             </div>
           ) : (
             results.map((item, index) => {
@@ -234,7 +280,12 @@ export function CommandPalette({
                     <Icon size={16} />
                   </div>
                   <div className="palette-item-text">
-                    <span className="palette-item-title">{item.title}</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <span className="palette-item-title">{item.title}</span>
+                      <span className={`palette-badge palette-badge-${item.category.toLowerCase()}`}>
+                        {item.category}
+                      </span>
+                    </div>
                     <span className="palette-item-sub">{item.subtitle}</span>
                   </div>
                   <ChevronRight size={14} className="palette-item-arrow" />
@@ -246,13 +297,16 @@ export function CommandPalette({
 
         <div className="palette-footer">
           <span>
-            <kbd>↑</kbd> <kbd>↓</kbd> to navigate
+            <kbd>↑</kbd> <kbd>↓</kbd> navigate
           </span>
           <span>
-            <kbd>Enter</kbd> to select
+            <kbd>Enter</kbd> select
           </span>
           <span>
-            <kbd>Esc</kbd> to close
+            <kbd>Esc</kbd> close
+          </span>
+          <span style={{ marginLeft: "auto", color: "var(--accent)" }}>
+            {results.length} telemetry {results.length === 1 ? "entry" : "entries"}
           </span>
         </div>
       </div>

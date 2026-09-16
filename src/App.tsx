@@ -262,12 +262,14 @@ function SiteHeader({
             <ArrowRight size={12} />
           </button>
           <button
-            className="icon-button"
+            className="nav-search-btn"
             onClick={onOpenSearch}
             aria-label="Search telemetry (Cmd+K)"
             title="Search telemetry (Cmd+K)"
           >
-            <Search size={15} strokeWidth={1.5} />
+            <Search size={14} strokeWidth={1.75} />
+            <span className="nav-search-label">Search</span>
+            <kbd className="nav-search-kbd">⌘K</kbd>
           </button>
           <button
             className="mobile-menu-button icon-button"
@@ -405,76 +407,106 @@ function Layout({
         <div className="rail-bottom">
           {isHome ? (
             <>
-              <button
-                className={`rail-btn ${activeRailIndex === "01" ? "active" : ""}`}
-                onClick={() => scrollToSection("hero")}
-                title="North Star / Overview"
-              >
-                01
-              </button>
-              <button
-                className={`rail-btn ${activeRailIndex === "02" ? "active" : ""}`}
-                onClick={() => scrollToSection("capability")}
-                title="Capability & Outcomes"
-              >
-                02
-              </button>
-              <button
-                className={`rail-btn ${activeRailIndex === "03" ? "active" : ""}`}
-                onClick={() => scrollToSection("foundry")}
-                title="The Mission Foundry"
-              >
-                03
-              </button>
-              <button
-                className={`rail-btn ${activeRailIndex === "04" ? "active" : ""}`}
-                onClick={() => scrollToSection("products")}
-                title="Foundry Products"
-              >
-                04
-              </button>
-              <button
-                className={`rail-btn ${activeRailIndex === "05" ? "active" : ""}`}
-                onClick={() => scrollToSection("news")}
-                title="News & Manifest"
-              >
-                05
-              </button>
+              <div className="rail-btn-wrap">
+                <button
+                  className={`rail-btn ${activeRailIndex === "01" ? "active" : ""}`}
+                  onClick={() => scrollToSection("hero")}
+                  aria-label="North Star / Overview"
+                >
+                  01
+                </button>
+                <span className="rail-tooltip">Overview</span>
+              </div>
+              <div className="rail-btn-wrap">
+                <button
+                  className={`rail-btn ${activeRailIndex === "02" ? "active" : ""}`}
+                  onClick={() => scrollToSection("capability")}
+                  aria-label="Capability & Outcomes"
+                >
+                  02
+                </button>
+                <span className="rail-tooltip">Capability</span>
+              </div>
+              <div className="rail-btn-wrap">
+                <button
+                  className={`rail-btn ${activeRailIndex === "03" ? "active" : ""}`}
+                  onClick={() => scrollToSection("foundry")}
+                  aria-label="The Mission Foundry"
+                >
+                  03
+                </button>
+                <span className="rail-tooltip">Foundry</span>
+              </div>
+              <div className="rail-btn-wrap">
+                <button
+                  className={`rail-btn ${activeRailIndex === "04" ? "active" : ""}`}
+                  onClick={() => scrollToSection("products")}
+                  aria-label="Foundry Products"
+                >
+                  04
+                </button>
+                <span className="rail-tooltip">Products</span>
+              </div>
+              <div className="rail-btn-wrap">
+                <button
+                  className={`rail-btn ${activeRailIndex === "05" ? "active" : ""}`}
+                  onClick={() => scrollToSection("news")}
+                  aria-label="News & Manifest"
+                >
+                  05
+                </button>
+                <span className="rail-tooltip">Manifest</span>
+              </div>
               <span className="rail-active">{activeRailIndex}</span>
             </>
           ) : (
             <>
-              <Link to="/" className="rail-btn" title="Overview">
-                01
-              </Link>
-              <Link
-                to="/systems"
-                className={`rail-btn ${location.pathname === "/systems" ? "active" : ""}`}
-                title="Platforms"
-              >
-                02
-              </Link>
-              <Link
-                to="/infrastructure"
-                className={`rail-btn ${location.pathname === "/infrastructure" ? "active" : ""}`}
-                title="Infrastructure"
-              >
-                03
-              </Link>
-              <Link
-                to="/missions"
-                className={`rail-btn ${location.pathname === "/missions" ? "active" : ""}`}
-                title="Missions"
-              >
-                04
-              </Link>
-              <Link
-                to="/about"
-                className={`rail-btn ${location.pathname === "/about" || location.pathname === "/mission" ? "active" : ""}`}
-                title="Ecosystem"
-              >
-                05
-              </Link>
+              <div className="rail-btn-wrap">
+                <Link to="/" className="rail-btn" aria-label="Overview">
+                  01
+                </Link>
+                <span className="rail-tooltip">Overview</span>
+              </div>
+              <div className="rail-btn-wrap">
+                <Link
+                  to="/systems"
+                  className={`rail-btn ${location.pathname === "/systems" ? "active" : ""}`}
+                  aria-label="Platforms"
+                >
+                  02
+                </Link>
+                <span className="rail-tooltip">Platforms</span>
+              </div>
+              <div className="rail-btn-wrap">
+                <Link
+                  to="/infrastructure"
+                  className={`rail-btn ${location.pathname === "/infrastructure" ? "active" : ""}`}
+                  aria-label="Infrastructure"
+                >
+                  03
+                </Link>
+                <span className="rail-tooltip">Infrastructure</span>
+              </div>
+              <div className="rail-btn-wrap">
+                <Link
+                  to="/missions"
+                  className={`rail-btn ${location.pathname === "/missions" ? "active" : ""}`}
+                  aria-label="Missions"
+                >
+                  04
+                </Link>
+                <span className="rail-tooltip">Missions</span>
+              </div>
+              <div className="rail-btn-wrap">
+                <Link
+                  to="/about"
+                  className={`rail-btn ${location.pathname === "/about" || location.pathname === "/mission" ? "active" : ""}`}
+                  aria-label="Ecosystem"
+                >
+                  05
+                </Link>
+                <span className="rail-tooltip">Ecosystem</span>
+              </div>
               <span className="rail-active">{activeRailIndex || "01"}</span>
             </>
           )}
