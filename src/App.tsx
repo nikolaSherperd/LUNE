@@ -1874,7 +1874,7 @@ function SystemsPage({
           <span className="micro-label">
             PAYLOAD USER'S GUIDE (PUG) // VERSION 2.4
           </span>
-          <h3 style={{ fontSize: "20px", margin: 0 }}>
+          <h3 style={{ fontSize: "17px", letterSpacing: "0.04em", margin: 0 }}>
             Ready to integrate a sensor, instrument, or optical payload?
           </h3>
           <p style={{ fontSize: "13px", color: "var(--muted)", margin: 0 }}>
@@ -2263,7 +2263,7 @@ function AboutPage({ onOpenContact }: { onOpenContact: () => void }) {
           }}
         >
           <span className="micro-label">TALENT & FELLOWSHIPS</span>
-          <h3 style={{ fontSize: "20px", margin: "8px 0" }}>
+          <h3 style={{ fontSize: "17px", letterSpacing: "0.04em", margin: "8px 0" }}>
             Build the next aerospace layer with LUNE.
           </h3>
           <p style={{ fontSize: "13px", color: "var(--muted)", margin: "0 0 16px" }}>
