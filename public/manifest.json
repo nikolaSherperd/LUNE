@@ -1,0 +1,17 @@
+{
+  "name": "LUNE Aerospace",
+  "short_name": "LUNE",
+  "description": "Pan-African aerospace and space-systems enterprise building the industrial foundation for an African space economy.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090A0C",
+  "theme_color": "#0B0C0E",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
