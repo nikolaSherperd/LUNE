@@ -41,13 +41,13 @@ npm run preview
 
 ## Routes & Architecture
 
-| Route | Page Component | Description |
+| Route | Page Component | Features & Modules |
 | :--- | :--- | :--- |
 | `/` | `src/pages/Home.tsx` | Flagship homepage with North Star hero, metrics, capabilities, foundry pillars, and ecosystem |
-| `/systems` | `src/pages/SystemsPage.tsx` | Platform specs matrix, CubeSat/SmallSat dossiers, and Payload User's Guide (PUG) |
+| `/systems` | `src/pages/SystemsPage.tsx` | Specs matrix, **Mission Orbit Calculator**, **Payload Budget Profiler**, **ADCS Simulator**, and **Interactive ICD/PUG Viewer** |
 | `/infrastructure` | `src/pages/InfrastructurePage.tsx` | Cleanroom, TVAC vacuum thermal cycling, and dynamic vibration test rigs in Abuja |
-| `/missions` | `src/pages/MissionsPage.tsx` | Real-time orbital ground track canvas, flight manifest, and sequential capability roadmap |
-| `/research` | `src/pages/ResearchPage.tsx` | Deep aerospace R&D, radiation-tolerant avionics, and aerospike propulsion simulation |
+| `/missions` | `src/pages/MissionsPage.tsx` | **Pan-African Ground Station Network Tracker**, flight manifest, and sequential capability roadmap |
+| `/research` | `src/pages/ResearchPage.tsx` | Deep aerospace R&D briefings and **Searchable PAUSN Technical Paper Archive with BibTeX export** |
 | `/about` | `src/pages/AboutPage.tsx` | The LUNE industrial manifesto, PAUSN university consortium, and academy fellowships |
 | `/contact` | `src/pages/ContactPage.tsx` | Direct in-page transmission terminal & modal dispatch for commercial and academic RFQs |
 
@@ -81,9 +81,14 @@ npm run preview
 │   │   │   ├── ResearchSection.tsx
 │   │   │   ├── SystemsSections.tsx
 │   │   │   └── index.ts
+│   │   ├── ADCSSimulator.tsx     # [NEW] 3-axis reaction wheel & attitude simulator
 │   │   ├── CommandPalette.tsx    # Cmd+K global aerospace search & shortcut terminal
 │   │   ├── ContactModal.tsx      # Modal telemetry transmission terminal with Escape-key support
-│   │   ├── OrbitalTracker.tsx    # Real-time HTML5 canvas orbital ground track & SGP4 telemetry
+│   │   ├── MissionCalculator.tsx # [NEW] Interactive orbit mechanics & Delta-V RFQ generator
+│   │   ├── OrbitalTracker.tsx    # [UPGRADED] Pan-African Ground Station Network & live AOS predictor
+│   │   ├── PayloadBudgetProfiler.tsx # [NEW] Battery Depth-of-Discharge & RF downlink margin profiler
+│   │   ├── PayloadICDViewer.tsx  # [NEW] Interactive Payload Interface Control Document (ICD v2.4)
+│   │   ├── ResearchArchive.tsx   # [NEW] Searchable PAUSN technical paper archive & BibTeX exporter
 │   │   ├── ResearchModal.tsx     # Research paper briefing drawer
 │   │   ├── RoadmapModal.tsx      # Industrial roadmap deliverables modal
 │   │   ├── SpacecraftHotspots.tsx# Interactive CubeSat/SmallSat HUD pins & specs
@@ -113,38 +118,41 @@ npm run preview
 
 ---
 
-## Completed Upgrades & Optimizations
+## Dedicated Aerospace Features Implemented
 
-### 1. Codebase Modularization & Refactoring
-- **Hook Extraction:** Isolated scroll reveal observer, magnetic button physics, and numerical count-up logic in [`src/hooks/useReveal.ts`](file:///home/nikola/lune-aerospace-code/src/hooks/useReveal.ts).
-- **Layout Primitives:** Modularized shared chrome into [`src/components/layout/`](file:///home/nikola/lune-aerospace-code/src/components/layout/).
-- **Page Isolation:** Decomposed monolithic `App.tsx` (~2,500 lines) into clean standalone pages in [`src/pages/`](file:///home/nikola/lune-aerospace-code/src/pages/).
-- **Code-Splitting:** Implemented `React.lazy` and `Suspense` in [`src/App.tsx`](file:///home/nikola/lune-aerospace-code/src/App.tsx) with a custom telemetry loading fallback, reducing initial bundle weight.
+### 1. Interactive Orbit & Delta-V Mission Calculator (`MissionCalculator.tsx`)
+- **Location:** `/systems`
+- Computes orbital velocity ($v = \sqrt{GM/r}$), period, daylight/eclipse duration, empirical atmospheric drag lifetime, daily passes over Abuja, and required de-orbit Delta-V.
+- 1-click **"Copy Mission Briefing"** and **"Dispatch RFQ With This Spec"** handoff directly to the contact transmission terminal.
 
-### 2. Performance & Asset Optimization
-- **Asset Weight Reduction:** Converted full-bleed photography (`site-background.png`, **2.47 MB**) into modern WebP format (**231 KB**), achieving over **90% bandwidth reduction**.
-- **Progressive Enhancement:** Implemented CSS `image-set()` in [`src/styles.css`](file:///home/nikola/lune-aerospace-code/src/styles.css) with automatic PNG fallback for older browsers.
-- **Resource Preloads:** Optimized [`index.html`](file:///home/nikola/lune-aerospace-code/index.html) to preload the WebP asset for accelerated Largest Contentful Paint (LCP).
+### 2. Payload Electrical & Data Budget Profiler (`PayloadBudgetProfiler.tsx`)
+- **Location:** `/systems`
+- Dynamic sliders for peak power (W), average power (W), duty cycle (%), and sensor data rate (Mbps).
+- Calculates battery Depth-of-Discharge (DoD %) during eclipse, solar array generation required, daily data generation (GB/day), and S-Band vs. X-Band pass feasibility.
 
-### 3. Real Form Handling & Backend Integration
-- **Unified Contact Service:** Built [`src/services/contact.ts`](file:///home/nikola/lune-aerospace-code/src/services/contact.ts) with packet ID generation (`LUNE-TX-XXXXXX`), optional external endpoint dispatch (`VITE_CONTACT_API_URL`), and local flight ledger persistence (`localStorage`).
-- **Modal Feedback:** Enhanced [`src/components/ContactModal.tsx`](file:///home/nikola/lune-aerospace-code/src/components/ContactModal.tsx) with live transmitting state, error alerts, and receipt confirmation.
-- **In-Page Dispatch Terminal:** Added an interactive direct dispatch form on [`src/pages/ContactPage.tsx`](file:///home/nikola/lune-aerospace-code/src/pages/ContactPage.tsx).
+### 3. Interactive Payload Interface Control Document (`PayloadICDViewer.tsx`)
+- **Location:** `/systems` (replaces static PUG card)
+- Tabbed technical inspector covering **Mechanical Envelopes**, **Power & Electrical Harnessing (28V / 5V / 3.3V)**, **Avionics Protocols (SpaceWire / CAN / RS-422)**, and **Qualification Testing (NASA GEVS 14.1 Grms & TVAC)**.
+- Downloadable JSON ICD specification for flight integration teams.
 
-### 4. SEO, Social Previews & Metadata
-- **Dynamic Route Headers:** Configured [`Layout.tsx`](file:///home/nikola/lune-aerospace-code/src/components/layout/Layout.tsx) to automatically update `document.title` and `meta[name="description"]` dynamically across all routes.
-- **Social Graph Previews:** Implemented OpenGraph (`og:title`, `og:image`, `og:description`) and Twitter Cards (`summary_large_image`) in [`index.html`](file:///home/nikola/lune-aerospace-code/index.html).
-- **PWA & Branding:** Created a vector aerospace radar favicon ([`public/favicon.svg`](file:///home/nikola/lune-aerospace-code/public/favicon.svg)) and web app manifest ([`public/manifest.json`](file:///home/nikola/lune-aerospace-code/public/manifest.json)).
-- **Structured Data (JSON-LD):** Added schema.org `Organization` metadata describing LUNE's aerospace engineering and small-satellite manufacturing enterprise.
+### 4. Pan-African Ground Station Network Tracker (`OrbitalTracker.tsx`)
+- **Location:** `/missions`
+- High-DPI HTML5 canvas displaying real-time orbital ground track over Africa with multi-gateway coverage cones:
+  - **Abuja Telemetry Gateway (HQ), Nigeria** (S/X-Band)
+  - **Nairobi Earth Station, Kenya** (S-Band Relay)
+  - **Cape Town Ground Station, South Africa** (X/Ka-Band)
+  - **Cairo Gateway, Egypt** (UHF/S-Band)
+- Live Acquisition of Signal (AOS) countdown timer (MM:SS) and active downlink beam rendering.
 
-### 5. Interactive Visual Telemetry & Micro-Interactions
-- **Orbital Telemetry Canvas:** Built [`src/components/OrbitalTracker.tsx`](file:///home/nikola/lune-aerospace-code/src/components/OrbitalTracker.tsx), featuring:
-  - High-DPI HTML5 canvas simulation with coordinate grid and continental outlines.
-  - SGP4 sine ground track and real-time sub-satellite coordinate telemetry.
-  - Real-time Line-Of-Sight (LOS / AOS) indicator and radar footprint relative to the Abuja Telemetry Gateway.
-  - Multi-satellite switching (`LUNE Pathfinder-1`, `AFRI-OBS-3`, `PAUSN Explorer`) and 1x/5x/10x simulation speed controls.
-- **Integrated into Missions:** Featured the live tracker on [`src/pages/MissionsPage.tsx`](file:///home/nikola/lune-aerospace-code/src/pages/MissionsPage.tsx).
-- **Keyboard Navigation:** Added `Escape` key handling to all interactive modals and drawers for seamless accessibility.
+### 5. Searchable PAUSN Technical Paper Archive (`ResearchArchive.tsx`)
+- **Location:** `/research`
+- Search and filter monographs across *Propulsion*, *Avionics*, *Bus Architecture*, *ADCS*, and *Earth Observation*.
+- In-browser full-paper briefing reader and 1-click BibTeX citation copy to clipboard.
+
+### 6. Spacecraft Attitude Determination & Control Simulator (`ADCSSimulator.tsx`)
+- **Location:** `/systems`
+- Visual 3-axis gyro sphere demonstrating **Nadir Earth Pointing**, **Sun-Tracking**, **Abuja Target Slew**, and **B-Dot Magnetic Detumbling**.
+- Real-time reaction wheel RPM monitors (Wheels X, Y, Z from -6000 to +6000 RPM), star tracker lock indicator, and pointing error readout (<0.03°).
 
 ---
 
@@ -155,10 +163,10 @@ The application compiles cleanly with zero TypeScript or bundling errors:
 ```bash
 npm run build
 # Output:
-# ✓ 1633 modules transformed.
+# ✓ 1638 modules transformed.
 # dist/index.html                     3.29 kB │ gzip:   1.26 kB
 # dist/assets/site-background.webp  231.49 kB
-# dist/assets/index.css              90.36 kB │ gzip:  17.45 kB
-# dist/assets/index.js              319.13 kB │ gzip: 101.95 kB
-# ✓ built in 13.14s
+# dist/assets/index.css              92.21 kB │ gzip:  17.70 kB
+# dist/assets/index.js              319.18 kB │ gzip: 101.98 kB
+# ✓ built in 17.25s
 ```

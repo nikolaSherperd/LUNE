@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Activity, Globe2, Pause, Play, Radio, RotateCcw, Zap } from "lucide-react";
+import { Activity, Clock, Globe2, Pause, Play, Radio, RotateCcw, Signal, Zap } from "lucide-react";
 
 interface SatelliteOrbit {
   id: string;
@@ -11,6 +11,15 @@ interface SatelliteOrbit {
   periodMin: number;
   downlinkFreq: string;
   color: string;
+}
+
+interface GroundStation {
+  id: string;
+  name: string;
+  country: string;
+  lat: number;
+  lon: number;
+  freq: string;
 }
 
 const TRACKED_SATELLITES: SatelliteOrbit[] = [
@@ -49,22 +58,30 @@ const TRACKED_SATELLITES: SatelliteOrbit[] = [
   },
 ];
 
-// Ground station in Abuja, Nigeria
-const ABUJA_GS = { lat: 9.0765, lon: 7.3986, name: "ABUJA TELEMETRY GATEWAY" };
+const GROUND_STATIONS: GroundStation[] = [
+  { id: "abuja", name: "ABUJA GATEWAY (HQ)", country: "Nigeria", lat: 9.0765, lon: 7.3986, freq: "S/X-Band" },
+  { id: "nairobi", name: "NAIROBI RELAY", country: "Kenya", lat: -1.2921, lon: 36.8219, freq: "S-Band" },
+  { id: "capetown", name: "CAPE TOWN PASS", country: "South Africa", lat: -33.9249, lon: 18.4241, freq: "X/Ka-Band" },
+  { id: "cairo", name: "CAIRO GATEWAY", country: "Egypt", lat: 30.0444, lon: 31.2357, freq: "UHF/S-Band" },
+];
 
 export function OrbitalTracker() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [selectedSat, setSelectedSat] = useState<SatelliteOrbit>(TRACKED_SATELLITES[0]);
+  const [selectedGS, setSelectedGS] = useState<GroundStation>(GROUND_STATIONS[0]);
   const [isPlaying, setIsPlaying] = useState(true);
   const [speedMultiplier, setSpeedMultiplier] = useState(1);
+  const [activeLinkStation, setActiveLinkStation] = useState<string | null>(null);
+
   const [telemetry, setTelemetry] = useState({
     lat: 0,
     lon: 0,
     altitude: 540,
     velocity: 7.59,
-    rangeToAbujaKm: 0,
+    rangeToStationKm: 0,
     elevationDeg: 0,
     isAOS: false,
+    nextPassCountdownSec: 2840,
   });
 
   const animRef = useRef<number | null>(null);
@@ -94,7 +111,6 @@ export function OrbitalTracker() {
       lastTime = time;
 
       if (isPlaying) {
-        // Advance orbital progress based on satellite period
         const orbitRate = (1 / (selectedSat.periodMin * 60)) * 60 * speedMultiplier;
         progressRef.current = (progressRef.current + deltaSec * orbitRate * 0.05) % 1;
       }
@@ -105,15 +121,14 @@ export function OrbitalTracker() {
 
       ctx.clearRect(0, 0, w, h);
 
-      // Background grid & stars
-      ctx.fillStyle = "#0A0C0F";
+      // Canvas background
+      ctx.fillStyle = "#090B0E";
       ctx.fillRect(0, 0, w, h);
 
-      // Lat/Long Coordinate Grid
+      // Parallels (latitudes)
       ctx.lineWidth = 1;
       ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
 
-      // Draw latitude parallels
       for (let lat = -60; lat <= 60; lat += 30) {
         const y = h / 2 - (lat / 90) * (h / 2);
         ctx.beginPath();
@@ -121,13 +136,12 @@ export function OrbitalTracker() {
         ctx.lineTo(w, y);
         ctx.stroke();
 
-        // Label
         ctx.fillStyle = "rgba(255, 255, 255, 0.18)";
         ctx.font = "9px 'JetBrains Mono', monospace";
         ctx.fillText(`${Math.abs(lat)}°${lat >= 0 ? "N" : "S"}`, 6, y - 3);
       }
 
-      // Draw longitude meridians
+      // Meridians (longitudes)
       for (let lon = -180; lon <= 180; lon += 45) {
         const x = ((lon + 180) / 360) * w;
         ctx.beginPath();
@@ -142,7 +156,7 @@ export function OrbitalTracker() {
         }
       }
 
-      // Equator highlight
+      // Equator
       ctx.strokeStyle = "rgba(194, 155, 98, 0.22)";
       ctx.lineWidth = 1.2;
       ctx.beginPath();
@@ -150,16 +164,16 @@ export function OrbitalTracker() {
       ctx.lineTo(w, h / 2);
       ctx.stroke();
 
-      // Simplified continental coastline outlines
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.11)";
-      ctx.lineWidth = 1;
-      ctx.fillStyle = "rgba(255, 255, 255, 0.015)";
-
-      // Simplified Africa Polygon projection
+      // Coordinate converter helper
       const toCanvas = (lat: number, lon: number) => ({
         x: ((lon + 180) / 360) * w,
         y: h / 2 - (lat / 90) * (h / 2),
       });
+
+      // Africa continent outline
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
+      ctx.lineWidth = 1;
+      ctx.fillStyle = "rgba(255, 255, 255, 0.015)";
 
       const africaCoords: [number, number][] = [
         [37, 10], [32, 32], [22, 38], [11, 43], [12, 51], [2, 45],
@@ -177,47 +191,18 @@ export function OrbitalTracker() {
       ctx.stroke();
       ctx.fill();
 
-      // Abuja Ground Station Radar Circle
-      const abujaPt = toCanvas(ABUJA_GS.lat, ABUJA_GS.lon);
-      const pulse = (time * 0.002) % 1;
-
-      // Radar coverage footprint (AOS cone)
-      ctx.beginPath();
-      ctx.arc(abujaPt.x, abujaPt.y, 45 + pulse * 20, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(194, 155, 98, ${0.35 * (1 - pulse)})`;
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.arc(abujaPt.x, abujaPt.y, 42, 0, Math.PI * 2);
-      ctx.strokeStyle = "rgba(194, 155, 98, 0.4)";
-      ctx.setLineDash([3, 3]);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      // Abuja Center Point
-      ctx.fillStyle = "#C29B62";
-      ctx.beginPath();
-      ctx.arc(abujaPt.x, abujaPt.y, 3.5, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.fillStyle = "#C29B62";
-      ctx.font = "9px 'JetBrains Mono', monospace";
-      ctx.fillText("ABUJA GS", abujaPt.x + 8, abujaPt.y + 3);
-
-      // Calculate satellite position along ground track
-      const incRad = (selectedSat.inclinationDeg * Math.PI) / 180;
+      // Satellite position calculation
       const phase = progressRef.current * Math.PI * 2;
-
-      // Ground track latitude and longitude
       const satLat = Math.sin(phase) * selectedSat.inclinationDeg * (selectedSat.inclinationDeg > 90 ? 0.9 : 1);
       const satLon = ((progressRef.current * 360 * 1.5) % 360) - 180;
+      const satPt = toCanvas(satLat, satLon);
 
-      // Draw Orbit Trajectory Line (sine ground-track projection)
+      // Draw Orbit Trajectory Line
       ctx.beginPath();
-      ctx.strokeStyle = "rgba(194, 155, 98, 0.35)";
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = "rgba(194, 155, 98, 0.32)";
+      ctx.lineWidth = 1.4;
 
-      const samples = 120;
+      const samples = 140;
       for (let i = 0; i <= samples; i++) {
         const frac = i / samples;
         const p = frac * Math.PI * 2;
@@ -229,53 +214,91 @@ export function OrbitalTracker() {
       }
       ctx.stroke();
 
-      // Draw Satellite Position
-      const satPt = toCanvas(satLat, satLon);
+      // Draw Ground Stations & Detect AOS
+      let anyAOSStation: GroundStation | null = null;
 
-      // Satellite Footprint
+      GROUND_STATIONS.forEach((gs) => {
+        const gsPt = toCanvas(gs.lat, gs.lon);
+        const distPx = Math.hypot(satPt.x - gsPt.x, satPt.y - gsPt.y);
+        const isThisAOS = distPx < 42;
+        const isSelected = selectedGS.id === gs.id;
+
+        if (isThisAOS) anyAOSStation = gs;
+
+        // Station footprint circle
+        ctx.beginPath();
+        ctx.arc(gsPt.x, gsPt.y, 40, 0, Math.PI * 2);
+        ctx.strokeStyle = isThisAOS
+          ? "rgba(74, 222, 128, 0.5)"
+          : isSelected
+          ? "rgba(194, 155, 98, 0.4)"
+          : "rgba(255, 255, 255, 0.1)";
+        ctx.setLineDash([2, 3]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Pulse wave for selected or AOS station
+        if (isThisAOS || isSelected) {
+          const pulse = (time * 0.002) % 1;
+          ctx.beginPath();
+          ctx.arc(gsPt.x, gsPt.y, 40 + pulse * 18, 0, Math.PI * 2);
+          ctx.strokeStyle = isThisAOS
+            ? `rgba(74, 222, 128, ${0.4 * (1 - pulse)})`
+            : `rgba(194, 155, 98, ${0.3 * (1 - pulse)})`;
+          ctx.stroke();
+        }
+
+        // Station marker point
+        ctx.fillStyle = isThisAOS ? "#4ADE80" : isSelected ? "#C29B62" : "#9CA3AF";
+        ctx.beginPath();
+        ctx.arc(gsPt.x, gsPt.y, isSelected ? 3.8 : 2.8, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Label
+        ctx.fillStyle = isThisAOS ? "#4ADE80" : isSelected ? "#C29B62" : "rgba(255,255,255,0.4)";
+        ctx.font = "8.5px 'JetBrains Mono', monospace";
+        ctx.fillText(gs.id.toUpperCase(), gsPt.x + 6, gsPt.y + 3);
+
+        // Draw downlink beam if in AOS
+        if (isThisAOS) {
+          ctx.beginPath();
+          ctx.moveTo(satPt.x, satPt.y);
+          ctx.lineTo(gsPt.x, gsPt.y);
+          ctx.strokeStyle = "#4ADE80";
+          ctx.lineWidth = 1.4;
+          ctx.setLineDash([3, 3]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+      });
+
+      setActiveLinkStation(anyAOSStation ? (anyAOSStation as GroundStation).name : null);
+
+      // Satellite Footprint & Marker
       ctx.beginPath();
-      ctx.arc(satPt.x, satPt.y, 30, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(194, 155, 98, 0.08)";
+      ctx.arc(satPt.x, satPt.y, 28, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(194, 155, 98, 0.09)";
       ctx.fill();
       ctx.strokeStyle = selectedSat.color;
       ctx.lineWidth = 1.2;
       ctx.stroke();
 
-      // Satellite Marker
       ctx.fillStyle = "#FFFFFF";
       ctx.beginPath();
       ctx.arc(satPt.x, satPt.y, 4, 0, Math.PI * 2);
       ctx.fill();
 
-      // Line connecting Satellite to Abuja when in LOS
-      const distPx = Math.hypot(satPt.x - abujaPt.x, satPt.y - abujaPt.y);
-      const isAOS = distPx < 45;
-
-      if (isAOS) {
-        ctx.beginPath();
-        ctx.moveTo(satPt.x, satPt.y);
-        ctx.lineTo(abujaPt.x, abujaPt.y);
-        ctx.strokeStyle = "#4ADE80";
-        ctx.lineWidth = 1.4;
-        ctx.setLineDash([4, 4]);
-        ctx.stroke();
-        ctx.setLineDash([]);
-
-        ctx.fillStyle = "#4ADE80";
-        ctx.font = "9px 'JetBrains Mono', monospace";
-        ctx.fillText("AOS LINK ACTIVE", (satPt.x + abujaPt.x) / 2 + 5, (satPt.y + abujaPt.y) / 2 - 5);
-      }
-
-      // Distance calculation (rough Haversine approximation)
-      const dLat = ((ABUJA_GS.lat - satLat) * Math.PI) / 180;
-      const dLon = ((ABUJA_GS.lon - satLon) * Math.PI) / 180;
+      // Calculate distance to selected station
+      const dLat = ((selectedGS.lat - satLat) * Math.PI) / 180;
+      const dLon = ((selectedGS.lon - satLon) * Math.PI) / 180;
       const a =
         Math.sin(dLat / 2) ** 2 +
         Math.cos((satLat * Math.PI) / 180) *
-          Math.cos((ABUJA_GS.lat * Math.PI) / 180) *
+          Math.cos((selectedGS.lat * Math.PI) / 180) *
           Math.sin(dLon / 2) ** 2;
       const groundDistKm = Math.round(6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
       const slantRangeKm = Math.round(Math.hypot(groundDistKm, selectedSat.altitudeKm));
+      const targetAOS = groundDistKm < 1800;
 
       // Update telemetry state
       setTelemetry({
@@ -283,9 +306,10 @@ export function OrbitalTracker() {
         lon: parseFloat(satLon.toFixed(2)),
         altitude: selectedSat.altitudeKm,
         velocity: parseFloat((7.9 - Math.sqrt(selectedSat.altitudeKm) * 0.013).toFixed(2)),
-        rangeToAbujaKm: slantRangeKm,
-        elevationDeg: isAOS ? Math.round(90 - (distPx / 45) * 80) : 0,
-        isAOS,
+        rangeToStationKm: slantRangeKm,
+        elevationDeg: targetAOS ? Math.max(5, Math.round(90 - (groundDistKm / 1800) * 85)) : 0,
+        isAOS: targetAOS,
+        nextPassCountdownSec: targetAOS ? 0 : Math.max(60, Math.round((groundDistKm / 7.6) % 3600)),
       });
 
       animRef.current = requestAnimationFrame(render);
@@ -297,14 +321,20 @@ export function OrbitalTracker() {
       if (animRef.current) cancelAnimationFrame(animRef.current);
       window.removeEventListener("resize", resize);
     };
-  }, [selectedSat, isPlaying, speedMultiplier]);
+  }, [selectedSat, selectedGS, isPlaying, speedMultiplier]);
+
+  const formatTime = (secs: number) => {
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  };
 
   return (
     <div
       style={{
         background: "rgba(10, 12, 16, 0.88)",
         border: "1px solid var(--line)",
-        borderRadius: "12px",
+        borderRadius: "14px",
         overflow: "hidden",
         backdropFilter: "blur(20px)",
       }}
@@ -318,31 +348,30 @@ export function OrbitalTracker() {
           alignItems: "center",
           flexWrap: "wrap",
           gap: "12px",
-          padding: "14px 20px",
+          padding: "16px 22px",
           borderBottom: "1px solid var(--line)",
           background: "rgba(14, 16, 22, 0.92)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <Globe2 size={16} style={{ color: "var(--accent)" }} />
-          <span
-            style={{
-              fontFamily: "var(--font-mono, monospace)",
-              fontSize: "11px",
-              letterSpacing: "0.1em",
-              color: "var(--text)",
-              fontWeight: 600,
-            }}
-          >
-            REAL-TIME ORBITAL GROUND TRACK
-          </span>
-          <span className="domain-pill" style={{ marginLeft: "4px" }}>
-            LIVE SGP4
-          </span>
+          <div>
+            <strong
+              style={{
+                fontFamily: "var(--font-mono, monospace)",
+                fontSize: "12px",
+                letterSpacing: "0.08em",
+                color: "var(--text)",
+              }}
+            >
+              PAN-AFRICAN TELEMETRY & GROUND STATION NETWORK
+            </strong>
+          </div>
+          <span className="domain-pill">LIVE SGP4</span>
         </div>
 
-        {/* Satellite switcher pills */}
-        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+        {/* Satellite Selection */}
+        <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
           {TRACKED_SATELLITES.map((sat) => (
             <button
               key={sat.id}
@@ -361,7 +390,6 @@ export function OrbitalTracker() {
                 fontSize: "11px",
                 fontFamily: "var(--font-mono, monospace)",
                 cursor: "pointer",
-                transition: "all 0.2s ease",
               }}
             >
               {sat.name.split(" ")[0]}
@@ -386,7 +414,6 @@ export function OrbitalTracker() {
               gap: "4px",
               cursor: "pointer",
             }}
-            title={isPlaying ? "Pause tracking" : "Resume tracking"}
           >
             {isPlaying ? <Pause size={12} /> : <Play size={12} />}
             <span>{isPlaying ? "PAUSE" : "RESUME"}</span>
@@ -405,23 +432,68 @@ export function OrbitalTracker() {
               fontFamily: "var(--font-mono, monospace)",
               cursor: "pointer",
             }}
-            title="Cycle simulation rate"
           >
             {speedMultiplier}x SPEED
           </button>
         </div>
       </div>
 
-      {/* Main Canvas view */}
-      <div style={{ position: "relative", width: "100%", height: "360px" }}>
-        <canvas
-          ref={canvasRef}
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "block",
-          }}
-        />
+      {/* Ground Station Focus Strip */}
+      <div
+        style={{
+          display: "flex",
+          gap: "10px",
+          padding: "10px 22px",
+          background: "rgba(11, 13, 17, 0.7)",
+          borderBottom: "1px solid var(--line)",
+          alignItems: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        <span style={{ fontSize: "11px", color: "var(--muted)", fontFamily: "var(--font-mono, monospace)" }}>
+          GATEWAY FOCUS:
+        </span>
+        {GROUND_STATIONS.map((gs) => (
+          <button
+            key={gs.id}
+            type="button"
+            onClick={() => setSelectedGS(gs)}
+            style={{
+              background: selectedGS.id === gs.id ? "rgba(194, 155, 98, 0.15)" : "transparent",
+              border: selectedGS.id === gs.id ? "1px solid var(--accent)" : "1px solid transparent",
+              color: selectedGS.id === gs.id ? "var(--accent)" : "var(--muted)",
+              padding: "3px 8px",
+              borderRadius: "4px",
+              fontSize: "10px",
+              fontFamily: "var(--font-mono, monospace)",
+              cursor: "pointer",
+            }}
+          >
+            {gs.name} ({gs.country})
+          </button>
+        ))}
+
+        {activeLinkStation && (
+          <div
+            style={{
+              marginLeft: "auto",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+              color: "#4ADE80",
+              fontSize: "11px",
+              fontFamily: "var(--font-mono, monospace)",
+            }}
+          >
+            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#4ADE80" }} />
+            DOWNLINK ACTIVE: {activeLinkStation}
+          </div>
+        )}
+      </div>
+
+      {/* Canvas View */}
+      <div style={{ position: "relative", width: "100%", height: "370px" }}>
+        <canvas ref={canvasRef} style={{ width: "100%", height: "100%", display: "block" }} />
 
         {/* Floating Telemetry HUD */}
         <div
@@ -429,7 +501,7 @@ export function OrbitalTracker() {
             position: "absolute",
             bottom: "12px",
             left: "14px",
-            background: "rgba(8, 10, 14, 0.85)",
+            background: "rgba(8, 10, 14, 0.88)",
             border: "1px solid rgba(255, 255, 255, 0.1)",
             borderRadius: "6px",
             padding: "10px 14px",
@@ -456,18 +528,15 @@ export function OrbitalTracker() {
             <strong style={{ color: "var(--accent)" }}>{selectedSat.designation}</strong>
           </div>
           <div style={{ color: "var(--muted)", fontSize: "10px" }}>
-            SUB-SAT LAT: {telemetry.lat}° / LON: {telemetry.lon}°
-          </div>
-          <div style={{ color: "var(--muted)", fontSize: "10px" }}>
-            ALTITUDE: {telemetry.altitude} KM | VELOCITY: {telemetry.velocity} KM/S
+            SUB-SAT LAT: {telemetry.lat}° / LON: {telemetry.lon}° | ALT: {telemetry.altitude} KM
           </div>
           <div style={{ color: telemetry.isAOS ? "#4ADE80" : "#9CA3AF", fontSize: "10px" }}>
-            ABUJA LINK: {telemetry.isAOS ? `AOS (ELEV ${telemetry.elevationDeg}°)` : `LOS (${telemetry.rangeToAbujaKm} KM)`}
+            {selectedGS.name}: {telemetry.isAOS ? `AOS ACTIVE (ELEV ${telemetry.elevationDeg}°)` : `LOS (NEXT PASS: ${formatTime(telemetry.nextPassCountdownSec)})`}
           </div>
         </div>
       </div>
 
-      {/* Bottom telemetry stats bar */}
+      {/* Bottom Grid Parameters */}
       <div
         style={{
           display: "grid",
@@ -488,26 +557,26 @@ export function OrbitalTracker() {
         </div>
         <div>
           <span style={{ fontSize: "10px", color: "var(--muted)", display: "block" }}>
-            INCLINATION
+            INCLINATION / PERIOD
           </span>
           <strong style={{ fontSize: "12px", color: "var(--text)" }}>
-            {selectedSat.inclinationDeg}°
+            {selectedSat.inclinationDeg}° / {selectedSat.periodMin}m
           </strong>
         </div>
         <div>
           <span style={{ fontSize: "10px", color: "var(--muted)", display: "block" }}>
-            ORBITAL PERIOD
-          </span>
-          <strong style={{ fontSize: "12px", color: "var(--text)" }}>
-            {selectedSat.periodMin} MIN
-          </strong>
-        </div>
-        <div>
-          <span style={{ fontSize: "10px", color: "var(--muted)", display: "block" }}>
-            DOWNLINK CARRIER
+            SELECTED GATEWAY
           </span>
           <strong style={{ fontSize: "12px", color: "var(--accent)" }}>
-            {selectedSat.downlinkFreq}
+            {selectedGS.name}
+          </strong>
+        </div>
+        <div>
+          <span style={{ fontSize: "10px", color: "var(--muted)", display: "block" }}>
+            DOWNLINK PASS RANGE
+          </span>
+          <strong style={{ fontSize: "12px", color: telemetry.isAOS ? "#4ADE80" : "var(--text)" }}>
+            {telemetry.rangeToStationKm} KM ({telemetry.isAOS ? "IN SIGHT" : "STANDBY"})
           </strong>
         </div>
       </div>
