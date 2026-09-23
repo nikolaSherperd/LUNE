@@ -1,0 +1,1 @@
+import{j as r}from"./index-CQYiUg28.js";import t from"./ProjectsPage-BD0favyt.js";import"./SiteFooter-CWuidNHk.js";import"./InteriorPageHero-DuG5Ewod.js";function p(o){return r.jsx(t,{...o})}export{p as default};
