@@ -41,7 +41,7 @@ export default function InfrastructurePage({
             INSERTION.
           </h2>
           <p className="body-copy">
-            Every satellite bus, avionics bay, and rocket component undergoes
+            Every satellite bus, avionics bay, and payload subsystem undergoes
             rigorous qualification matching ECSS and NASA GEVS environmental test
             standards before orbital deployment.
           </p>

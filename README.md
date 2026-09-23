@@ -39,17 +39,21 @@ npm run preview
 
 ---
 
-## Routes & Architecture
+## Routes & Information Architecture
 
-| Route | Page Component | Features & Modules |
+LUNE’s website is organized around a disciplined 6-pillar Information Architecture:
+
+| Route | Page Component | Sub-Areas & Dedicated Modules |
 | :--- | :--- | :--- |
-| `/` | `src/pages/Home.tsx` | Flagship homepage with North Star hero, metrics, capabilities, foundry pillars, and ecosystem |
-| `/systems` | `src/pages/SystemsPage.tsx` | Specs matrix, **Mission Orbit Calculator**, **Payload Budget Profiler**, **ADCS Simulator**, and **Interactive ICD/PUG Viewer** |
-| `/infrastructure` | `src/pages/InfrastructurePage.tsx` | Cleanroom, TVAC vacuum thermal cycling, and dynamic vibration test rigs in Abuja |
-| `/missions` | `src/pages/MissionsPage.tsx` | **Pan-African Ground Station Network Tracker**, flight manifest, and sequential capability roadmap |
-| `/research` | `src/pages/ResearchPage.tsx` | Deep aerospace R&D briefings and **Searchable PAUSN Technical Paper Archive with BibTeX export** |
-| `/about` | `src/pages/AboutPage.tsx` | The LUNE industrial manifesto, PAUSN university consortium, and academy fellowships |
-| `/contact` | `src/pages/ContactPage.tsx` | Direct in-page transmission terminal & modal dispatch for commercial and academic RFQs |
+| `/` | `src/pages/Home.tsx` | Flagship 5-chapter story: North Star, Systems Architecture, Projects, Deep Tech & Ecosystem |
+| `/systems` | `src/pages/SystemsPage.tsx` | **Space Systems**, **Avionics**, **Autonomous Systems**, **Manufacturing** + Calculators & ICD Viewer |
+| `/projects` | `src/pages/ProjectsPage.tsx` | **Active**, **Research**, **Completed** + Live Pan-African Ground Station Telemetry Tracker (`OrbitalTracker.tsx`) |
+| `/research` | `src/pages/ResearchPage.tsx` | **Papers** (PAUSN Archive with BibTeX), **Technical Notes**, **Engineering Logs** (TVAC/Shaker telemetry) |
+| `/technology` | `src/pages/TechnologyPage.tsx` | **Embedded**, **AI** (Edge NPU 4.2 TOPS), **Communications**, **Control** (ADCS Reaction Wheels) |
+| `/about` | `src/pages/AboutPage.tsx` | **Mission** (8-stage roadmap), **Philosophy** (Continuous Cycle), **Team** (PAUSN Consortium Nodes) |
+| `/journal` | `src/pages/JournalPage.tsx` | **Updates**, **Experiments** (TVAC & vibration qualification records), **Field Notes** (Ground station deployments) |
+| `/infrastructure` | `src/pages/InfrastructurePage.tsx` | ISO Class 7 cleanrooms, TVAC vacuum thermal cycling, and 20 kN vibration testing in Abuja |
+| `/contact` | `src/pages/ContactPage.tsx` | Transmission terminal & dispatch for sovereign, commercial, and academic payload RFQs |
 
 ---
 
@@ -146,7 +150,7 @@ npm run preview
 
 ### 5. Searchable PAUSN Technical Paper Archive (`ResearchArchive.tsx`)
 - **Location:** `/research`
-- Search and filter monographs across *Propulsion*, *Avionics*, *Bus Architecture*, *ADCS*, and *Earth Observation*.
+- Search and filter monographs across *Thermal & Power*, *Avionics*, *Bus Architecture*, *ADCS*, and *Earth Observation*.
 - In-browser full-paper briefing reader and 1-click BibTeX citation copy to clipboard.
 
 ### 6. Spacecraft Attitude Determination & Control Simulator (`ADCSSimulator.tsx`)

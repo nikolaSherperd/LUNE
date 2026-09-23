@@ -31,16 +31,16 @@ const RESEARCH_PAPERS: ResearchPaper[] = [
   {
     id: "lune-rp-01",
     number: "LUNE-RP-01",
-    category: "Propulsion",
-    title: "Additive Manufacturing and Hot-Fire Qualification of Low-Thrust Aerospike Rocket Nozzles",
+    category: "Thermal & Power",
+    title: "Additive Manufacturing and Deep-Vacuum Thermal Characterization of Modular Spacecraft Chassis",
     authors: "Dr. K. Okonjo, T. Balogun, M. Nnamdi",
-    institution: "LUNE Propulsion Laboratory & PAUSN Propulsion Consortium",
+    institution: "LUNE Space Structures Laboratory & PAUSN Engineering Consortium",
     year: 2026,
     doi: "10.48550/arXiv.2603.04812",
-    abstract: "This paper presents the design, laser powder-bed fusion (LPBF) additive manufacturing in Inconel 718, and static hot-fire characterization of an annular aerospike rocket nozzle optimized for small-satellite orbit insertion. Atmospheric compensation provides an estimated 8.4% specific impulse gain across sea-level to vacuum transition compared to conventional de Laval bell nozzles.",
-    methodology: "Coupled Reynolds-Averaged Navier-Stokes (RANS) CFD simulations verified with 40-second sea-level static test firings at the Abuja Propulsion Test Cell using LOX/Methane bipropellants.",
-    conclusion: "Additive metallurgy eliminates active cooling brazing joints, reducing dry mass by 32% while sustaining chamber pressures up to 45 bar.",
-    flightHeritage: "Scheduled for suborbital sounding pathfinder flight Q1 2027.",
+    abstract: "This paper presents the design, laser powder-bed fusion (LPBF) additive manufacturing in AlSi10Mg, and thermal vacuum chamber characterization of an integrated 12U CubeSat chassis with conformal embedded heat pipes. Passive thermal regulation maintains avionics and LiFePO4 battery cells within safe operational bands (+5°C to +30°C) across simulated extreme eclipse-to-sunlight cycles without auxiliary electric heaters.",
+    methodology: "Finite-element thermal dissipation modeling verified with 8-cycle deep vacuum (-75°C to +135°C @ 10⁻⁶ Torr) testing in the Abuja TVAC facility using calibrated thermocouple grids and infrared imaging.",
+    conclusion: "Additive manufacturing of structural heat paths reduces assembly fastener count by 44% and chassis mass by 28% while improving thermal conductivity by 2.3× over legacy milled enclosures.",
+    flightHeritage: "Qualified for LUNE Pathfinder-1 orbital demonstration mission.",
   },
   {
     id: "lune-rp-02",
@@ -100,7 +100,7 @@ const RESEARCH_PAPERS: ResearchPaper[] = [
   },
 ];
 
-const CATEGORIES = ["All", "Propulsion", "Avionics", "Bus Architecture", "ADCS", "Earth Observation"];
+const CATEGORIES = ["All", "Thermal & Power", "Avionics", "Bus Architecture", "ADCS", "Earth Observation"];
 
 export function ResearchArchive() {
   const [selectedCategory, setSelectedCategory] = useState("All");

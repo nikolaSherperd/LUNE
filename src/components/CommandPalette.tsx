@@ -262,7 +262,7 @@ export function CommandPalette({
             <div className="palette-empty">
               <span>No telemetry matches found for "{query}".</span>
               <p style={{ marginTop: "6px", fontSize: "11px", color: "var(--muted)" }}>
-                Try searching for "CubeSat", "Propulsion", "TVAC", or "Flight".
+                Try searching for "CubeSat", "Avionics", "TVAC", or "Flight".
               </p>
             </div>
           ) : (

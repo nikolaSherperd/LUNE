@@ -8,25 +8,28 @@ export function SpaceXFooter({ onOpenContact }: { onOpenContact?: () => void }) 
         <span className="spacex-footer-copy">LUNE © 2026</span>
         <ul className="spacex-footer-links">
           <li>
-            <Link to="/systems">PLATFORMS</Link>
+            <Link to="/systems">SYSTEMS</Link>
           </li>
           <li>
-            <Link to="/infrastructure">INFRASTRUCTURE</Link>
-          </li>
-          <li>
-            <Link to="/missions">MISSIONS</Link>
+            <Link to="/projects">PROJECTS</Link>
           </li>
           <li>
             <Link to="/research">RESEARCH</Link>
           </li>
           <li>
+            <Link to="/technology">TECHNOLOGY</Link>
+          </li>
+          <li>
             <Link to="/about">ABOUT</Link>
           </li>
           <li>
-            <Link to="/about#careers">CAREERS</Link>
+            <Link to="/journal">JOURNAL</Link>
           </li>
           <li>
-            <Link to="/about#privacy">PRIVACY POLICY</Link>
+            <Link to="/about#team">CAREERS</Link>
+          </li>
+          <li>
+            <Link to="/about#privacy">PRIVACY</Link>
           </li>
           <li>
             {onOpenContact ? (

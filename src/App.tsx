@@ -14,10 +14,13 @@ import { JournalItem, ResearchItem, SystemItem } from "./data";
 // Route-level code-splitting with React.lazy
 const Home = lazy(() => import("./pages/Home"));
 const SystemsPage = lazy(() => import("./pages/SystemsPage"));
-const InfrastructurePage = lazy(() => import("./pages/InfrastructurePage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
 const MissionsPage = lazy(() => import("./pages/MissionsPage"));
 const ResearchPage = lazy(() => import("./pages/ResearchPage"));
+const TechnologyPage = lazy(() => import("./pages/TechnologyPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
+const JournalPage = lazy(() => import("./pages/JournalPage"));
+const InfrastructurePage = lazy(() => import("./pages/InfrastructurePage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 
 function RouteLoadingFallback() {
@@ -101,14 +104,14 @@ export function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Homepage scrollspy section tracker
+  // Homepage scrollspy section tracker matching 5-chapter IA
   useEffect(() => {
     const sectionIds = [
       { id: "hero", num: "01" },
-      { id: "capability", num: "02" },
-      { id: "foundry", num: "03" },
-      { id: "products", num: "04" },
-      { id: "news", num: "05" },
+      { id: "systems", num: "02" },
+      { id: "projects", num: "03" },
+      { id: "research-tech", num: "04" },
+      { id: "ecosystem", num: "05" },
     ];
 
     const handleScroll = () => {
@@ -156,9 +159,9 @@ export function App() {
             }
           />
           <Route
-            path="/infrastructure"
+            path="/projects"
             element={
-              <InfrastructurePage
+              <ProjectsPage
                 onOpenContact={() => setContactOpen(true)}
               />
             }
@@ -167,7 +170,6 @@ export function App() {
             path="/missions"
             element={
               <MissionsPage
-                onSelectStage={setActiveStage}
                 onOpenContact={() => setContactOpen(true)}
               />
             }
@@ -176,7 +178,14 @@ export function App() {
             path="/research"
             element={
               <ResearchPage
-                onSelectResearch={setActiveResearch}
+                onOpenContact={() => setContactOpen(true)}
+              />
+            }
+          />
+          <Route
+            path="/technology"
+            element={
+              <TechnologyPage
                 onOpenContact={() => setContactOpen(true)}
               />
             }
@@ -188,6 +197,18 @@ export function App() {
           <Route
             path="/mission"
             element={<AboutPage onOpenContact={() => setContactOpen(true)} />}
+          />
+          <Route
+            path="/journal"
+            element={<JournalPage onOpenContact={() => setContactOpen(true)} />}
+          />
+          <Route
+            path="/infrastructure"
+            element={
+              <InfrastructurePage
+                onOpenContact={() => setContactOpen(true)}
+              />
+            }
           />
           <Route
             path="/contact"

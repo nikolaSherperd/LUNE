@@ -40,23 +40,29 @@ export function Layout({
   // Dynamic route titles
   useEffect(() => {
     const routeTitles: Record<string, string> = {
-      "/": "LUNE — African Aerospace Industry",
-      "/systems": "Mission Foundry & Platforms — LUNE",
+      "/": "LUNE — Industrial Foundation for an African Space Economy",
+      "/systems": "Systems Architecture & Modular Platforms — LUNE",
+      "/projects": "Flight Projects & Ground Station Manifest — LUNE",
+      "/missions": "Flight Projects & Ground Station Manifest — LUNE",
+      "/research": "Research, Papers & Engineering Logs — LUNE",
+      "/technology": "Horizontal Technology Stack & Avionics — LUNE",
+      "/about": "Mission, Philosophy & Consortium — LUNE",
+      "/mission": "Mission, Philosophy & Consortium — LUNE",
+      "/journal": "Engineering Journal & Field Notes — LUNE",
       "/infrastructure": "Assembly, Cleanroom & Test Infrastructure — LUNE",
-      "/missions": "Orbital Flight Manifest & Heritage — LUNE",
-      "/research": "Research & Deep Technology — LUNE",
-      "/about": "Ecosystem, Industrial Thesis & PAUSN — LUNE",
-      "/mission": "Ecosystem, Industrial Thesis & PAUSN — LUNE",
       "/contact": "Contact & Mission Inquiries — LUNE",
     };
     const routeDescriptions: Record<string, string> = {
       "/": "LUNE is an African aerospace and space-systems company building the industrial foundation for an African space civilization.",
-      "/systems": "Modular CubeSat and SmallSat platform architecture, standardized subsystem dossiers, and mechanical interface specifications.",
+      "/systems": "Modular Spacecraft Platforms, Radiation-Tolerant Avionics, Autonomous ADCS, and Sovereign Manufacturing in Abuja.",
+      "/projects": "Active orbital pathfinders, Pan-African Ground Station Gateway Network, collaborative university missions, and flight qualification heritage.",
+      "/missions": "Active orbital pathfinders, Pan-African Ground Station Gateway Network, collaborative university missions, and flight qualification heritage.",
+      "/research": "Searchable PAUSN peer-reviewed monographs, BibTeX citation exporter, practical engineering memoranda, and environmental test logs.",
+      "/technology": "Horizontal capabilities spanning radiation-hardened embedded silicon, orbital neural inference (Edge NPU), communications, and ADCS.",
+      "/about": "The LUNE industrial thesis, 'capability before complexity', PAUSN university consortium, and native aerospace talent cultivation.",
+      "/mission": "The LUNE industrial thesis, 'capability before complexity', PAUSN university consortium, and native aerospace talent cultivation.",
+      "/journal": "Dispatches, TVAC thermal balance experiments, dynamic vibration screening, and African ground station installations.",
       "/infrastructure": "Cleanroom integration, thermal vacuum testing, dynamic vibration analysis, and additive metallurgy in Abuja.",
-      "/missions": "Orbital flight manifest, scheduled commercial and sovereign satellite deployments, and telemetry station operations.",
-      "/research": "Deep aerospace R&D spanning radiation-tolerant avionics, RF spectrum intelligence, and aerospike propulsion simulation.",
-      "/about": "The LUNE industrial thesis, PAUSN Pan-African University Space Network, and native aerospace talent cultivation.",
-      "/mission": "The LUNE industrial thesis, PAUSN Pan-African University Space Network, and native aerospace talent cultivation.",
       "/contact": "Dispatch direct commercial satellite inquiries, hosted payload bookings, and PAUSN academic collaboration requests.",
     };
     document.title =
@@ -92,7 +98,8 @@ export function Layout({
         navigationItems.findIndex(
           (item) =>
             item.path === location.pathname ||
-            (location.pathname === "/mission" && item.path === "/about"),
+            (location.pathname === "/mission" && item.path === "/about") ||
+            (location.pathname === "/missions" && item.path === "/projects")
         ) + 1,
       ).padStart(2, "0");
 
@@ -129,97 +136,111 @@ export function Layout({
                 >
                   01
                 </button>
-                <span className="rail-tooltip">Overview</span>
+                <span className="rail-tooltip">North Star</span>
               </div>
               <div className="rail-btn-wrap">
                 <button
                   className={`rail-btn ${activeRailIndex === "02" ? "active" : ""}`}
-                  onClick={() => scrollToSection("capability")}
-                  aria-label="Capability & Outcomes"
+                  onClick={() => scrollToSection("systems")}
+                  aria-label="Systems Architecture"
                 >
                   02
                 </button>
-                <span className="rail-tooltip">Capability</span>
+                <span className="rail-tooltip">Systems</span>
               </div>
               <div className="rail-btn-wrap">
                 <button
                   className={`rail-btn ${activeRailIndex === "03" ? "active" : ""}`}
-                  onClick={() => scrollToSection("foundry")}
-                  aria-label="The Mission Foundry"
+                  onClick={() => scrollToSection("projects")}
+                  aria-label="Projects & Operations"
                 >
                   03
                 </button>
-                <span className="rail-tooltip">Foundry</span>
+                <span className="rail-tooltip">Projects</span>
               </div>
               <div className="rail-btn-wrap">
                 <button
                   className={`rail-btn ${activeRailIndex === "04" ? "active" : ""}`}
-                  onClick={() => scrollToSection("products")}
-                  aria-label="Foundry Products"
+                  onClick={() => scrollToSection("research-tech")}
+                  aria-label="Research & Technology"
                 >
                   04
                 </button>
-                <span className="rail-tooltip">Products</span>
+                <span className="rail-tooltip">Research & Tech</span>
               </div>
               <div className="rail-btn-wrap">
                 <button
                   className={`rail-btn ${activeRailIndex === "05" ? "active" : ""}`}
-                  onClick={() => scrollToSection("news")}
-                  aria-label="News & Manifest"
+                  onClick={() => scrollToSection("ecosystem")}
+                  aria-label="Ecosystem & Mission"
                 >
                   05
                 </button>
-                <span className="rail-tooltip">Manifest</span>
+                <span className="rail-tooltip">Human Engine</span>
               </div>
               <span className="rail-active">{activeRailIndex}</span>
             </>
           ) : (
             <>
               <div className="rail-btn-wrap">
-                <Link to="/" className="rail-btn" aria-label="Overview">
-                  01
-                </Link>
-                <span className="rail-tooltip">Overview</span>
-              </div>
-              <div className="rail-btn-wrap">
                 <Link
                   to="/systems"
                   className={`rail-btn ${location.pathname === "/systems" ? "active" : ""}`}
-                  aria-label="Platforms"
+                  aria-label="Systems"
+                >
+                  01
+                </Link>
+                <span className="rail-tooltip">Systems</span>
+              </div>
+              <div className="rail-btn-wrap">
+                <Link
+                  to="/projects"
+                  className={`rail-btn ${location.pathname === "/projects" || location.pathname === "/missions" ? "active" : ""}`}
+                  aria-label="Projects"
                 >
                   02
                 </Link>
-                <span className="rail-tooltip">Platforms</span>
+                <span className="rail-tooltip">Projects</span>
               </div>
               <div className="rail-btn-wrap">
                 <Link
-                  to="/infrastructure"
-                  className={`rail-btn ${location.pathname === "/infrastructure" ? "active" : ""}`}
-                  aria-label="Infrastructure"
+                  to="/research"
+                  className={`rail-btn ${location.pathname === "/research" ? "active" : ""}`}
+                  aria-label="Research"
                 >
                   03
                 </Link>
-                <span className="rail-tooltip">Infrastructure</span>
+                <span className="rail-tooltip">Research</span>
               </div>
               <div className="rail-btn-wrap">
                 <Link
-                  to="/missions"
-                  className={`rail-btn ${location.pathname === "/missions" ? "active" : ""}`}
-                  aria-label="Missions"
+                  to="/technology"
+                  className={`rail-btn ${location.pathname === "/technology" ? "active" : ""}`}
+                  aria-label="Technology"
                 >
                   04
                 </Link>
-                <span className="rail-tooltip">Missions</span>
+                <span className="rail-tooltip">Technology</span>
               </div>
               <div className="rail-btn-wrap">
                 <Link
                   to="/about"
                   className={`rail-btn ${location.pathname === "/about" || location.pathname === "/mission" ? "active" : ""}`}
-                  aria-label="Ecosystem"
+                  aria-label="About"
                 >
                   05
                 </Link>
-                <span className="rail-tooltip">Ecosystem</span>
+                <span className="rail-tooltip">About</span>
+              </div>
+              <div className="rail-btn-wrap">
+                <Link
+                  to="/journal"
+                  className={`rail-btn ${location.pathname === "/journal" ? "active" : ""}`}
+                  aria-label="Journal"
+                >
+                  06
+                </Link>
+                <span className="rail-tooltip">Journal</span>
               </div>
               <span className="rail-active">{activeRailIndex || "01"}</span>
             </>

@@ -456,7 +456,7 @@ Deorbit Delta-V Requirement: ~${deltaVDeorbitMS} m/s`;
                 <span style={{ fontSize: "11px", color: "var(--muted)" }}>yrs</span>
               </div>
               <span style={{ fontSize: "10px", color: "var(--muted)" }}>
-                {orbitalLifetimeYears <= 25 ? "Compliant (<25 yr rule)" : "Requires deorbit thruster"}
+                {orbitalLifetimeYears <= 25 ? "Compliant (<25 yr rule)" : "Requires de-orbit drag sail"}
               </span>
             </div>
 

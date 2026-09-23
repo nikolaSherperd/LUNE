@@ -13,16 +13,16 @@ export function AboutSection() {
         <h2>
           THE SATELLITE IS THE BEGINNING.
           <br />
-          THE ROCKET IS A MILESTONE.
+          THE PLATFORM IS THE VEHICLE.
           <br />
           <em>THE REAL OBJECTIVE IS CAPABILITY.</em>
         </h2>
         <p>
-          The long-term roadmap is not simply: satellites → rockets. It is:
+          The long-term roadmap is not simply isolated hardware. It is:
           <br />
           <strong>
             education → research → engineering → manufacturing → spacecraft →
-            propulsion → launch systems → a self-sustaining African space industry.
+            constellations → autonomous operations → an enduring African space industry.
           </strong>
           <br />
           <br />
