@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { ArrowRight, CheckCircle2, Mail, Radio } from "lucide-react";
-import { InteriorPageHero, SectionLabel, SpaceXFooter } from "../components/layout";
+import { ArrowRight, CheckCircle2, Mail, MapPin, Phone, Shield } from "lucide-react";
+import { SpaceXFooter } from "../components/layout";
 import { INQUIRY_TYPES, submitContactInquiry } from "../services/contact";
 import { images } from "../data";
 
 export interface ContactPageProps {
-  onOpenContact: () => void;
+  onOpenContact?: () => void;
 }
 
-export default function ContactPage({ onOpenContact }: ContactPageProps) {
+export default function ContactPage({}: ContactPageProps) {
   const [inquiryType, setInquiryType] = useState<string>(INQUIRY_TYPES[0]);
   const [fullName, setFullName] = useState("");
   const [organization, setOrganization] = useState("");
@@ -40,10 +40,10 @@ export default function ContactPage({ onOpenContact }: ContactPageProps) {
         setReceiptId(res.receiptId);
         setStatus("success");
       } else {
-        throw new Error(res.message || "Transmission timed out");
+        throw new Error(res.message || "Submission timed out");
       }
     } catch (err: any) {
-      setErrorMessage(err.message || "Transmission network error. Logged to local buffer.");
+      setErrorMessage(err.message || "Failed to submit inquiry. Please try again.");
       setStatus("error");
     }
   };
@@ -58,220 +58,202 @@ export default function ContactPage({ onOpenContact }: ContactPageProps) {
   };
 
   return (
-    <>
-      <InteriorPageHero
-        number="06"
-        label="COMMUNICATIONS & INQUIRIES"
-        title={
-          <>
-            BUILD THE
-            <br />
-            NEXT
-            <br />
-            <em>LAYER.</em>
-          </>
-        }
-        description="Collaborate on small-satellite platform procurement, hosted sensor integration, cleanroom testing facilities, or PAUSN university consortium research."
-        image={images.hero}
-      />
-
-      <section className="contact-detail section-pad">
-        <div
-          className="contact-detail-box"
-          data-reveal
-          data-reveal-delay="1"
-          onClick={onOpenContact}
-          style={{ cursor: "pointer", border: "1px solid var(--accent)" }}
-        >
-          <span className="micro-label">MODAL DISPATCH TERMINAL</span>
-          <span
-            style={{
-              color: "var(--accent)",
-              fontSize: "16px",
-              fontWeight: 550,
-            }}
-          >
-            Launch Floating Terminal →
-          </span>
-          <p style={{ fontSize: "12px", color: "var(--muted)", margin: "8px 0 0" }}>
-            Direct encrypted inquiry overlay for quick access anywhere across the site.
-          </p>
+    <div className="contact-page">
+      {/* -------------------------------------------------------------------- */}
+      {/* PAGE HERO                                                            */}
+      {/* -------------------------------------------------------------------- */}
+      <section className="page-hero-clean">
+        <div className="page-hero-media">
+          <img
+            src={images.hero}
+            alt="Contact LUNE Aerospace engineering team"
+            className="page-hero-img"
+          />
+          <div className="page-hero-vignette" />
         </div>
 
-        <div className="contact-detail-box" data-reveal data-reveal-delay="2">
-          <span className="micro-label">PRIMARY HEADQUARTERS</span>
-          <span style={{ fontSize: "16px", fontWeight: 550, color: "var(--text)" }}>
-            ABUJA / NIGERIA
-          </span>
-          <p style={{ fontSize: "12px", color: "var(--muted)", margin: "8px 0 0" }}>
-            Cleanroom Integration Bay & Testing Campus, Federal Capital Territory.
-          </p>
+        <div className="site-container page-hero-container">
+          <div className="page-hero-content" data-reveal>
+            <span className="section-kicker">GET IN TOUCH</span>
+            <h1 className="page-hero-title">
+              CONNECT WITH OUR
+              <br />
+              <span className="accent-text">INTEGRATION TEAM.</span>
+            </h1>
+            <p className="page-hero-lead">
+              Collaborate on modular spacecraft platforms, hosted sensor payloads,
+              cleanroom testing, or PAUSN university consortium programs.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Direct In-Page Transmission Terminal */}
-      <section className="section-pad" id="dispatch-form">
-        <SectionLabel
-          number="06A"
-          label="DIRECT TRANSMISSION"
-          detail="SECURE TELEMETRY BUFFER"
-        />
-
-        <div
-          style={{
-            maxWidth: "760px",
-            margin: "32px 0 0",
-            background: "rgba(12, 14, 18, 0.7)",
-            border: "1px solid var(--line)",
-            borderRadius: "12px",
-            padding: "clamp(20px, 3.5vw, 36px)",
-            backdropFilter: "blur(18px)",
-          }}
-          data-reveal
-        >
-          {status === "success" ? (
-            <div className="transmission-success" style={{ padding: "24px 0" }}>
-              <div className="success-pulse">
-                <CheckCircle2 size={38} className="success-icon" />
+      {/* -------------------------------------------------------------------- */}
+      {/* CONTACT CONTENT SECTION (Clean 2-column layout)                      */}
+      {/* -------------------------------------------------------------------- */}
+      <section className="editorial-section">
+        <div className="site-container">
+          <div className="contact-split-grid">
+            {/* Left: Facility and Direct Details */}
+            <div className="contact-info-col" data-reveal>
+              <div className="contact-info-card">
+                <div className="contact-info-icon">
+                  <MapPin size={22} />
+                </div>
+                <div>
+                  <h3 className="contact-info-title">Abuja Integration Campus</h3>
+                  <p className="contact-info-desc">
+                    ISO Class 7 Cleanroom, TVAC Vacuum Test Facility &amp; Mechanical Integration Lab.
+                  </p>
+                  <span className="contact-info-detail">Abuja, Federal Capital Territory, Nigeria</span>
+                </div>
               </div>
-              <h3>TRANSMISSION ACKNOWLEDGED</h3>
-              <p className="success-meta">
-                PACKET ID: <code>{receiptId}</code>
-              </p>
-              <p className="success-text">
-                Your dispatch has been logged in LUNE's mission registry. Our
-                engineering team in Abuja will review and respond promptly.
-              </p>
-              <div className="success-actions" style={{ marginTop: "20px" }}>
-                <button
-                  type="button"
-                  className="contact-submit-btn"
-                  onClick={handleReset}
-                >
-                  NEW TRANSMISSION
-                </button>
+
+              <div className="contact-info-card">
+                <div className="contact-info-icon">
+                  <Mail size={22} />
+                </div>
+                <div>
+                  <h3 className="contact-info-title">Commercial &amp; Sovereign RFQs</h3>
+                  <p className="contact-info-desc">
+                    For satellite bus procurement, hosted payloads, and launch schedule planning.
+                  </p>
+                  <span className="contact-info-detail">missions@lune.space</span>
+                </div>
+              </div>
+
+              <div className="contact-info-card">
+                <div className="contact-info-icon">
+                  <Shield size={22} />
+                </div>
+                <div>
+                  <h3 className="contact-info-title">Academic &amp; PAUSN Consortium</h3>
+                  <p className="contact-info-desc">
+                    University student payloads, research fellowships, and ground station collaboration.
+                  </p>
+                  <span className="contact-info-detail">pausn@lune.space</span>
+                </div>
               </div>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="transmission-form">
-              <div className="form-head">
-                <h2 style={{ fontSize: "20px", letterSpacing: "0.06em" }}>
-                  TRANSMISSION DISPATCH FORM
-                </h2>
-                <p style={{ fontSize: "13px", color: "var(--muted)" }}>
-                  Submit direct specifications for bus integration, RF testing, or PAUSN programs.
-                </p>
-              </div>
 
-              {status === "error" && (
-                <div
-                  style={{
-                    padding: "10px 14px",
-                    background: "rgba(220, 38, 38, 0.12)",
-                    border: "1px solid rgba(220, 38, 38, 0.4)",
-                    borderRadius: "6px",
-                    color: "#fca5a5",
-                    fontSize: "12px",
-                    marginBottom: "16px",
-                  }}
-                >
-                  {errorMessage}
-                </div>
-              )}
-
-              <div className="form-field">
-                <label className="field-label">DOMAIN / INQUIRY TYPE</label>
-                <div className="inquiry-chips">
-                  {INQUIRY_TYPES.map((type) => (
+            {/* Right: Modern Clean Inquiry Form */}
+            <div className="contact-form-col" data-reveal>
+              <div className="clean-form-card">
+                {status === "success" ? (
+                  <div className="form-success-view">
+                    <CheckCircle2 size={44} className="success-icon" />
+                    <h3>Inquiry Received</h3>
+                    <p className="success-meta">Reference: {receiptId}</p>
+                    <p className="success-body">
+                      Thank you for contacting LUNE Aerospace. Our flight integration
+                      engineers in Abuja will review your requirements and respond promptly.
+                    </p>
                     <button
                       type="button"
-                      key={type}
-                      className={`inquiry-chip ${inquiryType === type ? "active" : ""}`}
-                      onClick={() => setInquiryType(type)}
+                      className="btn-outline"
+                      onClick={handleReset}
+                      style={{ marginTop: "24px" }}
                     >
-                      {type}
+                      <span>Send Another Inquiry</span>
                     </button>
-                  ))}
-                </div>
-              </div>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="clean-inquiry-form">
+                    <div className="form-header-clean">
+                      <h3>Mission Inquiry Form</h3>
+                      <p>Tell us about your mission timeline, payload requirements, or partnership interest.</p>
+                    </div>
 
-              <div className="form-row-2">
-                <div className="form-field">
-                  <label className="field-label">NAME / CALLSIGN</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Dr. Amina Bello"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="contact-input"
-                  />
-                </div>
-                <div className="form-field">
-                  <label className="field-label">ORGANIZATION / UNIVERSITY</label>
-                  <input
-                    type="text"
-                    placeholder="Federal University / Institute"
-                    value={organization}
-                    onChange={(e) => setOrganization(e.target.value)}
-                    className="contact-input"
-                  />
-                </div>
-              </div>
+                    {status === "error" && (
+                      <div className="form-error-alert">
+                        {errorMessage}
+                      </div>
+                    )}
 
-              <div className="form-field">
-                <label className="field-label">OFFICIAL EMAIL</label>
-                <input
-                  type="email"
-                  required
-                  placeholder="contact@institution.org"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="contact-input"
-                />
-              </div>
+                    {/* Inquiry Type Chips */}
+                    <div className="form-group-clean">
+                      <label className="clean-field-label">Inquiry Category</label>
+                      <div className="clean-chips-group">
+                        {INQUIRY_TYPES.map((type) => (
+                          <button
+                            type="button"
+                            key={type}
+                            className={`clean-chip-btn ${inquiryType === type ? "active" : ""}`}
+                            onClick={() => setInquiryType(type)}
+                          >
+                            {type}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
 
-              <div className="form-field">
-                <label className="field-label">TELEMETRY / BRIEF MESSAGE</label>
-                <textarea
-                  required
-                  rows={4}
-                  placeholder="Detail research scope, subsystem specs, or partnership objective..."
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="contact-textarea"
-                />
-              </div>
+                    <div className="form-row-grid">
+                      <div className="form-group-clean">
+                        <label className="clean-field-label">Your Name</label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="Dr. Amina Bello"
+                          value={fullName}
+                          onChange={(e) => setFullName(e.target.value)}
+                          className="clean-text-input"
+                        />
+                      </div>
 
-              <div className="form-actions">
-                <button
-                  type="submit"
-                  disabled={status === "transmitting"}
-                  className="contact-submit-btn"
-                >
-                  {status === "transmitting" ? (
-                    <>
-                      <Radio size={15} className="spin-icon" /> TRANSMITTING PACKET...
-                    </>
-                  ) : (
-                    <>
-                      TRANSMIT DISPATCH <ArrowRight size={14} />
-                    </>
-                  )}
-                </button>
-                <a
-                  href={`mailto:hello@lune.africa?subject=${encodeURIComponent(inquiryType)}`}
-                  className="fallback-mailto"
-                >
-                  <Mail size={13} /> Or dispatch via standard mailto
-                </a>
+                      <div className="form-group-clean">
+                        <label className="clean-field-label">Organization / Agency</label>
+                        <input
+                          type="text"
+                          placeholder="National Space Agency / Operator"
+                          value={organization}
+                          onChange={(e) => setOrganization(e.target.value)}
+                          className="clean-text-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="form-group-clean">
+                      <label className="clean-field-label">Work Email</label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="amina@agency.gov.ng"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="clean-text-input"
+                      />
+                    </div>
+
+                    <div className="form-group-clean">
+                      <label className="clean-field-label">Message / Payload Specifications</label>
+                      <textarea
+                        required
+                        rows={4}
+                        placeholder="Describe your spacecraft bus requirements, payload mass/power envelope, desired orbit (e.g. 500 km SSO), or intended mission timeline..."
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        className="clean-textarea"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="btn-cta"
+                      disabled={status === "transmitting"}
+                      style={{ width: "100%", justifyContent: "center", marginTop: "12px" }}
+                    >
+                      <span>{status === "transmitting" ? "Transmitting..." : "Submit Mission Inquiry"}</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </form>
+                )}
               </div>
-            </form>
-          )}
+            </div>
+          </div>
         </div>
       </section>
 
-      <SpaceXFooter onOpenContact={onOpenContact} />
-    </>
+      <SpaceXFooter />
+    </div>
   );
 }

@@ -1,10 +1,7 @@
 export { default as Home } from "./Home";
-export { default as SystemsPage } from "./SystemsPage";
-export { default as ProjectsPage } from "./ProjectsPage";
+export { default as PlatformsPage } from "./PlatformsPage";
+export { default as SystemsPage } from "./PlatformsPage"; // Alias for compatibility
 export { default as MissionsPage } from "./MissionsPage";
-export { default as ResearchPage } from "./ResearchPage";
-export { default as TechnologyPage } from "./TechnologyPage";
+export { default as ProjectsPage } from "./MissionsPage"; // Alias for compatibility
 export { default as AboutPage } from "./AboutPage";
-export { default as JournalPage } from "./JournalPage";
-export { default as InfrastructurePage } from "./InfrastructurePage";
 export { default as ContactPage } from "./ContactPage";

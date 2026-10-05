@@ -41,19 +41,15 @@ npm run preview
 
 ## Routes & Information Architecture
 
-LUNE’s website is organized around a disciplined 6-pillar Information Architecture:
+LUNE’s website is organized around 4 clean, focused pillars:
 
-| Route | Page Component | Sub-Areas & Dedicated Modules |
+| Route | Page Component | Focus & Modules |
 | :--- | :--- | :--- |
-| `/` | `src/pages/Home.tsx` | Flagship 5-chapter story: North Star, Systems Architecture, Projects, Deep Tech & Ecosystem |
-| `/systems` | `src/pages/SystemsPage.tsx` | **Space Systems**, **Avionics**, **Autonomous Systems**, **Manufacturing** + Calculators & ICD Viewer |
-| `/projects` | `src/pages/ProjectsPage.tsx` | **Active**, **Research**, **Completed** + Live Pan-African Ground Station Telemetry Tracker (`OrbitalTracker.tsx`) |
-| `/research` | `src/pages/ResearchPage.tsx` | **Papers** (PAUSN Archive with BibTeX), **Technical Notes**, **Engineering Logs** (TVAC/Shaker telemetry) |
-| `/technology` | `src/pages/TechnologyPage.tsx` | **Embedded**, **AI** (Edge NPU 4.2 TOPS), **Communications**, **Control** (ADCS Reaction Wheels) |
-| `/about` | `src/pages/AboutPage.tsx` | **Mission** (8-stage roadmap), **Philosophy** (Continuous Cycle), **Team** (PAUSN Consortium Nodes) |
-| `/journal` | `src/pages/JournalPage.tsx` | **Updates**, **Experiments** (TVAC & vibration qualification records), **Field Notes** (Ground station deployments) |
-| `/infrastructure` | `src/pages/InfrastructurePage.tsx` | ISO Class 7 cleanrooms, TVAC vacuum thermal cycling, and 20 kN vibration testing in Abuja |
-| `/contact` | `src/pages/ContactPage.tsx` | Transmission terminal & dispatch for sovereign, commercial, and academic payload RFQs |
+| `/` | `src/pages/Home.tsx` | Flagship narrative: African Space Economy, Metrics, Platforms Overview, Active Missions, Consortium |
+| `/platforms` | `src/pages/PlatformsPage.tsx` | **Spacecraft Buses** (3U to 150kg), **Flight Avionics & Software**, and **Abuja Test Facilities** |
+| `/missions` | `src/pages/MissionsPage.tsx` | **Pan-African Ground Station Network** (Abuja, Nairobi, Cape Town, Cairo) and **Flight Manifest** |
+| `/about` | `src/pages/AboutPage.tsx` | **The Mission**, **Engineering Philosophy** (Capability before complexity), and **PAUSN Consortium** |
+| `/contact` | `src/pages/ContactPage.tsx` | Direct commercial, sovereign & academic mission inquiry dispatch |
 
 ---
 

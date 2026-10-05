@@ -75,160 +75,20 @@ export interface SpacecraftHotspot {
 
 export const navigationItems: NavItem[] = [
   {
-    label: "Systems",
-    path: "/systems",
-    children: [
-      {
-        label: "Space Systems",
-        path: "/systems#space-systems",
-        description: "3U, 6U, 12U & 150kg modular flight platforms",
-        code: "01.1",
-      },
-      {
-        label: "Avionics",
-        path: "/systems#avionics",
-        description: "Rad-tolerant Cortex-M7 OBC, EPS & harness",
-        code: "01.2",
-      },
-      {
-        label: "Autonomous Systems",
-        path: "/systems#autonomous",
-        description: "FDIR, 3-axis stabilization & ADCS simulation",
-        code: "01.3",
-      },
-      {
-        label: "Manufacturing",
-        path: "/systems#manufacturing",
-        description: "ISO 7 cleanroom, TVAC & additive metallurgy",
-        code: "01.4",
-      },
-    ],
+    label: "Platforms",
+    path: "/platforms",
   },
   {
-    label: "Projects",
-    path: "/projects",
-    children: [
-      {
-        label: "Active",
-        path: "/projects#active",
-        description: "LUNE-1, PAUSN-1 & Ground Station Network",
-        code: "02.1",
-      },
-      {
-        label: "Research",
-        path: "/projects#research",
-        description: "Sovereign EO-1, tactical crypto & sensor testbeds",
-        code: "02.2",
-      },
-      {
-        label: "Completed",
-        path: "/projects#completed",
-        description: "HIL bench qualification & TVAC flight heritage",
-        code: "02.3",
-      },
-    ],
-  },
-  {
-    label: "Research",
-    path: "/research",
-    children: [
-      {
-        label: "Papers",
-        path: "/research#papers",
-        description: "PAUSN peer-reviewed monographs & BibTeX archive",
-        code: "03.1",
-      },
-      {
-        label: "Technical Notes",
-        path: "/research#technical-notes",
-        description: "Engineering memos on thermal, radiation & links",
-        code: "03.2",
-      },
-      {
-        label: "Engineering Logs",
-        path: "/research#engineering-logs",
-        description: "TVAC, shaker table & cold-flow qualification data",
-        code: "03.3",
-      },
-    ],
-  },
-  {
-    label: "Technology",
-    path: "/technology",
-    children: [
-      {
-        label: "Embedded",
-        path: "/technology#embedded",
-        description: "Hardware root of trust, RTOS & TMR ECC memory",
-        code: "04.1",
-      },
-      {
-        label: "AI",
-        path: "/technology#ai",
-        description: "Orbital Edge NPU (4.2 TOPS) & real-time segmentation",
-        code: "04.2",
-      },
-      {
-        label: "Communications",
-        path: "/technology#communications",
-        description: "S/X-band transceivers, LoRa mesh & phased arrays",
-        code: "04.3",
-      },
-      {
-        label: "Control",
-        path: "/technology#control",
-        description: "3-axis reaction wheels, star tracker & B-dot",
-        code: "04.4",
-      },
-    ],
+    label: "Missions",
+    path: "/missions",
   },
   {
     label: "About",
     path: "/about",
-    children: [
-      {
-        label: "Mission",
-        path: "/about#mission",
-        description: "The industrial foundation for an African space civilization",
-        code: "05.1",
-      },
-      {
-        label: "Philosophy",
-        path: "/about#philosophy",
-        description: "Capability before complexity & the 6-step cycle",
-        code: "05.2",
-      },
-      {
-        label: "Team",
-        path: "/about#team",
-        description: "Engineering leadership, PAUSN consortium & fellowships",
-        code: "05.3",
-      },
-    ],
   },
   {
-    label: "Journal",
-    path: "/journal",
-    children: [
-      {
-        label: "Updates",
-        path: "/journal#updates",
-        description: "Program milestones, funding & sovereign agreements",
-        code: "06.1",
-      },
-      {
-        label: "Experiments",
-        path: "/journal#experiments",
-        description: "TVAC thermal cycles, vibration sweeps & environmental screening",
-        code: "06.2",
-      },
-      {
-        label: "Field Notes",
-        path: "/journal#field-notes",
-        description: "African ground station deployments & launch prep",
-        code: "06.3",
-      },
-    ],
+    label: "Contact",
+    path: "/contact",
   },
 ];
 
