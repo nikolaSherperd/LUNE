@@ -332,7 +332,7 @@ export default function Home({ onOpenContact }: HomeProps) {
               <div className="mission-card-lead">
                 <div className="mission-card-header">
                   <span className="tag-pill">MISSION 01</span>
-                  <span className="tag-pill accent">ACTIVE PATHFINDER</span>
+                  <span className="tag-pill accent">Coming soon...</span>
                 </div>
                 <h3 className="mission-card-title">LUNE-1 Orbital Technology Pathfinder</h3>
               </div>
@@ -356,7 +356,7 @@ export default function Home({ onOpenContact }: HomeProps) {
               <div className="mission-card-lead">
                 <div className="mission-card-header">
                   <span className="tag-pill">NETWORK</span>
-                  <span className="tag-pill accent">4 GATEWAYS</span>
+                  <span className="tag-pill accent">Coming soon...</span>
                 </div>
                 <h3 className="mission-card-title">Pan-African Ground Station Gateway</h3>
               </div>
@@ -379,7 +379,7 @@ export default function Home({ onOpenContact }: HomeProps) {
             <div className="mission-card" data-reveal>
               <div className="mission-card-lead">
                 <div className="mission-card-header">
-                  <span className="tag-pill">ACADEMIC</span>
+                  <span className="tag-pill">EDUCATION</span>
                   <span className="tag-pill accent">PAUSN CONSORTIUM</span>
                 </div>
                 <h3 className="mission-card-title">PAUSN-1 Collaborative University Bus</h3>

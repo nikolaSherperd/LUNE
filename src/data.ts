@@ -57,7 +57,7 @@ export interface JournalItem {
   category: string;
   title: string;
   date: string;
-  status: "Operational" | "Active R&D" | "Planned";
+  status: "Operational" | "Active R&D" | "Planned" | "Education" | "Research" | "Coming soon..." | string;
   image?: string;
   timeline: string;
   deliverables: string[];
@@ -250,7 +250,7 @@ export const projectsData: ProjectItem[] = [
     code: "PRJ-01",
     name: "LUNE-1 Tech Demonstrator",
     headline: "First Indigenous Flight Computer & Autonomous ADCS Mission",
-    statusBadge: "In Cleanroom Integration",
+    statusBadge: "Coming soon...",
     orbit: "500 km Sun-Synchronous (SSO)",
     formFactor: "3U CubeSat (4.2 kg)",
     timeline: "Q4 2026 Launch Window",
@@ -275,7 +275,7 @@ export const projectsData: ProjectItem[] = [
     code: "PRJ-02",
     name: "Pan-African Ground Station Gateway Network",
     headline: "Multi-Node S/X-Band Tracking & Telemetry Station Infrastructure",
-    statusBadge: "Operational / Active Links",
+    statusBadge: "Coming soon...",
     orbit: "Ground Segment Across 4 Hubs",
     formFactor: "4.5m S/X-Band Automated Dishes",
     timeline: "Continuous Daily Operations",
@@ -300,7 +300,7 @@ export const projectsData: ProjectItem[] = [
     code: "PRJ-03",
     name: "PAUSN-1 Academic Pathfinder",
     headline: "Multi-University Scientific Payload Carrier",
-    statusBadge: "Subsystem Integration",
+    statusBadge: "Education / Academic",
     orbit: "525 km SSO",
     formFactor: "6U CubeSat (11.5 kg)",
     timeline: "Q2 2027 Scheduled",
@@ -325,7 +325,7 @@ export const projectsData: ProjectItem[] = [
     code: "PRJ-04",
     name: "Sovereign EO-1 Regional Earth Observation",
     headline: "Sub-Meter Resolution Agricultural & Climate Monitoring Platform",
-    statusBadge: "Architecture & Optical Design",
+    statusBadge: "Research & Development",
     orbit: "550 km Dawn-Dusk SSO",
     formFactor: "150 kg SmallSat Class",
     timeline: "2028 Target Deployment",
@@ -350,7 +350,7 @@ export const projectsData: ProjectItem[] = [
     code: "PRJ-05",
     name: "Aero-Secure Tactical Defense Comms",
     headline: "Post-Quantum Cryptographic Orbital Relay",
-    statusBadge: "Simulation & FPGA Synthesis",
+    statusBadge: "Research & Development",
     orbit: "600 km Polar Circular",
     formFactor: "12U CubeSat (22 kg)",
     timeline: "2028 – 2029 Target",
@@ -375,7 +375,7 @@ export const projectsData: ProjectItem[] = [
     code: "PRJ-06",
     name: "Hardware-In-The-Loop (HIL) Flight Qualification",
     headline: "Comprehensive Full-Bus Real-Time Emulation",
-    statusBadge: "Flight Heritage Proven",
+    statusBadge: "Coming soon...",
     formFactor: "Full Subsystem Suite",
     timeline: "Completed Q2 2026",
     overview:
@@ -399,7 +399,7 @@ export const projectsData: ProjectItem[] = [
     code: "PRJ-07",
     name: "TVAC & Shaker Environmental Qualification Campaign",
     headline: "Rigorous Space Environment Simulation in Abuja",
-    statusBadge: "Certified Complete",
+    statusBadge: "Coming soon...",
     formFactor: "3U & 6U Engineering Models",
     timeline: "Completed Q3 2026",
     overview:
@@ -1031,7 +1031,7 @@ export const journalItems: JournalItem[] = [
     category: "STAGE 01",
     title: "Education: Pan-African University Space Network & Talent Engine",
     date: "EDUCATION",
-    status: "Operational",
+    status: "Education",
     timeline: "FOUNDATION",
     deliverables: [
       "Connect African universities, researchers, and institutions through PAUSN",
@@ -1045,7 +1045,7 @@ export const journalItems: JournalItem[] = [
     category: "STAGE 02",
     title: "Research: Applied Aerospace R&D & Flight Hardware Prototyping",
     date: "RESEARCH",
-    status: "Operational",
+    status: "Research",
     timeline: "TALENT → RESEARCH",
     deliverables: [
       "University laboratories where experimentation turns ideas into flight prototypes",
@@ -1059,7 +1059,7 @@ export const journalItems: JournalItem[] = [
     category: "STAGE 03",
     title: "Engineering: Standardized Architecture for Modular Spacecraft",
     date: "ENGINEERING",
-    status: "Active R&D",
+    status: "Coming soon...",
     timeline: "COMMON FOUNDATION",
     deliverables: [
       "Create a common technological foundation moving beyond conventional CubeSats",
@@ -1073,7 +1073,7 @@ export const journalItems: JournalItem[] = [
     category: "STAGE 04",
     title: "Manufacturing: Cleanrooms, Additive Metallurgy & Qualification",
     date: "MANUFACTURING",
-    status: "Active R&D",
+    status: "Coming soon...",
     timeline: "ABUJA CAMPUS",
     deliverables: [
       "ISO Class 7 cleanroom integration campus and TVAC thermal cycling in Abuja",
@@ -1087,7 +1087,7 @@ export const journalItems: JournalItem[] = [
     category: "STAGE 05",
     title: "Spacecraft: Modular Platform Production at Industrial Scale",
     date: "SPACECRAFT",
-    status: "Active R&D",
+    status: "Coming soon...",
     timeline: "PRODUCTION AT SCALE",
     deliverables: [
       "Produce modular spacecraft efficiently at scale rather than unique machines",
@@ -1101,7 +1101,7 @@ export const journalItems: JournalItem[] = [
     category: "STAGE 06",
     title: "Constellations: Multi-Satellite Networks & Swarm Dynamics",
     date: "CONSTELLATIONS",
-    status: "Planned",
+    status: "Coming soon...",
     timeline: "SWARM ARCHITECTURE",
     deliverables: [
       "Coordinated multi-spacecraft Earth observation swarms with inter-satellite crosslinks",
@@ -1115,7 +1115,7 @@ export const journalItems: JournalItem[] = [
     category: "STAGE 07",
     title: "Sovereign Operations: Pan-African Ground Station Mesh & Tracking",
     date: "OPERATIONS",
-    status: "Planned",
+    status: "Coming soon...",
     timeline: "CONTINENTAL COVERAGE",
     deliverables: [
       "Unified multi-node tracking antenna array spanning West, East, Southern, and North Africa",
@@ -1129,7 +1129,7 @@ export const journalItems: JournalItem[] = [
     category: "STAGE 08",
     title: "Self-Sustaining Industry: African Space-Industrial Civilization",
     date: "ENDURING ECOSYSTEM",
-    status: "Planned",
+    status: "Coming soon...",
     timeline: "CONTINUOUS CYCLE",
     deliverables: [
       "Complete sovereign capability to design, manufacture, test, operate, and sustain spacecraft constellations",

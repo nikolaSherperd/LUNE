@@ -145,8 +145,8 @@ export default function MissionsPage({ onOpenContact }: MissionsPageProps) {
             </div>
             <div className="platform-visual-details">
               <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-                <span className="tag-pill accent">ORBITAL FLIGHT PATHFINDER</span>
-                <span className="tag-pill">ACTIVE TELEMETRY</span>
+                <span className="tag-pill accent">Coming soon...</span>
+                <span className="tag-pill">ORBITAL FLIGHT PATHFINDER</span>
               </div>
               <h3 className="platform-visual-title">Pathfinder-1 Demonstration Mission</h3>
               <p className="platform-visual-desc">
