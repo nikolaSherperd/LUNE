@@ -92,16 +92,59 @@ export default function PlatformsPage({ onOpenContact }: PlatformsPageProps) {
               </p>
             </div>
 
-            {/* Platform Comparison Cards */}
+            {/* Spacecraft Visual Showcase Bar */}
+            <div className="platform-visual-bar" data-reveal>
+              <div className="platform-visual-media">
+                <img
+                  src={images.platform}
+                  alt="LUNE standardized modular spacecraft platform"
+                  className="platform-visual-img"
+                />
+                <span className="platform-visual-tag">LUNE-BUS-150 // FLIGHT QUALIFIED</span>
+              </div>
+              <div className="platform-visual-details">
+                <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                  <span className="tag-pill accent">ORBITAL PLATFORM ARCHITECTURE</span>
+                  <span className="tag-pill">3U TO 150KG CLASS</span>
+                </div>
+                <h3 className="platform-visual-title">Modular Spacecraft Bus System</h3>
+                <p className="platform-visual-desc">
+                  Standardized structural frames with modular mechanical load paths, dual deployable GaAs solar arrays,
+                  and sub-arcminute 3-axis attitude determination and control. Pre-qualified in Abuja TVAC and vibration labs.
+                </p>
+                <div className="platform-visual-specs-row">
+                  <div>
+                    <span className="lbl">Solar Generation</span>
+                    <span className="val">Up to 240W EOL</span>
+                  </div>
+                  <div>
+                    <span className="lbl">Pointing Stability</span>
+                    <span className="val">&lt; 0.005°/s jitter</span>
+                  </div>
+                  <div>
+                    <span className="lbl">Payload Mass</span>
+                    <span className="val">Up to 85 kg</span>
+                  </div>
+                  <div>
+                    <span className="lbl">Design Life</span>
+                    <span className="val">5–7 Years LEO</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Platform Comparison Bars */}
             <div className="spec-cards-grid">
               <div className="spec-card">
-                <div className="spec-card-header">
-                  <span className="tag-pill">CUBESAT CLASS</span>
-                  <h3 className="spec-card-title">3U Platform</h3>
+                <div className="spec-card-lead">
+                  <div className="spec-card-header">
+                    <span className="tag-pill">CUBESAT CLASS</span>
+                    <h3 className="spec-card-title">3U Platform</h3>
+                  </div>
+                  <p className="spec-card-desc">
+                    Ideal for rapid technology validation, university science instruments, and IoT mesh payloads.
+                  </p>
                 </div>
-                <p className="spec-card-desc">
-                  Ideal for rapid technology validation, university science instruments, and IoT mesh payloads.
-                </p>
                 <div className="spec-card-metrics">
                   <div className="spec-card-metric">
                     <span className="label">Payload Volume</span>
@@ -120,19 +163,23 @@ export default function PlatformsPage({ onOpenContact }: PlatformsPageProps) {
                     <span className="value">UHF / S-Band</span>
                   </div>
                 </div>
-                <button className="btn-outline" onClick={onOpenContact}>
-                  <span>Inquire for 3U Slot</span>
-                </button>
+                <div className="spec-card-action">
+                  <button className="btn-outline" onClick={onOpenContact}>
+                    <span>Inquire for 3U Slot</span>
+                  </button>
+                </div>
               </div>
 
               <div className="spec-card">
-                <div className="spec-card-header">
-                  <span className="tag-pill">CUBESAT CLASS</span>
-                  <h3 className="spec-card-title">6U / 12U Platform</h3>
+                <div className="spec-card-lead">
+                  <div className="spec-card-header">
+                    <span className="tag-pill">CUBESAT CLASS</span>
+                    <h3 className="spec-card-title">6U / 12U Platform</h3>
+                  </div>
+                  <p className="spec-card-desc">
+                    High-capacity nanosatellite platform for multispectral optical imaging, tactical communications, and RF mapping.
+                  </p>
                 </div>
-                <p className="spec-card-desc">
-                  High-capacity nanosatellite platform for multispectral optical imaging, tactical communications, and RF mapping.
-                </p>
                 <div className="spec-card-metrics">
                   <div className="spec-card-metric">
                     <span className="label">Payload Volume</span>
@@ -151,19 +198,23 @@ export default function PlatformsPage({ onOpenContact }: PlatformsPageProps) {
                     <span className="value">S-Band / X-Band (50 Mbps)</span>
                   </div>
                 </div>
-                <button className="btn-outline" onClick={onOpenContact}>
-                  <span>Inquire for 6U/12U Slot</span>
-                </button>
+                <div className="spec-card-action">
+                  <button className="btn-outline" onClick={onOpenContact}>
+                    <span>Inquire for 6U/12U Slot</span>
+                  </button>
+                </div>
               </div>
 
               <div className="spec-card featured">
-                <div className="spec-card-header">
-                  <span className="tag-pill accent">FLAGSHIP SMALLSAT</span>
-                  <h3 className="spec-card-title">150kg SmallSat Bus</h3>
+                <div className="spec-card-lead">
+                  <div className="spec-card-header">
+                    <span className="tag-pill accent">FLAGSHIP SMALLSAT</span>
+                    <h3 className="spec-card-title">150kg SmallSat Bus</h3>
+                  </div>
+                  <p className="spec-card-desc">
+                    Heavy sovereign Earth observation, sub-meter optical resolution, SAR sensors, and institutional constellation missions.
+                  </p>
                 </div>
-                <p className="spec-card-desc">
-                  Heavy sovereign Earth observation, sub-meter optical resolution, SAR sensors, and institutional constellation missions.
-                </p>
                 <div className="spec-card-metrics">
                   <div className="spec-card-metric">
                     <span className="label">Payload Mass</span>
@@ -182,10 +233,12 @@ export default function PlatformsPage({ onOpenContact }: PlatformsPageProps) {
                     <span className="value">X-Band &amp; Ka-Band (300+ Mbps)</span>
                   </div>
                 </div>
-                <button className="btn-cta" onClick={onOpenContact}>
-                  <span>Request 150kg Spec Sheet</span>
-                  <ArrowRight size={13} />
-                </button>
+                <div className="spec-card-action">
+                  <button className="btn-cta" onClick={onOpenContact}>
+                    <span>Request 150kg Spec Sheet</span>
+                    <ArrowRight size={13} />
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -239,12 +292,56 @@ export default function PlatformsPage({ onOpenContact }: PlatformsPageProps) {
               </p>
             </div>
 
+            {/* Avionics Satellite Visual Bar */}
+            <div className="platform-visual-bar" data-reveal>
+              <div className="platform-visual-media">
+                <img
+                  src={images.satellite}
+                  alt="Radiation-tolerant flight avionics and satellite systems"
+                  className="platform-visual-img"
+                />
+                <span className="platform-visual-tag">LUNE-OBC-V2 // RAD-HARD SILICON</span>
+              </div>
+              <div className="platform-visual-details">
+                <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                  <span className="tag-pill accent">INTEGRATED FLIGHT SILICON</span>
+                  <span className="tag-pill">DUAL LOCKSTEP EPS</span>
+                </div>
+                <h3 className="platform-visual-title">Hardened Avionics &amp; Power Architecture</h3>
+                <p className="platform-visual-desc">
+                  Radiation-tolerant flight computer running dual ARM Cortex-M7 cores in lockstep at 400 MHz,
+                  providing deterministic real-time telemetry processing, SpaceWire payload interfaces,
+                  and automated fault recovery.
+                </p>
+                <div className="platform-visual-specs-row">
+                  <div>
+                    <span className="lbl">Compute Speed</span>
+                    <span className="val">400 MHz Lockstep</span>
+                  </div>
+                  <div>
+                    <span className="lbl">Total Ionizing Dose</span>
+                    <span className="val">&gt; 30 krad (Si)</span>
+                  </div>
+                  <div>
+                    <span className="lbl">Telemetry Bus</span>
+                    <span className="val">CAN 2.0B / SpaceWire</span>
+                  </div>
+                  <div>
+                    <span className="lbl">Efficiency</span>
+                    <span className="val">96% MPPT Conversion</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="avionics-pillars-grid">
               <div className="avionics-card">
-                <div className="avionics-card-icon">
-                  <Cpu size={24} />
+                <div className="avionics-card-lead">
+                  <div className="avionics-card-icon">
+                    <Cpu size={24} />
+                  </div>
+                  <h3 className="avionics-card-title">Dual Lockstep OBC Core</h3>
                 </div>
-                <h3 className="avionics-card-title">Dual Lockstep OBC Core</h3>
                 <p className="avionics-card-desc">
                   ARM Cortex-M7 cores running identical instruction sequences with cycle-accurate
                   hardware comparators that trap single-event transients instantaneously without reboot.
@@ -257,10 +354,12 @@ export default function PlatformsPage({ onOpenContact }: PlatformsPageProps) {
               </div>
 
               <div className="avionics-card">
-                <div className="avionics-card-icon">
-                  <ShieldCheck size={24} />
+                <div className="avionics-card-lead">
+                  <div className="avionics-card-icon">
+                    <ShieldCheck size={24} />
+                  </div>
+                  <h3 className="avionics-card-title">Multi-Channel Power Distribution (EPS)</h3>
                 </div>
-                <h3 className="avionics-card-title">Multi-Channel Power Distribution (EPS)</h3>
                 <p className="avionics-card-desc">
                   High-efficiency Maximum Power Point Tracking (MPPT) solar regulation, autonomous battery
                   cell state-of-charge balancing, and galvanically isolated payload rails.
@@ -273,10 +372,12 @@ export default function PlatformsPage({ onOpenContact }: PlatformsPageProps) {
               </div>
 
               <div className="avionics-card">
-                <div className="avionics-card-icon">
-                  <Layers size={24} />
+                <div className="avionics-card-lead">
+                  <div className="avionics-card-icon">
+                    <Layers size={24} />
+                  </div>
+                  <h3 className="avionics-card-title">Differential Data Harness</h3>
                 </div>
-                <h3 className="avionics-card-title">Differential Data Harness</h3>
                 <p className="avionics-card-desc">
                   High-reliability communications combining SpaceWire (100 Mbps) for optical payload data,
                   dual-redundant CAN 2.0B for subsystem telemetry, and isolated RS-422 channels.
@@ -289,10 +390,12 @@ export default function PlatformsPage({ onOpenContact }: PlatformsPageProps) {
               </div>
 
               <div className="avionics-card">
-                <div className="avionics-card-icon">
-                  <Cpu size={24} />
+                <div className="avionics-card-lead">
+                  <div className="avionics-card-icon">
+                    <Cpu size={24} />
+                  </div>
+                  <h3 className="avionics-card-title">Edge Orbital Neural Inference</h3>
                 </div>
-                <h3 className="avionics-card-title">Edge Orbital Neural Inference</h3>
                 <p className="avionics-card-desc">
                   Dedicated 4.2 TOPS low-power neural processing unit (NPU) for on-orbit imagery classification,
                   cloud-cover filtering, and automatic maritime detection prior to downlink.
@@ -326,17 +429,61 @@ export default function PlatformsPage({ onOpenContact }: PlatformsPageProps) {
               </p>
             </div>
 
+            {/* Facilities Visual Bar */}
+            <div className="platform-visual-bar" data-reveal>
+              <div className="platform-visual-media">
+                <img
+                  src={images.manufacturing}
+                  alt="Abuja aerospace cleanroom and qualification laboratories"
+                  className="platform-visual-img"
+                />
+                <span className="platform-visual-tag">ABUJA LABS // ISO CLASS 7</span>
+              </div>
+              <div className="platform-visual-details">
+                <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                  <span className="tag-pill accent">SOVEREIGN INFRASTRUCTURE</span>
+                  <span className="tag-pill">TVAC + 20 KN SHAKER</span>
+                </div>
+                <h3 className="platform-visual-title">Cleanroom Integration &amp; Environmental Test Labs</h3>
+                <p className="platform-visual-desc">
+                  Indigenous ISO 14644-1 Class 7 cleanrooms, thermal vacuum chamber (-60°C to +125°C),
+                  and 20 kN electromagnetic shaker system for full sine/random vibration qualification
+                  meeting NASA GEVS and ECSS space flight standards.
+                </p>
+                <div className="platform-visual-specs-row">
+                  <div>
+                    <span className="lbl">Cleanroom Class</span>
+                    <span className="val">ISO Class 7</span>
+                  </div>
+                  <div>
+                    <span className="lbl">Thermal Vacuum</span>
+                    <span className="val">10⁻⁶ Torr / TVAC</span>
+                  </div>
+                  <div>
+                    <span className="lbl">Shaker Force</span>
+                    <span className="val">20 kN Sine/Random</span>
+                  </div>
+                  <div>
+                    <span className="lbl">Qualification</span>
+                    <span className="val">NASA GEVS / ECSS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="facilities-cards-grid">
               {facilitySpecs.map((fac) => (
                 <div key={fac.id} className="facility-clean-card">
-                  <div className="facility-clean-header">
-                    <span className="tag-pill">{fac.code}</span>
-                    <span className="tag-pill accent">ABUJA CAMPUS</span>
+                  <div className="facility-clean-lead">
+                    <div className="facility-clean-header">
+                      <span className="tag-pill">{fac.code}</span>
+                      <span className="tag-pill accent">ABUJA CAMPUS</span>
+                    </div>
+                    <h3 className="facility-clean-title">{fac.name}</h3>
+                    <span className="facility-clean-class">{fac.classification}</span>
                   </div>
-                  <h3 className="facility-clean-title">{fac.name}</h3>
-                  <span className="facility-clean-class">{fac.classification}</span>
                   <p className="facility-clean-desc">{fac.description}</p>
-                  <ul className="clean-bullet-list" style={{ marginTop: "auto", paddingTop: "14px" }}>
+                  <ul className="clean-bullet-list">
                     {fac.specs.map((spec, i) => (
                       <li key={i}>{spec}</li>
                     ))}

@@ -1043,7 +1043,7 @@ export const journalItems: JournalItem[] = [
     id: "stage-02",
     stageNumber: "02",
     category: "STAGE 02",
-    title: "Research: From Textbooks to University Labs & Real Prototypes",
+    title: "Research: Applied Aerospace R&D & Flight Hardware Prototyping",
     date: "RESEARCH",
     status: "Operational",
     timeline: "TALENT → RESEARCH",

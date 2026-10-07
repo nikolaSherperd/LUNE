@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRight, Cpu, Layers, Orbit, Radio, Shield, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SpaceXFooter } from "../components/layout";
+import { SpacecraftHotspots } from "../components/SpacecraftHotspots";
 import { images, trustedPartners } from "../data";
 
 export interface HomeProps {
@@ -143,30 +144,34 @@ export default function Home({ onOpenContact }: HomeProps) {
                 />
               </div>
               <div className="platform-card-body">
-                <div className="platform-card-meta">
-                  <span className="tag-pill">MODULAR BUSES</span>
-                  <span className="tag-pill accent">3U — 150KG</span>
-                </div>
-                <h3 className="platform-card-title">Modular Spacecraft Platforms</h3>
-                <p className="platform-card-text">
-                  Standardized 3U, 6U, 12U CubeSat platforms and 150kg SmallSat buses
-                  engineered with modular mechanical interfaces, scalable power rails,
-                  and sub-arcminute 3-axis pointing accuracy.
-                </p>
-                <div className="platform-card-specs">
-                  <div className="spec-row">
-                    <span className="spec-label">Payload Mass</span>
-                    <span className="spec-val">Up to 85 kg</span>
+                <div className="platform-card-main">
+                  <div className="platform-card-meta">
+                    <span className="tag-pill">MODULAR BUSES</span>
+                    <span className="tag-pill accent">3U — 150KG</span>
                   </div>
-                  <div className="spec-row">
-                    <span className="spec-label">Orbit Lifetime</span>
-                    <span className="spec-val">5 to 7 Years (LEO)</span>
-                  </div>
+                  <h3 className="platform-card-title">Modular Spacecraft Platforms</h3>
+                  <p className="platform-card-text">
+                    Standardized 3U, 6U, 12U CubeSat platforms and 150kg SmallSat buses
+                    engineered with modular mechanical interfaces, scalable power rails,
+                    and sub-arcminute 3-axis pointing accuracy.
+                  </p>
                 </div>
-                <Link to="/platforms" className="clean-arrow-link">
-                  <span>Explore Bus Specifications</span>
-                  <ArrowRight size={13} />
-                </Link>
+                <div className="platform-card-side">
+                  <div className="platform-card-specs">
+                    <div className="spec-row">
+                      <span className="spec-label">Payload Mass</span>
+                      <span className="spec-val">Up to 85 kg</span>
+                    </div>
+                    <div className="spec-row">
+                      <span className="spec-label">Orbit Lifetime</span>
+                      <span className="spec-val">5 to 7 Years (LEO)</span>
+                    </div>
+                  </div>
+                  <Link to="/platforms" className="clean-arrow-link">
+                    <span>Explore Bus Specifications</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -180,30 +185,34 @@ export default function Home({ onOpenContact }: HomeProps) {
                 />
               </div>
               <div className="platform-card-body">
-                <div className="platform-card-meta">
-                  <span className="tag-pill">FLIGHT SILICON</span>
-                  <span className="tag-pill accent">RAD-TOLERANT</span>
-                </div>
-                <h3 className="platform-card-title">Hardened Avionics &amp; EPS</h3>
-                <p className="platform-card-text">
-                  Dual-lockstep ARM Cortex-M7 flight computers, multi-channel electrical
-                  power distribution with MPPT charge balancing, SpaceWire payload links,
-                  and deterministic real-time flight software.
-                </p>
-                <div className="platform-card-specs">
-                  <div className="spec-row">
-                    <span className="spec-label">Compute Core</span>
-                    <span className="spec-val">Dual Lockstep M7 @ 400 MHz</span>
+                <div className="platform-card-main">
+                  <div className="platform-card-meta">
+                    <span className="tag-pill">FLIGHT SILICON</span>
+                    <span className="tag-pill accent">RAD-TOLERANT</span>
                   </div>
-                  <div className="spec-row">
-                    <span className="spec-label">Regulated Rails</span>
-                    <span className="spec-val">28V, 12V, 5V, 3.3V</span>
-                  </div>
+                  <h3 className="platform-card-title">Hardened Avionics &amp; EPS</h3>
+                  <p className="platform-card-text">
+                    Dual-lockstep ARM Cortex-M7 flight computers, multi-channel electrical
+                    power distribution with MPPT charge balancing, SpaceWire payload links,
+                    and deterministic real-time flight software.
+                  </p>
                 </div>
-                <Link to="/platforms" className="clean-arrow-link">
-                  <span>Inspect Avionics Architecture</span>
-                  <ArrowRight size={13} />
-                </Link>
+                <div className="platform-card-side">
+                  <div className="platform-card-specs">
+                    <div className="spec-row">
+                      <span className="spec-label">Compute Core</span>
+                      <span className="spec-val">Dual Lockstep M7 @ 400 MHz</span>
+                    </div>
+                    <div className="spec-row">
+                      <span className="spec-label">Regulated Rails</span>
+                      <span className="spec-val">28V, 12V, 5V, 3.3V</span>
+                    </div>
+                  </div>
+                  <Link to="/platforms" className="clean-arrow-link">
+                    <span>Inspect Avionics Architecture</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -217,28 +226,83 @@ export default function Home({ onOpenContact }: HomeProps) {
                 />
               </div>
               <div className="platform-card-body">
-                <div className="platform-card-meta">
-                  <span className="tag-pill">INFRASTRUCTURE</span>
-                  <span className="tag-pill accent">ABUJA CAMPUS</span>
-                </div>
-                <h3 className="platform-card-title">Sovereign Integration &amp; Test Labs</h3>
-                <p className="platform-card-text">
-                  Indigenous ISO Class 7 cleanrooms, thermal vacuum chambers (TVAC),
-                  and 20 kN electrodynamic vibration shakers in Abuja — qualifying
-                  every subsystem to NASA GEVS and ECSS standards before launch.
-                </p>
-                <div className="platform-card-specs">
-                  <div className="spec-row">
-                    <span className="spec-label">Cleanroom</span>
-                    <span className="spec-val">ISO 14644-1 Class 7</span>
+                <div className="platform-card-main">
+                  <div className="platform-card-meta">
+                    <span className="tag-pill">INFRASTRUCTURE</span>
+                    <span className="tag-pill accent">ABUJA CAMPUS</span>
                   </div>
-                  <div className="spec-row">
-                    <span className="spec-label">Vibration Force</span>
-                    <span className="spec-val">20 kN Sine &amp; Random</span>
-                  </div>
+                  <h3 className="platform-card-title">Sovereign Integration &amp; Test Labs</h3>
+                  <p className="platform-card-text">
+                    Indigenous ISO Class 7 cleanrooms, thermal vacuum chambers (TVAC),
+                    and 20 kN electrodynamic vibration shakers in Abuja — qualifying
+                    every subsystem to NASA GEVS and ECSS standards before launch.
+                  </p>
                 </div>
-                <Link to="/platforms" className="clean-arrow-link">
-                  <span>Tour Abuja Test Facilities</span>
+                <div className="platform-card-side">
+                  <div className="platform-card-specs">
+                    <div className="spec-row">
+                      <span className="spec-label">Cleanroom</span>
+                      <span className="spec-val">ISO 14644-1 Class 7</span>
+                    </div>
+                    <div className="spec-row">
+                      <span className="spec-label">Vibration Force</span>
+                      <span className="spec-val">20 kN Sine &amp; Random</span>
+                    </div>
+                  </div>
+                  <Link to="/platforms" className="clean-arrow-link">
+                    <span>Tour Abuja Test Facilities</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* -------------------------------------------------------------------- */}
+      {/* 02B / SPACECRAFT PLATFORM SHOWCASE (High-Clarity Hardware Visual)    */}
+      {/* -------------------------------------------------------------------- */}
+      <section className="spacecraft-showcase-section" id="spacecraft-showcase">
+        <div className="site-container">
+          <div className="section-header-clean" data-reveal>
+            <span className="section-kicker">ORBITAL HARDWARE ARCHITECTURE</span>
+            <h2 className="section-title-clean">
+              STANDARDIZED MODULAR BUS.
+            </h2>
+            <p className="section-lead-clean">
+              High-resolution view of the LUNE 3U–150kg modular satellite platform in orbital configuration.
+              Equipped with dual deployable GaAs solar arrays, Star Tracker autonomous ADCS, and modular payload bay.
+            </p>
+          </div>
+
+          <div className="spacecraft-showcase-frame" data-reveal>
+            <div className="spacecraft-showcase-img-wrap">
+              <img
+                src={images.platform}
+                alt="LUNE modular CubeSat and SmallSat spacecraft bus in orbital flight"
+                className="spacecraft-showcase-img"
+              />
+              <div className="spacecraft-showcase-overlay" />
+              <SpacecraftHotspots />
+            </div>
+
+            <div className="spacecraft-showcase-bar">
+              <div className="showcase-bar-spec">
+                <span className="spec-sub">PLATFORM CLASS</span>
+                <strong>LUNE-BUS-150 / 3U TO 150KG</strong>
+              </div>
+              <div className="showcase-bar-spec">
+                <span className="spec-sub">POINTING CAPABILITY</span>
+                <strong>&lt; 0.05° 3-AXIS REACTION WHEELS</strong>
+              </div>
+              <div className="showcase-bar-spec">
+                <span className="spec-sub">QUALIFICATION</span>
+                <strong>NASA GEVS &amp; ECSS COMPLIANT</strong>
+              </div>
+              <div className="showcase-bar-action">
+                <Link to="/platforms" className="clean-arrow-link" style={{ margin: 0 }}>
+                  <span>Explore Bus Dossier</span>
                   <ArrowRight size={13} />
                 </Link>
               </div>
@@ -265,11 +329,13 @@ export default function Home({ onOpenContact }: HomeProps) {
 
           <div className="missions-cards-grid">
             <div className="mission-card" data-reveal>
-              <div className="mission-card-header">
-                <span className="tag-pill">MISSION 01</span>
-                <span className="tag-pill accent">ACTIVE PATHFINDER</span>
+              <div className="mission-card-lead">
+                <div className="mission-card-header">
+                  <span className="tag-pill">MISSION 01</span>
+                  <span className="tag-pill accent">ACTIVE PATHFINDER</span>
+                </div>
+                <h3 className="mission-card-title">LUNE-1 Orbital Technology Pathfinder</h3>
               </div>
-              <h3 className="mission-card-title">LUNE-1 Orbital Technology Pathfinder</h3>
               <p className="mission-card-desc">
                 First-flight in-orbit demonstration validating our proprietary lockstep avionics,
                 S/X-band telemetry link, and magnetic detumbling control systems in sun-synchronous orbit.
@@ -287,11 +353,13 @@ export default function Home({ onOpenContact }: HomeProps) {
             </div>
 
             <div className="mission-card" data-reveal>
-              <div className="mission-card-header">
-                <span className="tag-pill">NETWORK</span>
-                <span className="tag-pill accent">4 GATEWAYS</span>
+              <div className="mission-card-lead">
+                <div className="mission-card-header">
+                  <span className="tag-pill">NETWORK</span>
+                  <span className="tag-pill accent">4 GATEWAYS</span>
+                </div>
+                <h3 className="mission-card-title">Pan-African Ground Station Gateway</h3>
               </div>
-              <h3 className="mission-card-title">Pan-African Ground Station Gateway</h3>
               <p className="mission-card-desc">
                 Automated multi-station tracking network connecting primary telemetry hubs
                 in Abuja, Nairobi, Cape Town, and Cairo for continuous low-latency command and downlink.
@@ -309,11 +377,13 @@ export default function Home({ onOpenContact }: HomeProps) {
             </div>
 
             <div className="mission-card" data-reveal>
-              <div className="mission-card-header">
-                <span className="tag-pill">ACADEMIC</span>
-                <span className="tag-pill accent">PAUSN CONSORTIUM</span>
+              <div className="mission-card-lead">
+                <div className="mission-card-header">
+                  <span className="tag-pill">ACADEMIC</span>
+                  <span className="tag-pill accent">PAUSN CONSORTIUM</span>
+                </div>
+                <h3 className="mission-card-title">PAUSN-1 Collaborative University Bus</h3>
               </div>
-              <h3 className="mission-card-title">PAUSN-1 Collaborative University Bus</h3>
               <p className="mission-card-desc">
                 Joint university student payload mission providing native African engineering
                 students with hands-on orbital integration, environmental screening, and mission operations.

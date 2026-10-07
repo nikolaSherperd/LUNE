@@ -98,15 +98,17 @@ export default function MissionsPage({ onOpenContact }: MissionsPageProps) {
           <div className="ground-station-grid">
             {groundStations.map((station) => (
               <div key={station.code} className="ground-station-card" data-reveal>
-                <div className="ground-station-header">
-                  <span className="tag-pill">{station.code}</span>
-                  <span className="tag-pill accent">OPERATIONAL</span>
+                <div className="ground-station-lead">
+                  <div className="ground-station-header">
+                    <span className="tag-pill">{station.code}</span>
+                    <span className="tag-pill accent">OPERATIONAL</span>
+                  </div>
+                  <h3 className="ground-station-title">{station.name}</h3>
+                  <span className="ground-station-loc">{station.location}</span>
                 </div>
-                <h3 className="ground-station-title">{station.name}</h3>
-                <span className="ground-station-loc">{station.location}</span>
                 <p className="ground-station-role">{station.role}</p>
                 <div className="ground-station-bands">
-                  <span className="band-label">Frequencies:</span>
+                  <span className="band-label">Frequencies</span>
                   <span className="band-val">{station.bands}</span>
                 </div>
               </div>
@@ -129,6 +131,47 @@ export default function MissionsPage({ onOpenContact }: MissionsPageProps) {
               Explore pathfinder satellites, collaborative university payloads,
               and environmental qualification milestones.
             </p>
+          </div>
+
+          {/* Featured Pathfinder Spacecraft Visual */}
+          <div className="platform-visual-bar" data-reveal style={{ marginBottom: "36px" }}>
+            <div className="platform-visual-media">
+              <img
+                src={images.hero}
+                alt="LUNE Pathfinder-1 orbital satellite in flight"
+                className="platform-visual-img"
+              />
+              <span className="platform-visual-tag">LUNE-PATHFINDER-1 // 520 KM SSO</span>
+            </div>
+            <div className="platform-visual-details">
+              <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                <span className="tag-pill accent">ORBITAL FLIGHT PATHFINDER</span>
+                <span className="tag-pill">ACTIVE TELEMETRY</span>
+              </div>
+              <h3 className="platform-visual-title">Pathfinder-1 Demonstration Mission</h3>
+              <p className="platform-visual-desc">
+                In-orbit flight validation of the standardized 3U platform and lockstep flight avionics.
+                Currently downlinking multispectral telemetry to PAUSN ground stations across Abuja and Nairobi.
+              </p>
+              <div className="platform-visual-specs-row">
+                <div>
+                  <span className="lbl">Orbit Altitude</span>
+                  <span className="val">520 km SSO</span>
+                </div>
+                <div>
+                  <span className="lbl">Inclination</span>
+                  <span className="val">97.4° Polar</span>
+                </div>
+                <div>
+                  <span className="lbl">Telemetry Link</span>
+                  <span className="val">S-Band (2.2 GHz)</span>
+                </div>
+                <div>
+                  <span className="lbl">Mission Clock</span>
+                  <span className="val">MET +412 Days</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Filter Pills */}
@@ -162,12 +205,14 @@ export default function MissionsPage({ onOpenContact }: MissionsPageProps) {
           <div className="missions-cards-grid">
             {filteredProjects.map((prj) => (
               <div key={prj.id} className="mission-card" data-reveal>
-                <div className="mission-card-header">
-                  <span className="tag-pill">{prj.category.toUpperCase()}</span>
-                  <span className="tag-pill accent">{prj.statusBadge}</span>
+                <div className="mission-card-lead">
+                  <div className="mission-card-header">
+                    <span className="tag-pill">{prj.category.toUpperCase()}</span>
+                    <span className="tag-pill accent">{prj.statusBadge}</span>
+                  </div>
+                  <h3 className="mission-card-title">{prj.name}</h3>
+                  <span className="mission-card-headline">{prj.headline}</span>
                 </div>
-                <h3 className="mission-card-title">{prj.name}</h3>
-                <span className="mission-card-headline">{prj.headline}</span>
                 <p className="mission-card-desc">{prj.overview}</p>
 
                 <div className="mission-card-stats">

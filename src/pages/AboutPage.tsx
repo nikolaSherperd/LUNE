@@ -97,14 +97,16 @@ export default function AboutPage({ onOpenContact }: AboutPageProps) {
             <div className="roadmap-clean-grid">
               {journalItems.map((stage) => (
                 <div key={stage.id} className="roadmap-clean-card">
-                  <div className="roadmap-clean-header">
-                    <span className="tag-pill">{stage.stageNumber}</span>
-                    <span className="tag-pill accent">{stage.status}</span>
+                  <div className="roadmap-clean-lead">
+                    <div className="roadmap-clean-header">
+                      <span className="tag-pill">{stage.stageNumber}</span>
+                      <span className="tag-pill accent">{stage.status}</span>
+                    </div>
+                    <h3 className="roadmap-clean-title">{stage.title}</h3>
+                    <span className="roadmap-clean-timeline">{stage.timeline}</span>
                   </div>
-                  <h3 className="roadmap-clean-title">{stage.title}</h3>
-                  <span className="roadmap-clean-timeline">{stage.timeline}</span>
                   <p className="roadmap-clean-desc">{stage.category}</p>
-                  <ul className="clean-bullet-list" style={{ marginTop: "16px" }}>
+                  <ul className="clean-bullet-list">
                     {stage.deliverables.map((item, i) => (
                       <li key={i}>{item}</li>
                     ))}
@@ -137,11 +139,13 @@ export default function AboutPage({ onOpenContact }: AboutPageProps) {
             <div className="cycle-clean-grid">
               {continuousCycle.map((cycle) => (
                 <div key={cycle.step} className="cycle-clean-card">
-                  <div className="cycle-clean-header">
-                    <span className="tag-pill">STEP {cycle.step}</span>
-                    <span className="tag-pill accent">{cycle.sub}</span>
+                  <div className="cycle-clean-lead">
+                    <div className="cycle-clean-header">
+                      <span className="tag-pill">STEP {cycle.step}</span>
+                      <span className="tag-pill accent">{cycle.sub}</span>
+                    </div>
+                    <h3 className="cycle-clean-title">{cycle.title}</h3>
                   </div>
-                  <h3 className="cycle-clean-title">{cycle.title}</h3>
                   <p className="cycle-clean-detail">{cycle.detail}</p>
                 </div>
               ))}
