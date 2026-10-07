@@ -377,7 +377,7 @@ export const projectsData: ProjectItem[] = [
     headline: "Comprehensive Full-Bus Real-Time Emulation",
     statusBadge: "Coming soon...",
     formFactor: "Full Subsystem Suite",
-    timeline: "Completed Q2 2026",
+    timeline: "Q2 2026",
     overview:
       "Over 1,200 continuous hours of hardware-in-the-loop stress testing verifying flight software, telemetry encryption, EPS power regulation, and ADCS reaction wheel response.",
     deliverables: [
@@ -401,7 +401,7 @@ export const projectsData: ProjectItem[] = [
     headline: "Rigorous Space Environment Simulation in Abuja",
     statusBadge: "Coming soon...",
     formFactor: "3U & 6U Engineering Models",
-    timeline: "Completed Q3 2026",
+    timeline: "Q3 2026",
     overview:
       "Subjected engineering structural models to extreme vacuum thermal cycling (-75°C to +135°C @ 10⁻⁶ Torr) and NASA GEVS 14.1 Grms 3-axis vibration testing without mechanical degradation.",
     deliverables: [
@@ -550,7 +550,7 @@ export const engineeringLogsData: EngineeringLogItem[] = [
     date: "19 Jul 2026",
     operator: "T. Ndlovu, Communications Architect",
     title: "X-Band Phased-Array Transponder S-Parameter & Radiation Pattern Mapping",
-    status: "COMPLETED",
+    status: "VERIFIED",
     telemetryPoints: [
       { parameter: "Return Loss (S11)", target: "< -15 dB", measured: "-18.4 dB", result: "OPTIMAL" },
       { parameter: "Transmit Gain (8.2 GHz)", target: "> 24.0 dBi", measured: "24.8 dBi", result: "PASSED" },

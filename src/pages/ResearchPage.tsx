@@ -193,7 +193,9 @@ export default function ResearchPage({ onOpenContact }: ResearchPageProps) {
               <article key={log.id} className="ia-feature-card">
                 <div className="ia-card-header">
                   <span className="ia-badge">{log.code} // {log.date}</span>
-                  <span className="ia-badge green">{log.status}</span>
+                  {log.status.toUpperCase() !== "COMPLETED" && (
+                    <span className="ia-badge green">{log.status}</span>
+                  )}
                 </div>
 
                 <div>

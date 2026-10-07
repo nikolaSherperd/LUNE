@@ -42,7 +42,7 @@ export interface JournalStage {
   category: string;
   title: string;
   date: string;
-  status: "Completed" | "In Progress" | "Planned";
+  status: "Coming soon..." | "Education" | "Research" | "In Progress" | "Planned" | string;
   image?: string;
   deliverables: string[];
   timeline: string;

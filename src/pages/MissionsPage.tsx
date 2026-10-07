@@ -207,8 +207,12 @@ export default function MissionsPage({ onOpenContact }: MissionsPageProps) {
               <div key={prj.id} className="mission-card" data-reveal>
                 <div className="mission-card-lead">
                   <div className="mission-card-header">
-                    <span className="tag-pill">{prj.category.toUpperCase()}</span>
-                    <span className="tag-pill accent">{prj.statusBadge}</span>
+                    {prj.category.toLowerCase() !== "completed" && (
+                      <span className="tag-pill">{prj.category.toUpperCase()}</span>
+                    )}
+                    {prj.statusBadge.toLowerCase() !== "completed" && (
+                      <span className="tag-pill accent">{prj.statusBadge}</span>
+                    )}
                   </div>
                   <h3 className="mission-card-title">{prj.name}</h3>
                   <span className="mission-card-headline">{prj.headline}</span>
