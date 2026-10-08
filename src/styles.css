@@ -4559,7 +4559,7 @@ p,
 
 .logo-acronym {
   font-size: 12px;
-  font-weight: 750;
+  font-weight: 600;
   letter-spacing: 0.16em;
   color: var(--text);
 }
@@ -4679,11 +4679,14 @@ p,
 
 .outcomes-box .shc-h2 {
   font-size: clamp(26px, 3.2vw, 40px);
-  line-height: 1.1;
-  letter-spacing: 0.04em;
-  font-weight: 750;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  font-weight: 550;
   color: #fff;
   margin: 12px 0 0;
+  display: inline-block;
+  transform: scaleY(1.07);
+  transform-origin: left top;
 }
 
 .outcomes-right {
@@ -5030,11 +5033,14 @@ p,
 
 .prefooter-h2 {
   font-size: clamp(30px, 4.6vw, 64px);
-  line-height: 1.06;
-  letter-spacing: 0.04em;
-  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-weight: 550;
   color: #fff;
   margin: 0 0 36px;
+  display: inline-block;
+  transform: scaleY(1.07);
+  transform-origin: left top;
 }
 
 /* 12. SpaceX-Style Minimalist Footer */
@@ -5853,12 +5859,15 @@ p,
 .hero-clean-headline {
   font-family: var(--font-display, "Inter Tight", sans-serif);
   font-size: clamp(34px, 5.2vw, 68px);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  font-weight: 550;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
   color: #ffffff;
-  margin: 0 0 24px 0;
+  margin: 0 0 28px 0;
   text-transform: uppercase;
+  display: block;
+  transform: scaleY(1.08);
+  transform-origin: left top;
 }
 
 .hero-clean-headline .accent-text {
@@ -5924,12 +5933,15 @@ p,
 
 .metric-card-val {
   font-family: var(--font-display, "Inter Tight", sans-serif);
-  font-size: clamp(30px, 2.7vw, 40px);
-  font-weight: 800;
+  font-size: clamp(32px, 2.9vw, 44px);
+  font-weight: 600;
   color: #ffffff;
   letter-spacing: -0.025em;
   font-variant-numeric: tabular-nums;
-  line-height: 1.05;
+  line-height: 0.98;
+  display: inline-block;
+  transform: scaleY(1.08);
+  transform-origin: left bottom;
 }
 
 .metric-card-label {
@@ -6156,7 +6168,7 @@ p,
 }
 
 .section-kicker {
-  display: inline-block;
+  display: block;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -6168,12 +6180,15 @@ p,
 .section-title-clean {
   font-family: var(--font-display, "Inter Tight", sans-serif);
   font-size: clamp(26px, 3.4vw, 44px);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-weight: 550;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
   color: #ffffff;
-  margin: 0 0 16px 0;
+  margin: 0 0 20px 0;
   text-transform: uppercase;
+  display: block;
+  transform: scaleY(1.07);
+  transform-origin: left top;
 }
 
 .section-lead-clean {
@@ -6589,12 +6604,15 @@ p,
 .vision-banner-title {
   font-family: var(--font-display, "Inter Tight", sans-serif);
   font-size: clamp(28px, 4vw, 48px);
-  font-weight: 800;
-  line-height: 1.08;
+  font-weight: 550;
+  line-height: 1.02;
   letter-spacing: -0.025em;
   color: #ffffff;
-  margin: 12px 0 20px 0;
+  margin: 0 0 24px 0;
   text-transform: uppercase;
+  display: block;
+  transform: scaleY(1.07);
+  transform-origin: left top;
 }
 
 .vision-banner-title .accent-text {
@@ -6635,10 +6653,14 @@ p,
 .cta-banner-heading {
   font-family: var(--font-display, "Inter Tight", sans-serif);
   font-size: clamp(24px, 3vw, 36px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
   color: #ffffff;
-  margin: 8px 0 12px 0;
+  margin: 0 0 14px 0;
+  display: block;
+  transform: scaleY(1.06);
+  transform-origin: left top;
 }
 
 .cta-banner-description {
@@ -6707,12 +6729,15 @@ p,
 .page-hero-title {
   font-family: var(--font-display, "Inter Tight", sans-serif);
   font-size: clamp(32px, 4.8vw, 56px);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.025em;
+  font-weight: 550;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
   color: #ffffff;
-  margin: 12px 0 20px 0;
+  margin: 0 0 24px 0;
   text-transform: uppercase;
+  display: block;
+  transform: scaleY(1.08);
+  transform-origin: left top;
 }
 
 .page-hero-title .accent-text {
@@ -7241,9 +7266,13 @@ p,
 .team-statement-box h3 {
   font-family: var(--font-display, "Inter Tight", sans-serif);
   font-size: clamp(22px, 2.8vw, 32px);
-  font-weight: 700;
+  font-weight: 600;
   color: #ffffff;
-  margin: 0 0 16px 0;
+  margin: 0 0 18px 0;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  transform: scaleY(1.06);
+  transform-origin: left top;
 }
 
 .team-statement-box p {
@@ -7751,10 +7780,13 @@ p,
 .platform-visual-title {
   font-family: var(--font-display, "Inter Tight", sans-serif);
   font-size: clamp(22px, 2.5vw, 30px);
-  font-weight: 700;
+  font-weight: 600;
   color: #ffffff;
   margin: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  transform: scaleY(1.06);
+  transform-origin: left top;
 }
 
 .platform-visual-desc {
