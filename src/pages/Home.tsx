@@ -105,13 +105,47 @@ export default function Home({ onOpenContact }: HomeProps) {
           <p className="partners-clean-label">
             Collaborating with sovereign space agencies, university consortia, and commercial operators across Africa
           </p>
-          <div className="partners-clean-grid">
-            {trustedPartners.slice(0, 6).map((partner) => (
-              <div key={partner.id} className="partner-clean-cell">
-                <span className="partner-clean-acronym">{partner.acronym}</span>
-                <span className="partner-clean-desc">{partner.name}</span>
-              </div>
-            ))}
+        </div>
+
+        <div className="partners-marquee-wrapper" aria-label="Collaborating Organizations">
+          <div className="partners-marquee-track">
+            <div className="partners-marquee-group">
+              {trustedPartners.map((partner) => (
+                <div key={`p1-${partner.id}`} className="partner-marquee-card">
+                  <div className="partner-logo-box">
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.acronym} logo`}
+                      className="partner-logo-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="partner-info-box">
+                    <span className="partner-info-acronym">{partner.acronym}</span>
+                    <span className="partner-info-name">{partner.name}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="partners-marquee-group" aria-hidden="true">
+              {trustedPartners.map((partner) => (
+                <div key={`p2-${partner.id}`} className="partner-marquee-card">
+                  <div className="partner-logo-box">
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.acronym} logo`}
+                      className="partner-logo-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="partner-info-box">
+                    <span className="partner-info-acronym">{partner.acronym}</span>
+                    <span className="partner-info-name">{partner.name}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -319,7 +353,7 @@ export default function Home({ onOpenContact }: HomeProps) {
           <div className="section-header-clean" data-reveal>
             <span className="section-kicker">FLIGHT OPERATIONS</span>
             <h2 className="section-title-clean">
-              ACTIVE MISSIONS &amp; HERITAGE.
+              MISSIONS &amp; HERITAGE.
             </h2>
             <p className="section-lead-clean">
               Track sovereign orbital flight pathfinders, automated ground station
@@ -419,9 +453,9 @@ export default function Home({ onOpenContact }: HomeProps) {
             <div className="vision-banner-content">
               <span className="section-kicker">THE HUMAN ENGINE</span>
               <h2 className="vision-banner-title">
-                LUNE BUILDS MACHINES.
+                WE BUILD THE TALENT.
                 <br />
-                <span className="accent-text">PAUSN BUILDS PEOPLE.</span>
+                <span className="accent-text">WE BUILD THE MACHINES.</span>
               </h2>
               <p className="vision-banner-text">
                 Spacecraft cannot thrive on imported talent alone. To create an enduring space

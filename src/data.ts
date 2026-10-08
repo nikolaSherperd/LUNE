@@ -3,7 +3,7 @@ import launchVehicle from "../Images/58b129e81e16c5ccff592de06b93656e.jpg";
 import launchPad from "../Images/71e3fbd44c9688627366e223310b9c66.jpg";
 import largeSpacecraft from "../Images/98ae5c7f60e7d937a960430b82d0f83f.jpg";
 import darkSatellite from "../Images/ab5bdf14b63eba46547f5ff99c5fce11.jpg";
-import luneWordmark from "../Images/1500x500.jpeg";
+import luneWordmark from "../Images/LOGO/lune-logo.webp";
 import luneEmblem from "../Images/gkZcl8oI_400x400.jpg";
 import siteBackground from "../Images/site-background.webp";
 
@@ -753,7 +753,7 @@ export const aboutData: AboutData = {
       },
       {
         title: "Machines & People Symbiosis",
-        quote: "LUNE builds the machines. PAUSN builds the people.",
+        quote: "We build the talent. We build the machines.",
         detail:
           "Building spacecraft requires more than a factory. Africa must not perpetually import aerospace talent, but cultivate native engineers through hands-on mission apprenticeships.",
       },
@@ -1567,18 +1567,66 @@ export interface PartnerItem {
   name: string;
   acronym: string;
   category: string;
+  logo: string;
 }
 
 export const trustedPartners: PartnerItem[] = [
-  { id: "nasrda", name: "National Space Research and Development Agency", acronym: "NASRDA", category: "Civil Space" },
-  { id: "afsa", name: "African Space Agency", acronym: "AfSA", category: "Pan-African Agency" },
-  { id: "dsa", name: "Defence Space Administration", acronym: "DSA", category: "National Security" },
-  { id: "pausn", name: "Pan-African University Space Network", acronym: "PAUSN", category: "Academic Consortium" },
-  { id: "nigcomsat", name: "Nigerian Communications Satellite Ltd", acronym: "NIGCOMSAT", category: "Commercial Telecom" },
-  { id: "eofa", name: "Earth Observation Alliance", acronym: "EOA", category: "Civil Remote Sensing" },
-  { id: "comm-leo", name: "Commercial Constellation Operators", acronym: "LEO-SAT", category: "Commercial Operator" },
-  { id: "hydro-sat", name: "Hydrological Sensing Network", acronym: "HYDRO-SAT", category: "Resource Management" },
-  { id: "tactical-net", name: "Tactical Defense Communications", acronym: "DEF-NET", category: "National Security" },
+  {
+    id: "nasrda",
+    name: "National Space Research and Development Agency",
+    acronym: "NASRDA",
+    category: "Civil Space Agency",
+    logo: "/logos/nasrda.png",
+  },
+  {
+    id: "afsa",
+    name: "African Space Agency",
+    acronym: "AfSA",
+    category: "Pan-African Agency",
+    logo: "/logos/afsa.png",
+  },
+  {
+    id: "dsa",
+    name: "Defence Space Administration",
+    acronym: "DSA",
+    category: "National Security",
+    logo: "/logos/dsa.png",
+  },
+  {
+    id: "pausn",
+    name: "Pan-African University Space Network",
+    acronym: "PAUSN",
+    category: "Academic Consortium",
+    logo: "/logos/pausn.png",
+  },
+  {
+    id: "sansa",
+    name: "South African National Space Agency",
+    acronym: "SANSA",
+    category: "Civil Space Agency",
+    logo: "/logos/sansa.svg",
+  },
+  {
+    id: "nigcomsat",
+    name: "Nigerian Communications Satellite Ltd",
+    acronym: "NIGCOMSAT",
+    category: "Commercial Telecom",
+    logo: "/logos/nigcomsat.png",
+  },
+  {
+    id: "ksa",
+    name: "Kenya Space Agency",
+    acronym: "KSA",
+    category: "Civil Space Agency",
+    logo: "/logos/ksa.png",
+  },
+  {
+    id: "egsa",
+    name: "Egyptian Space Agency",
+    acronym: "EgSA",
+    category: "Civil Space Agency",
+    logo: "/logos/egsa.png",
+  },
 ];
 
 /* -------------------------------------------------------------------------- */
