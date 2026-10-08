@@ -5043,14 +5043,62 @@ p,
   transform-origin: left top;
 }
 
-/* 12. SpaceX-Style Minimalist Footer */
+/* 12. SpaceX-Style Minimalist Footer with Bidirectional Bleed */
 .spacex-footer {
+  position: relative;
   width: 100%;
-  background: rgba(8, 10, 14, 0.75);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 44px 24px;
+  /* Bleed body into footer: gradual deepening from atmospheric translucent to deep obsidian */
+  background:
+    radial-gradient(ellipse 70% 120px at 50% 0%, rgba(197, 169, 109, 0.05) 0%, transparent 100%),
+    linear-gradient(
+      to bottom,
+      rgba(8, 10, 14, 0.65) 0%,
+      rgba(7, 9, 13, 0.88) 40%,
+      rgba(5, 6, 8, 0.98) 100%
+    );
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-top: none;
+  padding: 56px 24px 48px;
+  margin-top: 32px;
+  z-index: 5;
+}
+
+/* Upward atmospheric bleed: feathers footer tone 100px up into the body */
+.spacex-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 100px;
+  background: linear-gradient(
+    to top,
+    rgba(8, 10, 14, 0.65) 0%,
+    rgba(8, 10, 14, 0.32) 40%,
+    rgba(8, 10, 14, 0.08) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Feathered horizon line: soft luminous shimmer that fades off towards the edges */
+.spacex-footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 6%;
+  right: 6%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 15%,
+    rgba(197, 169, 109, 0.18) 50%,
+    rgba(255, 255, 255, 0.03) 85%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 .spacex-footer-inner {
@@ -5095,17 +5143,22 @@ p,
   border: none;
   padding: 0;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .spacex-footer-links a:hover,
 .spacex-footer-links button:hover {
   color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
 }
 
 @media (max-width: 768px) {
   .spacex-footer {
-    padding: 32px 16px;
+    padding: 38px 16px 34px;
+    margin-top: 20px;
+  }
+  .spacex-footer::before {
+    height: 60px;
   }
   .spacex-footer-inner {
     flex-direction: column;
@@ -7405,6 +7458,39 @@ p,
   font-size: 12px;
   color: #c5a96d;
   font-weight: 600;
+}
+
+.contact-social-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.contact-social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.82);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.contact-social-pill:hover {
+  background: rgba(197, 169, 109, 0.15);
+  border-color: rgba(197, 169, 109, 0.45);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .clean-form-card {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { ArrowRight, CheckCircle2, Mail, MapPin, Phone, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle2, ExternalLink, Mail, MapPin, Phone, Share2, Shield } from "lucide-react";
 import { SpaceXFooter } from "../components/layout";
 import { INQUIRY_TYPES, submitContactInquiry } from "../services/contact";
-import { images } from "../data";
+import { images, socialLinks } from "../data";
 
 export interface ContactPageProps {
   onOpenContact?: () => void;
@@ -74,7 +74,7 @@ export default function ContactPage({}: ContactPageProps) {
 
         <div className="site-container page-hero-container">
           <div className="page-hero-content" data-reveal>
-            <span className="section-kicker">GET IN TOUCH</span>
+            <span className="section-kicker">GET INVOLVED</span>
             <h1 className="page-hero-title">
               CONNECT WITH OUR
               <br />
@@ -132,6 +132,33 @@ export default function ContactPage({}: ContactPageProps) {
                     University student payloads, research fellowships, and ground station collaboration.
                   </p>
                   <span className="contact-info-detail">pausn@lune.space</span>
+                </div>
+              </div>
+
+              <div className="contact-info-card">
+                <div className="contact-info-icon">
+                  <Share2 size={22} />
+                </div>
+                <div>
+                  <h3 className="contact-info-title">Official Dispatches &amp; Network</h3>
+                  <p className="contact-info-desc">
+                    Follow orbital updates, flight test announcements, and engineering releases.
+                  </p>
+                  <div className="contact-social-pills">
+                    {socialLinks.map((social) => (
+                      <a
+                        key={social.id}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="contact-social-pill"
+                        aria-label={`LUNE Aerospace on ${social.name}`}
+                      >
+                        <span>{social.name}</span>
+                        <ExternalLink size={11} />
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

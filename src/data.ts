@@ -1833,4 +1833,64 @@ export const continuousCycle: CycleStep[] = [
   },
 ];
 
+/* -------------------------------------------------------------------------- */
+/* Official Social Channels & Profiles                                        */
+/* -------------------------------------------------------------------------- */
+export interface SocialLink {
+  id: string;
+  name: string;
+  shortName: string;
+  url: string;
+  handle: string;
+}
+
+export const socialLinks: SocialLink[] = [
+  {
+    id: "x",
+    name: "X (Twitter)",
+    shortName: "X",
+    url: "https://x.com/LuneAerospace",
+    handle: "@LuneAerospace",
+  },
+  {
+    id: "linkedin",
+    name: "LinkedIn",
+    shortName: "LINKEDIN",
+    url: "https://linkedin.com/company/lune-aerospace",
+    handle: "lune-aerospace",
+  },
+  {
+    id: "youtube",
+    name: "YouTube",
+    shortName: "YOUTUBE",
+    url: "https://youtube.com/@LuneAerospace",
+    handle: "@LuneAerospace",
+  },
+  {
+    id: "github",
+    name: "GitHub",
+    shortName: "GITHUB",
+    url: "https://github.com/lune-aerospace",
+    handle: "lune-aerospace",
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/* Official Company Contact Information                                      */
+/* -------------------------------------------------------------------------- */
+export const companyContact = {
+  generalEmail: "hello@lune.africa",
+  rfqEmail: "missions@lune.africa",
+  pressEmail: "press@lune.africa",
+  careersEmail: "careers@lune.africa",
+  phone: "+234 (0) 9 292 4800",
+  address: {
+    facility: "Cleanroom Integration Bay & Testing Campus",
+    city: "Abuja",
+    territory: "Federal Capital Territory",
+    country: "Nigeria",
+    coordinates: "09°04'N, 07°29'E",
+  },
+};
+
 
