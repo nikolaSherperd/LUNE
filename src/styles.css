@@ -6094,10 +6094,10 @@ p,
   display: flex;
   align-items: center;
   gap: 14px;
-  background: rgba(14, 18, 26, 0.85);
+  background: rgba(14, 18, 26, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
-  padding: 8px 18px 8px 10px;
+  padding: 8px 18px 8px 12px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -6115,23 +6115,24 @@ p,
 
 .partner-logo-box {
   height: 48px;
-  min-width: 58px;
-  padding: 5px 10px;
-  background: #ffffff;
-  border-radius: 7px;
+  min-width: 52px;
+  padding: 4px 6px;
+  background: transparent;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 
 .partner-logo-img {
-  height: 34px;
+  height: 36px;
   width: auto;
   max-width: 100px;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
 }
 
 .partner-info-box {
@@ -6160,10 +6161,10 @@ p,
 
 @keyframes partners-transit {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -6181,12 +6182,14 @@ p,
   }
   .partner-logo-box {
     height: 42px;
-    min-width: 50px;
-    padding: 4px 8px;
+    min-width: 44px;
+    padding: 2px 4px;
+    background: transparent;
+    box-shadow: none;
   }
   .partner-logo-img {
-    height: 28px;
-    max-width: 80px;
+    height: 30px;
+    max-width: 84px;
   }
   .partner-info-acronym {
     font-size: 13px;
