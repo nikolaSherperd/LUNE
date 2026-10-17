@@ -110,39 +110,35 @@ export default function Home({ onOpenContact }: HomeProps) {
         <div className="partners-marquee-wrapper" aria-label="Collaborating Organizations">
           <div className="partners-marquee-track">
             <div className="partners-marquee-group">
-              {trustedPartners.map((partner) => (
-                <div key={`p1-${partner.id}`} className="partner-marquee-card">
-                  <div className="partner-logo-box">
-                    <img
-                      src={partner.logo}
-                      alt={`${partner.acronym} logo`}
-                      className="partner-logo-img"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="partner-info-box">
-                    <span className="partner-info-acronym">{partner.acronym}</span>
-                    <span className="partner-info-name">{partner.name}</span>
-                  </div>
+              {[...trustedPartners, ...trustedPartners].map((partner, index) => (
+                <div
+                  key={`p1-${partner.id}-${index}`}
+                  className="partner-logo-item"
+                  title={`${partner.acronym} — ${partner.name}`}
+                >
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.acronym} logo`}
+                    className="partner-logo-img"
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>
 
             <div className="partners-marquee-group" aria-hidden="true">
-              {trustedPartners.map((partner) => (
-                <div key={`p2-${partner.id}`} className="partner-marquee-card">
-                  <div className="partner-logo-box">
-                    <img
-                      src={partner.logo}
-                      alt={`${partner.acronym} logo`}
-                      className="partner-logo-img"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="partner-info-box">
-                    <span className="partner-info-acronym">{partner.acronym}</span>
-                    <span className="partner-info-name">{partner.name}</span>
-                  </div>
+              {[...trustedPartners, ...trustedPartners].map((partner, index) => (
+                <div
+                  key={`p2-${partner.id}-${index}`}
+                  className="partner-logo-item"
+                  title={`${partner.acronym} — ${partner.name}`}
+                >
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.acronym} logo`}
+                    className="partner-logo-img"
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>

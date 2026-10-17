@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+  body {
+    background: #08090b;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 40px;
+    margin: 0;
+  }
+  h2 { font-size: 14px; color: #c5a96d; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .section { margin-bottom: 50px; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(4,6,9,0.45); }
+  
+  /* Option A: Pure Logos Only */
+  .logos-only-row {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    padding: 10px 20px;
+  }
+  .logo-only-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+  }
+  .logo-only-img {
+    height: 40px;
+    max-width: 140px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .logo-only-img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  /* Option B: Logos + Names (Transparent, No Cards) */
+  .logos-names-row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 10px 20px;
+  }
+  .logo-name-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-name-img {
+    height: 36px;
+    max-width: 90px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+  .acronym {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+  .subname {
+    font-size: 10.5px;
+    color: #8e95a5;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <h2>Option A: Pure Logo Marquee (Logos Only, No White Background, No Names)</h2>
+  <div class='section'>
+    <div class='logos-only-row'>
+      <div class='logo-only-item'><img class='logo-only-img' src='public/logos/nasrda.png'></div>
+      <div class='logo-only-item'><img class='logo-only-img' src='public/logos/afsa.png'></div>
+      <div class='logo-only-item'><img class='logo-only-img' src='public/logos/dsa.png'></div>
+      <div class='logo-only-item'><img class='logo-only-img' src='public/logos/pausn.png'></div>
+      <div class='logo-only-item'><img class='logo-only-img' src='public/logos/sansa.svg'></div>
+      <div class='logo-only-item'><img class='logo-only-img' src='public/logos/nigcomsat.png'></div>
+      <div class='logo-only-item'><img class='logo-only-img' src='public/logos/ksa.png'></div>
+      <div class='logo-only-item'><img class='logo-only-img' src='public/logos/egsa.png'></div>
+    </div>
+  </div>
+
+  <h2>Option B: Logos + Names (Transparent, No Card Backgrounds)</h2>
+  <div class='section'>
+    <div class='logos-names-row'>
+      <div class='logo-name-item'>
+        <img class='logo-name-img' src='public/logos/nasrda.png'>
+        <div class='info'><span class='acronym'>NASRDA</span><span class='subname'>National Space Agency</span></div>
+      </div>
+      <div class='logo-name-item'>
+        <img class='logo-name-img' src='public/logos/afsa.png'>
+        <div class='info'><span class='acronym'>AfSA</span><span class='subname'>African Space Agency</span></div>
+      </div>
+      <div class='logo-name-item'>
+        <img class='logo-name-img' src='public/logos/sansa.svg'>
+        <div class='info'><span class='acronym'>SANSA</span><span class='subname'>South African Space Agency</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
