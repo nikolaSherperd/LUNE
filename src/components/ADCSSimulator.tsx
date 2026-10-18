@@ -159,7 +159,7 @@ export function ADCSSimulator() {
       style={{
         background: "rgba(12, 14, 19, 0.82)",
         border: "1px solid var(--line)",
-        borderRadius: "14px",
+        borderRadius: "4px",
         overflow: "hidden",
         backdropFilter: "blur(20px)",
       }}
@@ -213,7 +213,7 @@ export function ADCSSimulator() {
               onClick={() => setControlMode(mode.id as any)}
               style={{
                 padding: "5px 10px",
-                borderRadius: "4px",
+                borderRadius: "0px",
                 fontSize: "11px",
                 fontFamily: "var(--font-mono, monospace)",
                 background:
@@ -249,7 +249,7 @@ export function ADCSSimulator() {
               position: "relative",
               height: "300px",
               background: "#0A0C10",
-              borderRadius: "10px",
+              borderRadius: "4px",
               border: "1px solid var(--line)",
               overflow: "hidden",
             }}
@@ -294,7 +294,7 @@ export function ADCSSimulator() {
             <span className="micro-label">ACTUATOR MOMENTUM STATUS</span>
             <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginTop: "12px" }}>
               {/* Wheel X */}
-              <div style={{ background: "rgba(255,255,255,0.02)", padding: "12px 14px", borderRadius: "8px", border: "1px solid var(--line)" }}>
+              <div style={{ background: "rgba(255,255,255,0.02)", padding: "12px 14px", borderRadius: "4px", border: "1px solid var(--line)" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", marginBottom: "4px" }}>
                   <span>REACTION WHEEL X (ROLL)</span>
                   <strong style={{ color: "var(--accent)", fontFamily: "var(--font-mono, monospace)" }}>
@@ -307,7 +307,7 @@ export function ADCSSimulator() {
               </div>
 
               {/* Wheel Y */}
-              <div style={{ background: "rgba(255,255,255,0.02)", padding: "12px 14px", borderRadius: "8px", border: "1px solid var(--line)" }}>
+              <div style={{ background: "rgba(255,255,255,0.02)", padding: "12px 14px", borderRadius: "4px", border: "1px solid var(--line)" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", marginBottom: "4px" }}>
                   <span>REACTION WHEEL Y (PITCH)</span>
                   <strong style={{ color: "var(--accent)", fontFamily: "var(--font-mono, monospace)" }}>
@@ -320,7 +320,7 @@ export function ADCSSimulator() {
               </div>
 
               {/* Wheel Z */}
-              <div style={{ background: "rgba(255,255,255,0.02)", padding: "12px 14px", borderRadius: "8px", border: "1px solid var(--line)" }}>
+              <div style={{ background: "rgba(255,255,255,0.02)", padding: "12px 14px", borderRadius: "4px", border: "1px solid var(--line)" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", marginBottom: "4px" }}>
                   <span>REACTION WHEEL Z (YAW)</span>
                   <strong style={{ color: "var(--accent)", fontFamily: "var(--font-mono, monospace)" }}>

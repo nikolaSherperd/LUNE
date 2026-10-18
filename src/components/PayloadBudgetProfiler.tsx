@@ -57,7 +57,7 @@ export function PayloadBudgetProfiler() {
       style={{
         background: "rgba(12, 14, 19, 0.82)",
         border: "1px solid var(--line)",
-        borderRadius: "14px",
+        borderRadius: "4px",
         overflow: "hidden",
         backdropFilter: "blur(20px)",
       }}
@@ -114,7 +114,7 @@ export function PayloadBudgetProfiler() {
             style={{
               background: "rgba(255, 255, 255, 0.02)",
               padding: "16px",
-              borderRadius: "8px",
+              borderRadius: "4px",
               border: "1px solid var(--line)",
             }}
           >
@@ -141,7 +141,7 @@ export function PayloadBudgetProfiler() {
             style={{
               background: "rgba(255, 255, 255, 0.02)",
               padding: "16px",
-              borderRadius: "8px",
+              borderRadius: "4px",
               border: "1px solid var(--line)",
             }}
           >
@@ -170,7 +170,7 @@ export function PayloadBudgetProfiler() {
             style={{
               background: "rgba(255, 255, 255, 0.02)",
               padding: "16px",
-              borderRadius: "8px",
+              borderRadius: "4px",
               border: "1px solid var(--line)",
             }}
           >
@@ -199,7 +199,7 @@ export function PayloadBudgetProfiler() {
             style={{
               background: "rgba(255, 255, 255, 0.02)",
               padding: "16px",
-              borderRadius: "8px",
+              borderRadius: "4px",
               border: "1px solid var(--line)",
             }}
           >
@@ -215,7 +215,7 @@ export function PayloadBudgetProfiler() {
                   style={{
                     flex: 1,
                     padding: "6px 4px",
-                    borderRadius: "4px",
+                    borderRadius: "0px",
                     background:
                       busBatteryWh === cap
                         ? "rgba(194, 155, 98, 0.2)"
@@ -247,7 +247,7 @@ export function PayloadBudgetProfiler() {
             gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
             gap: "16px",
             background: "rgba(9, 11, 15, 0.9)",
-            borderRadius: "10px",
+            borderRadius: "4px",
             padding: "20px",
             border: "1px solid var(--line)",
           }}

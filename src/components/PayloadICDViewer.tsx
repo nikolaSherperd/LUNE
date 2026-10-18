@@ -68,7 +68,7 @@ export function PayloadICDViewer({ onOpenContact }: PayloadICDViewerProps) {
       style={{
         background: "rgba(12, 14, 19, 0.85)",
         border: "1px solid var(--accent)",
-        borderRadius: "14px",
+        borderRadius: "4px",
         overflow: "hidden",
         backdropFilter: "blur(20px)",
       }}
@@ -109,7 +109,7 @@ export function PayloadICDViewer({ onOpenContact }: PayloadICDViewerProps) {
             onClick={() => setActiveBus("cubesat")}
             style={{
               padding: "6px 12px",
-              borderRadius: "4px",
+              borderRadius: "0px",
               fontSize: "11px",
               fontFamily: "var(--font-mono, monospace)",
               background: activeBus === "cubesat" ? "var(--accent)" : "rgba(255,255,255,0.05)",
@@ -126,7 +126,7 @@ export function PayloadICDViewer({ onOpenContact }: PayloadICDViewerProps) {
             onClick={() => setActiveBus("smallsat")}
             style={{
               padding: "6px 12px",
-              borderRadius: "4px",
+              borderRadius: "0px",
               fontSize: "11px",
               fontFamily: "var(--font-mono, monospace)",
               background: activeBus === "smallsat" ? "var(--accent)" : "rgba(255,255,255,0.05)",
