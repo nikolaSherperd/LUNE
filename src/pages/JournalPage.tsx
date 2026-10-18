@@ -124,7 +124,7 @@ export default function JournalPage({ onOpenContact }: JournalPageProps) {
                   <div
                     style={{
                       background: "rgba(0, 0, 0, 0.35)",
-                      borderRadius: "6px",
+                      borderRadius: "4px",
                       padding: "16px",
                       fontSize: "13px",
                       color: "var(--text-dim)",
@@ -146,7 +146,7 @@ export default function JournalPage({ onOpenContact }: JournalPageProps) {
                         color: "var(--muted)",
                         background: "rgba(255, 255, 255, 0.04)",
                         padding: "2px 8px",
-                        borderRadius: "3px",
+                        borderRadius: "0px",
                       }}
                     >
                       #{tag}

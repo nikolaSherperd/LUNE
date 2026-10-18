@@ -502,7 +502,7 @@ Deorbit Delta-V Requirement: ~${deltaVDeorbitMS} m/s`;
               alignItems: "center",
               gap: "8px",
               padding: "10px 16px",
-              borderRadius: "6px",
+              borderRadius: "0px",
               background: "rgba(255, 255, 255, 0.05)",
               border: "1px solid var(--line)",
               color: "var(--text)",
