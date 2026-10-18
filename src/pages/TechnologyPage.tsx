@@ -125,7 +125,7 @@ export default function TechnologyPage({ onOpenContact }: TechnologyPageProps) {
                 style={{
                   background: "rgba(14, 16, 21, 0.65)",
                   border: "1px solid var(--line)",
-                  borderRadius: "6px",
+                  borderRadius: "4px",
                   padding: "18px",
                 }}
               >
