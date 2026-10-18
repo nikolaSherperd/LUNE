@@ -141,7 +141,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     padding: "10px 14px",
                     background: "rgba(220, 38, 38, 0.12)",
                     border: "1px solid rgba(220, 38, 38, 0.4)",
-                    borderRadius: "6px",
+                    borderRadius: "4px",
                     color: "#fca5a5",
                     fontSize: "12px",
                     marginBottom: "16px",

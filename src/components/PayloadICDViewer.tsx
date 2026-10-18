@@ -217,7 +217,7 @@ export function PayloadICDViewer({ onOpenContact }: PayloadICDViewerProps) {
               </table>
             </div>
 
-            <div style={{ background: "rgba(255,255,255,0.02)", padding: "16px", borderRadius: "8px", border: "1px solid var(--line)" }}>
+            <div style={{ background: "rgba(255,255,255,0.02)", padding: "16px", borderRadius: "4px", border: "1px solid var(--line)" }}>
               <span className="micro-label">THERMAL EXPANSION COMPLIANCE</span>
               <p style={{ fontSize: "12px", color: "var(--muted)", margin: "8px 0" }}>
                 Payload chassis must match satellite structural Coefficient of Thermal Expansion (CTE).
@@ -259,7 +259,7 @@ export function PayloadICDViewer({ onOpenContact }: PayloadICDViewerProps) {
               </table>
             </div>
 
-            <div style={{ background: "rgba(255,255,255,0.02)", padding: "16px", borderRadius: "8px", border: "1px solid var(--line)" }}>
+            <div style={{ background: "rgba(255,255,255,0.02)", padding: "16px", borderRadius: "4px", border: "1px solid var(--line)" }}>
               <span className="micro-label">ELECTRICAL PROTECTION</span>
               <p style={{ fontSize: "12px", color: "var(--muted)", margin: "8px 0" }}>
                 Every power channel features latchup current limiters (LCL) with automated overcurrent
@@ -300,7 +300,7 @@ export function PayloadICDViewer({ onOpenContact }: PayloadICDViewerProps) {
               </table>
             </div>
 
-            <div style={{ background: "rgba(255,255,255,0.02)", padding: "16px", borderRadius: "8px", border: "1px solid var(--line)" }}>
+            <div style={{ background: "rgba(255,255,255,0.02)", padding: "16px", borderRadius: "4px", border: "1px solid var(--line)" }}>
               <span className="micro-label">TELEMETRY DOWNLINK PIPELINE</span>
               <p style={{ fontSize: "12px", color: "var(--muted)", margin: "8px 0" }}>
                 Payload data is buffered into on-board high-reliability NVMe storage before automated transmission
@@ -341,7 +341,7 @@ export function PayloadICDViewer({ onOpenContact }: PayloadICDViewerProps) {
               </table>
             </div>
 
-            <div style={{ background: "rgba(255,255,255,0.02)", padding: "16px", borderRadius: "8px", border: "1px solid var(--line)" }}>
+            <div style={{ background: "rgba(255,255,255,0.02)", padding: "16px", borderRadius: "4px", border: "1px solid var(--line)" }}>
               <span className="micro-label">IN-HOUSE ABUJA TEST FACILITY</span>
               <p style={{ fontSize: "12px", color: "var(--muted)", margin: "8px 0" }}>
                 All acceptance and qualification testing is performed natively inside LUNE's Abuja campus
@@ -375,7 +375,7 @@ export function PayloadICDViewer({ onOpenContact }: PayloadICDViewerProps) {
               alignItems: "center",
               gap: "8px",
               padding: "10px 16px",
-              borderRadius: "6px",
+              borderRadius: "0px",
               background: "rgba(255, 255, 255, 0.05)",
               border: "1px solid var(--line)",
               color: "var(--text)",

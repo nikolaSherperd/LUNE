@@ -148,7 +148,7 @@ export function ResearchArchive() {
           padding: "16px 20px",
           background: "rgba(14, 16, 22, 0.75)",
           border: "1px solid var(--line)",
-          borderRadius: "10px",
+          borderRadius: "4px",
           backdropFilter: "blur(16px)",
         }}
       >
@@ -161,7 +161,7 @@ export function ResearchArchive() {
               onClick={() => setSelectedCategory(cat)}
               style={{
                 padding: "6px 12px",
-                borderRadius: "4px",
+                borderRadius: "0px",
                 fontSize: "11px",
                 fontFamily: "var(--font-mono, monospace)",
                 background:
@@ -202,7 +202,7 @@ export function ResearchArchive() {
             style={{
               width: "100%",
               padding: "8px 12px 8px 34px",
-              borderRadius: "6px",
+              borderRadius: "4px",
               background: "rgba(255, 255, 255, 0.04)",
               border: "1px solid var(--line)",
               color: "var(--text)",
@@ -221,7 +221,7 @@ export function ResearchArchive() {
             style={{
               background: "rgba(12, 14, 19, 0.8)",
               border: "1px solid var(--line)",
-              borderRadius: "10px",
+              borderRadius: "4px",
               padding: "20px 24px",
               transition: "border-color 0.2s ease",
             }}
@@ -443,7 +443,7 @@ export function ResearchArchive() {
                     alignItems: "center",
                     gap: "8px",
                     padding: "10px 16px",
-                    borderRadius: "6px",
+                    borderRadius: "0px",
                     background: "rgba(255, 255, 255, 0.05)",
                     border: "1px solid var(--line)",
                     color: "var(--text)",

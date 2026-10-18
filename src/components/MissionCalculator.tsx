@@ -160,7 +160,7 @@ Deorbit Delta-V Requirement: ~${deltaVDeorbitMS} m/s`;
       style={{
         background: "rgba(12, 14, 19, 0.82)",
         border: "1px solid var(--line)",
-        borderRadius: "14px",
+        borderRadius: "4px",
         overflow: "hidden",
         backdropFilter: "blur(20px)",
       }}
@@ -226,7 +226,7 @@ Deorbit Delta-V Requirement: ~${deltaVDeorbitMS} m/s`;
                 style={{
                   textAlign: "left",
                   padding: "12px 14px",
-                  borderRadius: "8px",
+                  borderRadius: "0px",
                   background:
                     selectedOrbit.id === regime.id
                       ? "rgba(194, 155, 98, 0.12)"
@@ -275,7 +275,7 @@ Deorbit Delta-V Requirement: ~${deltaVDeorbitMS} m/s`;
             style={{
               background: "rgba(255, 255, 255, 0.02)",
               padding: "16px 18px",
-              borderRadius: "10px",
+              borderRadius: "4px",
               border: "1px solid var(--line)",
             }}
           >
@@ -325,7 +325,7 @@ Deorbit Delta-V Requirement: ~${deltaVDeorbitMS} m/s`;
             style={{
               background: "rgba(255, 255, 255, 0.02)",
               padding: "16px 18px",
-              borderRadius: "10px",
+              borderRadius: "4px",
               border: "1px solid var(--line)",
             }}
           >
@@ -340,7 +340,7 @@ Deorbit Delta-V Requirement: ~${deltaVDeorbitMS} m/s`;
                   onClick={() => setSelectedPayload(pl)}
                   style={{
                     padding: "8px 10px",
-                    borderRadius: "6px",
+                    borderRadius: "0px",
                     textAlign: "left",
                     background:
                       selectedPayload.id === pl.id
@@ -375,7 +375,7 @@ Deorbit Delta-V Requirement: ~${deltaVDeorbitMS} m/s`;
         <div
           style={{
             background: "rgba(9, 11, 15, 0.95)",
-            borderRadius: "10px",
+            borderRadius: "4px",
             border: "1px solid var(--line)",
             padding: "20px",
             marginBottom: "24px",
