@@ -103,19 +103,6 @@ export function Layout({
                 <ArrowRight size={16} />
               </NavLink>
             ))}
-            <div style={{ marginTop: "24px", paddingTop: "20px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-              <button
-                className="btn-cta"
-                style={{ width: "100%", justifyContent: "center" }}
-                onClick={() => {
-                  setMobileOpen(false);
-                  onOpenContact();
-                }}
-              >
-                <span>Get in Touch</span>
-                <ArrowRight size={14} />
-              </button>
-            </div>
           </div>
         </div>
       )}

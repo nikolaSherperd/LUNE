@@ -3316,10 +3316,15 @@ p,
 }
 
 .contact-submit-btn:hover {
-  background: #b59b64;
-  border-color: #b59b64;
+  background: #000000;
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(154, 138, 90, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.contact-submit-btn:hover * {
+  color: #ffffff;
 }
 
 .contact-submit-btn:disabled {
@@ -4370,7 +4375,8 @@ p,
 }
 
 .nav-cta:hover {
-  background: #b59b64;
+  background: #000000;
+  color: #ffffff !important;
   transform: translateY(-1px);
 }
 
@@ -5461,18 +5467,7 @@ p,
 
 @media (max-width: 640px) {
   .nav-cta {
-    display: inline-flex !important;
-    padding: 6px 14px !important;
-    font-size: 11px !important;
-    border-radius: 0 !important;
-    gap: 5px !important;
-  }
-
-  @media (max-width: 400px) {
-    .nav-cta {
-      padding: 5px 10px !important;
-      font-size: 10px !important;
-    }
+    display: none !important;
   }
 
   .hero-copy {

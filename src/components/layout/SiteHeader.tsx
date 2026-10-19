@@ -53,7 +53,7 @@ export function SiteHeader({
             aria-label="Get in Touch"
           >
             <span>Get in Touch</span>
-            <ArrowRight size={13} />
+            <ArrowRight size={11} />
           </button>
 
           <button
