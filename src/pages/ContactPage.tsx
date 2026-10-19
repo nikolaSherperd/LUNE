@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ArrowRight, CheckCircle2, ExternalLink, Mail, MapPin, Phone, Share2, Shield } from "lucide-react";
 import { SpaceXFooter } from "../components/layout";
+import { SocialIcon } from "../components/SocialIcon";
 import { INQUIRY_TYPES, submitContactInquiry } from "../services/contact";
 import { images, socialLinks } from "../data";
 
@@ -154,6 +155,7 @@ export default function ContactPage({}: ContactPageProps) {
                         className="contact-social-pill"
                         aria-label={`LUNE Aerospace on ${social.name}`}
                       >
+                        <SocialIcon id={social.id} size={14} className="contact-social-icon" />
                         <span>{social.name}</span>
                         <ExternalLink size={11} />
                       </a>

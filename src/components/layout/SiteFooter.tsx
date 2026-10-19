@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { socialLinks } from "../../data";
+import { SocialIcon } from "../SocialIcon";
 
 export function SpaceXFooter({ onOpenContact }: { onOpenContact?: () => void }) {
-  const footerSocials = socialLinks.filter((s) => s.id === "x" || s.id === "linkedin");
-
   return (
     <footer className="spacex-footer" role="contentinfo">
       <div className="spacex-footer-inner">
-        <span className="spacex-footer-copy">LUNE AEROSPACE © 2026</span>
         <ul className="spacex-footer-links">
           <li>
             <Link to="/platforms">PLATFORMS</Link>
@@ -34,15 +32,21 @@ export function SpaceXFooter({ onOpenContact }: { onOpenContact?: () => void }) 
               <Link to="/contact">CONTACT</Link>
             )}
           </li>
-          {footerSocials.map((social) => (
+        </ul>
+
+        <span className="spacex-footer-copy">LUNE AEROSPACE 2026</span>
+
+        <ul className="spacex-footer-socials" aria-label="LUNE Aerospace social platforms">
+          {socialLinks.map((social) => (
             <li key={social.id}>
               <a
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`LUNE Aerospace on ${social.name}`}
+                className="spacex-footer-social-link"
               >
-                {social.shortName}
+                <SocialIcon id={social.id} size={15} />
               </a>
             </li>
           ))}
@@ -54,3 +58,4 @@ export function SpaceXFooter({ onOpenContact }: { onOpenContact?: () => void }) 
 
 export const SiteFooter = SpaceXFooter;
 export const Footer = SpaceXFooter;
+

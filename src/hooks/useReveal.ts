@@ -5,37 +5,75 @@ export function useReveal() {
   const location = useLocation();
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
-    const timer = setTimeout(() => {
+    let mutationObserver: MutationObserver | null = null;
+
+    const scanAndObserve = () => {
       const items = document.querySelectorAll<HTMLElement>("[data-reveal], .bottom-to-top");
+      if (!items.length) return;
+
       if (!("IntersectionObserver" in window)) {
         items.forEach((el) => el.classList.add("is-visible"));
         return;
       }
 
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer?.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.06,
-          rootMargin: "0px 0px -40px 0px",
-        },
-      );
+      if (!observer) {
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer?.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.04,
+            rootMargin: "0px 0px 40px 0px",
+          },
+        );
+      }
 
+      const innerH = window.innerHeight;
       items.forEach((item) => {
+        if (item.classList.contains("is-visible")) return;
         const rect = item.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 30 && rect.bottom > 0) {
+        // If element is already in view or slightly above/below, reveal immediately
+        if (rect.top < innerH + 30 && rect.bottom > -40) {
           item.classList.add("is-visible");
         } else {
-          item.classList.remove("is-visible");
           observer?.observe(item);
         }
       });
+    };
+
+    // Execute immediately and on next frame
+    scanAndObserve();
+    const rafId = requestAnimationFrame(scanAndObserve);
+
+    // Staggered checks to catch any late hydration or route renders
+    const t1 = setTimeout(scanAndObserve, 30);
+    const t2 = setTimeout(scanAndObserve, 150);
+    const t3 = setTimeout(scanAndObserve, 500);
+
+    // Safety fallback: reveal any remaining above-the-fold elements
+    const tSafety = setTimeout(() => {
+      document.querySelectorAll<HTMLElement>("[data-reveal], .bottom-to-top").forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 1.5) {
+          item.classList.add("is-visible");
+        }
+      });
+    }, 1000);
+
+    // Observe DOM mutations for newly added content
+    if ("MutationObserver" in window) {
+      mutationObserver = new MutationObserver(() => {
+        scanAndObserve();
+      });
+      mutationObserver.observe(document.body, { childList: true, subtree: true });
+    }
+
+    const timer = setTimeout(() => {
 
       // Numerical count-up observer matching Muon Space
       const statTitles = document.querySelectorAll<HTMLElement>("[data-count-target]");
@@ -104,7 +142,15 @@ export function useReveal() {
     handleScrollText();
 
     return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(tSafety);
       clearTimeout(timer);
+      if (mutationObserver) {
+        mutationObserver.disconnect();
+      }
       if (observer) {
         observer.disconnect();
       }

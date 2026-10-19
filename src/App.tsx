@@ -6,12 +6,11 @@ import "lenis/dist/lenis.css";
 import { ContactModal } from "./components/ContactModal";
 import { Layout } from "./components/layout";
 
-// Route-level code-splitting with React.lazy
-const Home = lazy(() => import("./pages/Home"));
-const PlatformsPage = lazy(() => import("./pages/PlatformsPage"));
-const MissionsPage = lazy(() => import("./pages/MissionsPage"));
-const AboutPage = lazy(() => import("./pages/AboutPage"));
-const ContactPage = lazy(() => import("./pages/ContactPage"));
+import Home from "./pages/Home";
+import PlatformsPage from "./pages/PlatformsPage";
+import MissionsPage from "./pages/MissionsPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
 
 function RouteLoadingFallback() {
   return (
