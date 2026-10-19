@@ -5243,26 +5243,24 @@ p,
   background: rgba(154, 138, 90, 0.15);
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1024px) {
+  .site-header {
+    left: 0 !important;
+    right: 0 !important;
+  }
   .nav-links {
     display: none;
   }
   .mobile-menu-button {
     display: grid;
+  }
+  .nav-cta {
+    display: none !important;
   }
 }
 
 /* Responsive adjustments for Muon Space layouts */
 @media (max-width: 1024px) {
-  .site-header {
-    left: 72px;
-  }
-  .nav-links {
-    display: none;
-  }
-  .mobile-menu-button {
-    display: grid;
-  }
   .announce-bar {
     left: 72px;
   }
@@ -5622,9 +5620,9 @@ p,
 }
 
 .btn-cta:hover {
-  background: #b59b64;
-  border-color: #b59b64;
-  color: #0b0c0c !important;
+  background: #000000;
+  border-color: #000000;
+  color: #ffffff !important;
   transform: translateY(-2px);
 }
 
@@ -5834,30 +5832,36 @@ p,
 
 .nav-cta {
   font-family: var(--font-sans, "Inter", sans-serif) !important;
-  font-size: 12.5px !important;
+  font-size: 11px !important;
   font-weight: 600 !important;
-  letter-spacing: 0.02em !important;
+  letter-spacing: 0.03em !important;
   text-transform: none !important;
   color: #08090b !important;
   background: #c5a96d !important;
   border: 1px solid #c5a96d !important;
   border-radius: 0 !important;
-  padding: 8px 20px !important;
+  padding: 5px 13px !important;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   text-decoration: none !important;
-  box-shadow: 0 4px 20px rgba(197, 169, 109, 0.25);
+  box-shadow: 0 2px 10px rgba(197, 169, 109, 0.2) !important;
 }
 
 .btn-cta:hover,
 .nav-cta:hover {
-  background: #d8be82 !important;
-  border-color: #d8be82 !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(197, 169, 109, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.btn-cta:hover *,
+.nav-cta:hover * {
+  color: #ffffff !important;
 }
 
 .btn-outline,
@@ -5881,10 +5885,18 @@ p,
   backdrop-filter: blur(12px);
 }
 
-.btn-outline:hover {
+.btn-outline:hover,
+.hero-clean-actions .btn-outline:hover {
   border-color: rgba(255, 255, 255, 0.45) !important;
-  background: rgba(255, 255, 255, 0.09) !important;
+  background: #000000 !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+.btn-outline:hover *,
+.hero-clean-actions .btn-outline:hover * {
+  color: #ffffff !important;
 }
 
 /* Clean Editorial Hero */
@@ -6161,7 +6173,7 @@ p,
   object-fit: contain;
   display: block;
   background: transparent;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.65));
+  filter: grayscale(100%) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.65));
   opacity: 0.82;
   transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -6169,7 +6181,7 @@ p,
 .partner-logo-item:hover .partner-logo-img {
   opacity: 1;
   transform: scale(1.08);
-  filter: drop-shadow(0 4px 14px rgba(255, 255, 255, 0.22));
+  filter: grayscale(100%) brightness(1.25) drop-shadow(0 4px 14px rgba(255, 255, 255, 0.22));
 }
 
 @keyframes partners-transit {
