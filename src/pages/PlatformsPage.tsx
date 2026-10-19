@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, Check, Cpu, Layers, ShieldCheck, Wrench } from "lucide-react";
+import { ArrowRight, Check, Cpu, Layers, ShieldCheck } from "lucide-react";
 import { SpaceXFooter } from "../components/layout";
 import { facilitySpecs, images, platformSpecTable } from "../data";
 
@@ -53,21 +53,18 @@ export default function PlatformsPage({ onOpenContact }: PlatformsPageProps) {
               className={`clean-tab-pill ${activeTab === "buses" ? "active" : ""}`}
               onClick={() => setActiveTab("buses")}
             >
-              <Layers size={14} />
               <span>Spacecraft Buses</span>
             </button>
             <button
               className={`clean-tab-pill ${activeTab === "avionics" ? "active" : ""}`}
               onClick={() => setActiveTab("avionics")}
             >
-              <Cpu size={14} />
               <span>Flight Avionics &amp; Software</span>
             </button>
             <button
               className={`clean-tab-pill ${activeTab === "facilities" ? "active" : ""}`}
               onClick={() => setActiveTab("facilities")}
             >
-              <Wrench size={14} />
               <span>Abuja Test Facilities</span>
             </button>
           </div>

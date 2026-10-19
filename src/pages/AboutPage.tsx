@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, Compass, HeartHandshake, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SpaceXFooter } from "../components/layout";
 import { aboutData, continuousCycle, images, journalItems } from "../data";
 
@@ -54,21 +54,18 @@ export default function AboutPage({ onOpenContact }: AboutPageProps) {
               className={`clean-tab-pill ${activeTab === "mission" ? "active" : ""}`}
               onClick={() => setActiveTab("mission")}
             >
-              <Compass size={14} />
               <span>The Mission</span>
             </button>
             <button
               className={`clean-tab-pill ${activeTab === "philosophy" ? "active" : ""}`}
               onClick={() => setActiveTab("philosophy")}
             >
-              <HeartHandshake size={14} />
               <span>Engineering Philosophy</span>
             </button>
             <button
               className={`clean-tab-pill ${activeTab === "team" ? "active" : ""}`}
               onClick={() => setActiveTab("team")}
             >
-              <Users size={14} />
               <span>Consortium &amp; Team</span>
             </button>
           </div>
