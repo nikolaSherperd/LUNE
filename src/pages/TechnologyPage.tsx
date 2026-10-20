@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ArrowRight, Brain, Cpu, Orbit, Radio } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { InteriorPageHero, SectionLabel, SpaceXFooter } from "../components/layout";
 import { images, technologyData } from "../data";
@@ -22,11 +22,11 @@ export default function TechnologyPage({ onOpenContact }: TechnologyPageProps) {
     }
   }, [location.hash]);
 
-  const tabs: { id: TechTab; label: string; code: string; icon: React.ComponentType<{ size: number }> }[] = [
-    { id: "embedded", label: "Embedded", code: "04.1", icon: Cpu },
-    { id: "ai", label: "AI", code: "04.2", icon: Brain },
-    { id: "communications", label: "Communications", code: "04.3", icon: Radio },
-    { id: "control", label: "Control", code: "04.4", icon: Orbit },
+  const tabs: { id: TechTab; label: string; code: string }[] = [
+    { id: "embedded", label: "Embedded", code: "04.1" },
+    { id: "ai", label: "AI", code: "04.2" },
+    { id: "communications", label: "Communications", code: "04.3" },
+    { id: "control", label: "Control", code: "04.4" },
   ];
 
   const currentPillar = technologyData.find((t) => t.id === activeTab) || technologyData[0];
@@ -53,7 +53,6 @@ export default function TechnologyPage({ onOpenContact }: TechnologyPageProps) {
       <div className="ia-subnav-wrap">
         <div className="ia-subnav-container">
           {tabs.map((tab) => {
-            const Icon = tab.icon;
             const isActive = activeTab === tab.id;
             return (
               <button
@@ -64,7 +63,6 @@ export default function TechnologyPage({ onOpenContact }: TechnologyPageProps) {
                   window.history.replaceState(null, "", `#${tab.id}`);
                 }}
               >
-                <Icon size={13} />
                 <span>{tab.label}</span>
                 <span className="ia-tab-code">{tab.code}</span>
               </button>

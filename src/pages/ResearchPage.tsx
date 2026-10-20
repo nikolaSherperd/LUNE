@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ArrowRight, BookOpen, FileCode, FileText } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { InteriorPageHero, SectionLabel, SpaceXFooter } from "../components/layout";
 import { ResearchArchive } from "../components/ResearchArchive";
@@ -23,10 +23,10 @@ export default function ResearchPage({ onOpenContact }: ResearchPageProps) {
     }
   }, [location.hash]);
 
-  const tabs: { id: ResearchTab; label: string; code: string; icon: React.ComponentType<{ size: number }> }[] = [
-    { id: "papers", label: "Papers", code: "03.1", icon: BookOpen },
-    { id: "technical-notes", label: "Technical Notes", code: "03.2", icon: FileText },
-    { id: "engineering-logs", label: "Engineering Logs", code: "03.3", icon: FileCode },
+  const tabs: { id: ResearchTab; label: string; code: string }[] = [
+    { id: "papers", label: "Papers", code: "03.1" },
+    { id: "technical-notes", label: "Technical Notes", code: "03.2" },
+    { id: "engineering-logs", label: "Engineering Logs", code: "03.3" },
   ];
 
   return (
@@ -51,7 +51,6 @@ export default function ResearchPage({ onOpenContact }: ResearchPageProps) {
       <div className="ia-subnav-wrap">
         <div className="ia-subnav-container">
           {tabs.map((tab) => {
-            const Icon = tab.icon;
             const isActive = activeTab === tab.id;
             return (
               <button
@@ -62,7 +61,6 @@ export default function ResearchPage({ onOpenContact }: ResearchPageProps) {
                   window.history.replaceState(null, "", `#${tab.id}`);
                 }}
               >
-                <Icon size={13} />
                 <span>{tab.label}</span>
                 <span className="ia-tab-code">{tab.code}</span>
               </button>

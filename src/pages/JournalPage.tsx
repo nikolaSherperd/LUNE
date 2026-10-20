@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ArrowRight, BookOpen, Compass, FlaskConical, MapPin, Newspaper, Tag } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { InteriorPageHero, SectionLabel, SpaceXFooter } from "../components/layout";
 import { images, journalEntriesData } from "../data";
@@ -23,10 +23,10 @@ export default function JournalPage({ onOpenContact }: JournalPageProps) {
     }
   }, [location.hash]);
 
-  const tabs: { id: JournalTab; label: string; code: string; icon: React.ComponentType<{ size: number }> }[] = [
-    { id: "updates", label: "Updates", code: "06.1", icon: Newspaper },
-    { id: "experiments", label: "Experiments", code: "06.2", icon: FlaskConical },
-    { id: "field-notes", label: "Field Notes", code: "06.3", icon: Compass },
+  const tabs: { id: JournalTab; label: string; code: string }[] = [
+    { id: "updates", label: "Updates", code: "06.1" },
+    { id: "experiments", label: "Experiments", code: "06.2" },
+    { id: "field-notes", label: "Field Notes", code: "06.3" },
   ];
 
   const filteredEntries = journalEntriesData.filter((e) => e.category === activeTab);
