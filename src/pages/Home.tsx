@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, Cpu, Layers, Orbit, Radio, Shield, Wrench } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SpaceXFooter } from "../components/layout";
 import { SpacecraftHotspots } from "../components/SpacecraftHotspots";

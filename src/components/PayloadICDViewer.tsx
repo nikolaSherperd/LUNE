@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import {
   Activity,
-  Box,
-  Cpu,
   Download,
   FileCode,
   Flame,
   Layers,
   Radio,
-  ShieldCheck,
-  Zap,
 } from "lucide-react";
 
 interface PayloadICDViewerProps {
@@ -151,12 +147,11 @@ export function PayloadICDViewer({ onOpenContact }: PayloadICDViewerProps) {
         }}
       >
         {[
-          { id: "mechanical", label: "MECHANICAL ENVELOPE", icon: Box },
-          { id: "electrical", label: "POWER & ELECTRICAL", icon: Zap },
-          { id: "data", label: "DATA & TELEMETRY", icon: Cpu },
-          { id: "environmental", label: "QUALIFICATION TESTING", icon: ShieldCheck },
+          { id: "mechanical", label: "MECHANICAL ENVELOPE" },
+          { id: "electrical", label: "POWER & ELECTRICAL" },
+          { id: "data", label: "DATA & TELEMETRY" },
+          { id: "environmental", label: "QUALIFICATION TESTING" },
         ].map((tab) => {
-          const Icon = tab.icon;
           const isActive = activeTab === tab.id;
           return (
             <button
@@ -180,7 +175,6 @@ export function PayloadICDViewer({ onOpenContact }: PayloadICDViewerProps) {
                 transition: "all 0.2s ease",
               }}
             >
-              <Icon size={14} />
               <span>{tab.label}</span>
             </button>
           );

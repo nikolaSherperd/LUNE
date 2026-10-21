@@ -53,7 +53,6 @@ export default function JournalPage({ onOpenContact }: JournalPageProps) {
       <div className="ia-subnav-wrap">
         <div className="ia-subnav-container">
           {tabs.map((tab) => {
-            const Icon = tab.icon;
             const isActive = activeTab === tab.id;
             return (
               <button
@@ -64,7 +63,6 @@ export default function JournalPage({ onOpenContact }: JournalPageProps) {
                   window.history.replaceState(null, "", `#${tab.id}`);
                 }}
               >
-                <Icon size={13} />
                 <span>{tab.label}</span>
                 <span className="ia-tab-code">{tab.code}</span>
               </button>

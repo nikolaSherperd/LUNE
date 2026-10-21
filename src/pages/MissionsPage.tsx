@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, CheckCircle2, Globe2, Radio, Satellite, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SpaceXFooter } from "../components/layout";
 import { images, projectsData } from "../data";
 
