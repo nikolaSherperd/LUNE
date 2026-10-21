@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, CheckCircle2, ExternalLink, Mail, MapPin, Phone, Share2, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle2, Mail, MapPin, Phone, Share2, Shield } from "lucide-react";
 import { SpaceXFooter } from "../components/layout";
 import { SocialIcon } from "../components/SocialIcon";
 import { INQUIRY_TYPES, submitContactInquiry } from "../services/contact";
@@ -154,10 +154,9 @@ export default function ContactPage({}: ContactPageProps) {
                         rel="noopener noreferrer"
                         className="contact-social-pill"
                         aria-label={`LUNE Aerospace on ${social.name}`}
+                        title={social.name}
                       >
-                        <SocialIcon id={social.id} size={14} className="contact-social-icon" />
-                        <span>{social.name}</span>
-                        <ExternalLink size={11} />
+                        <SocialIcon id={social.id} size={16} className="contact-social-icon" />
                       </a>
                     ))}
                   </div>
