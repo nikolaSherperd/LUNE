@@ -98,50 +98,48 @@ export default function Home({ onOpenContact }: HomeProps) {
       </section>
 
       {/* -------------------------------------------------------------------- */}
-      {/* PARTNERS TICKER / RECOGNITION                                        */}
+      {/* PARTNERS TICKER / RECOGNITION (MUON SPACE LOOPIN CAROUSEL)           */}
       {/* -------------------------------------------------------------------- */}
-      <section className="partners-clean-section">
+      <section className="partners-clean-section eps-section logos-section" id="partners">
         <div className="site-container">
-          <p className="partners-clean-label">
-            Collaborating with sovereign space agencies, university consortia, and commercial operators across Africa
-          </p>
+          <div className="logos-label av-special-heading av-special-heading-p ep-text custom-color-heading fade-in ep-align-center">
+            <p className="av-special-heading-tag partners-clean-label">
+              Collaborating with sovereign space agencies, university consortia, and commercial operators across Africa
+            </p>
+            <div className="special-heading-border">
+              <div className="special-heading-inner-border" />
+            </div>
+          </div>
         </div>
 
-        <div className="partners-marquee-wrapper" aria-label="Collaborating Organizations">
-          <div className="partners-marquee-track">
-            <div className="partners-marquee-group">
-              {[...trustedPartners, ...trustedPartners].map((partner, index) => (
-                <div
-                  key={`p1-${partner.id}-${index}`}
-                  className="partner-logo-item"
-                  title={`${partner.acronym} — ${partner.name}`}
-                >
-                  <img
-                    src={partner.logo}
-                    alt={`${partner.acronym} logo`}
-                    className="partner-logo-img"
-                    loading="lazy"
-                  />
+        <div
+          className="ep-item-grid-wrapper ep-grid-wrapper ep-space-small itemgrid--logos partners-marquee-wrapper"
+          style={{ "--itemCount": 6 } as React.CSSProperties}
+          aria-label="Collaborating Organizations"
+        >
+          <div className="ep-item-grid ep-grid ep-grid-columns is-gapless partners-marquee-track">
+            {[...trustedPartners, ...trustedPartners, ...trustedPartners, ...trustedPartners].map((partner, index) => (
+              <div
+                key={`logo-${partner.id}-${index}`}
+                className={`ep-item ep-grid-column one-third-mobile one-fourth-tablet one-sixth ep-item-${(index % trustedPartners.length) + 1} ep-item-custom-size ep-item-align-center ep-item-valign-center partner-logo-item`}
+                title={`${partner.acronym} — ${partner.name}`}
+                aria-hidden={index >= trustedPartners.length ? "true" : undefined}
+              >
+                <div className="ep-item-inner">
+                  <div className="ep-item-media">
+                    <div className="ep-item-image">
+                      <img
+                        src={partner.logo}
+                        alt={`${partner.acronym} logo`}
+                        className="partner-logo-img avia-img-lazy-loading"
+                        decoding="async"
+                        draggable={false}
+                      />
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="partners-marquee-group" aria-hidden="true">
-              {[...trustedPartners, ...trustedPartners].map((partner, index) => (
-                <div
-                  key={`p2-${partner.id}-${index}`}
-                  className="partner-logo-item"
-                  title={`${partner.acronym} — ${partner.name}`}
-                >
-                  <img
-                    src={partner.logo}
-                    alt={`${partner.acronym} logo`}
-                    className="partner-logo-img"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

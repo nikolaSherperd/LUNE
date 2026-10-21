@@ -1586,32 +1586,11 @@ export const trustedPartners: PartnerItem[] = [
     logo: "/logos/afsa.png",
   },
   {
-    id: "dsa",
-    name: "Defence Space Administration",
-    acronym: "DSA",
-    category: "National Security",
-    logo: "/logos/dsa.png",
-  },
-  {
-    id: "pausn",
-    name: "Pan-African University Space Network",
-    acronym: "PAUSN",
-    category: "Academic Consortium",
-    logo: "/logos/pausn.png",
-  },
-  {
     id: "sansa",
     name: "South African National Space Agency",
     acronym: "SANSA",
     category: "Civil Space Agency",
     logo: "/logos/sansa.svg",
-  },
-  {
-    id: "nigcomsat",
-    name: "Nigerian Communications Satellite Ltd",
-    acronym: "NIGCOMSAT",
-    category: "Commercial Telecom",
-    logo: "/logos/nigcomsat.png",
   },
   {
     id: "ksa",
@@ -1626,6 +1605,13 @@ export const trustedPartners: PartnerItem[] = [
     acronym: "EgSA",
     category: "Civil Space Agency",
     logo: "/logos/egsa.png",
+  },
+  {
+    id: "pausn",
+    name: "Pan-African University Space Network",
+    acronym: "PAUSN",
+    category: "Academic Consortium",
+    logo: "/logos/pausn.png",
   },
 ];
 
